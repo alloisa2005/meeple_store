@@ -2,6 +2,7 @@ import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 
+import Navigation from './navigation';
 import { HomeScreen } from './screens';
 
 export default function App() {
@@ -16,10 +17,5 @@ export default function App() {
     return null;
   }
 
-  return (
-    <View className="flex-1 justify-center items-center">
-      <HomeScreen />
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <Navigation />;
 }
