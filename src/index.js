@@ -1,9 +1,7 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
 
 import Navigation from './navigation';
-import { HomeScreen } from './screens';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,5 +15,9 @@ export default function App() {
     return null;
   }
 
-  return <Navigation />;
+  return (
+    <Navigation>
+      <StatusBar hidden style="light" />
+    </Navigation>
+  );
 }
