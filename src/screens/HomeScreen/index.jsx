@@ -1,23 +1,31 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   return (
-    <ImageBackground
-      className="w-full h-full object-cover"
-      source={require('../../../assets/imgs/background.jpg')}>
-      <View className="h-full w-full bg-black/40">
-        <View className="py-32 flex flex-col items-center justify-between h-full">
-          <Text className="text-6xl text-gray-100 font-gochi">Meeple Store</Text>
+    <SafeAreaView className="flex-1  items-center">
+      <Image
+        style={{ width: '100%', height: '35%', resizeMode: 'contain' }}
+        source={require('../../../assets/imgs/meeple3.png')}
+      />
+      <Text className="mt-10 font-monteB text-3xl">Welcome to </Text>
+      <Text className="mt-3 font-gochi text-6xl text-[#DC2804]">Meeple Store</Text>
 
-          <TouchableOpacity className="bg-gray-100 p-2 rounded-full h-[90px] w-[90px] flex justify-center items-center">
-            <View className="bg-black h-[80px] w-[80px] flex justify-center items-center rounded-full p-2">
-              <Text className="text-lg text-gray-100 font-monteB uppercase">Enter</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+      <View className="mt-16 w-full flex-row justify-between items-center">
+        <TouchableOpacity className="bg-[#DC2804] w-[45%] py-2 rounded-tr-full rounded-br-full">
+          <Text className="text-white text-center text-2xl font-monteB">Sign In</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity className="bg-[#DC2804] w-[45%] py-2 rounded-tl-full rounded-bl-full">
+          <Text className="text-white text-center text-2xl font-monteB">Sign Up</Text>
+        </TouchableOpacity>
       </View>
-    </ImageBackground>
+
+      <Text className="mt-8 font-monteB text-lg border-b-2 border-blue-500 text-blue-500 uppercase">
+        Continue as Guest
+      </Text>
+    </SafeAreaView>
   );
 };
 
