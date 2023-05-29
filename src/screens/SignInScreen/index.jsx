@@ -1,17 +1,37 @@
 import { Entypo } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 
 const SignInScreen = ({ navigation }) => {
+  const [flag, setFlag] = useState('spain');
+
+  const changeFlag = () => {
+    if (flag === 'spain') {
+      setFlag('usa');
+    } else {
+      setFlag('spain');
+    }
+  };
+
   const goToSignUpScreen = () => {
     navigation.navigate('SignUp');
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={changeFlag} style={styles.flagContainer}>
+        <Image
+          source={
+            flag === 'spain'
+              ? require('../../../assets/imgs/spainFlag.png')
+              : require('../../../assets/imgs/usaFlag.png')
+          }
+          style={styles.flagImage}
+        />
+      </TouchableOpacity>
       <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
       <Text style={styles.textTitle}>Welcome to</Text>
       <Text style={styles.textSubTitle}>Meeple Land</Text>

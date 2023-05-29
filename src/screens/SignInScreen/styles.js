@@ -9,6 +9,19 @@ export const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  flagContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center', // backgroundColor: 'red
+    marginBottom: 30,
+    paddingHorizontal: 20,
+  },
+  flagImage: {
+    width: '30@s',
+    height: '30@s',
+    resizeMode: 'contain',
+  },
   image: {
     width: '200@s',
     height: '200@s',
