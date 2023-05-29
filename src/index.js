@@ -1,7 +1,9 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
+import { Provider } from 'react-redux';
 
 import Navigation from './navigation';
+import { store } from './redux/store';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,8 +18,10 @@ export default function App() {
   }
 
   return (
-    <Navigation>
-      <StatusBar hidden style="light" />
-    </Navigation>
+    <Provider store={store}>
+      <Navigation>
+        <StatusBar hidden style="light" />
+      </Navigation>
+    </Provider>
   );
 }

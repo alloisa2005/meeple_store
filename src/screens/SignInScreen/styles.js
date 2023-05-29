@@ -13,9 +13,9 @@ export const styles = ScaledSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    alignItems: 'center', // backgroundColor: 'red
-    marginBottom: 30,
-    paddingHorizontal: 20,
+    alignItems: 'center',
+    marginBottom: '30@vs',
+    paddingHorizontal: '20@s',
   },
   flagImage: {
     width: '30@s',
