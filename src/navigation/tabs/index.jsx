@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 
-import { CartScreen, ShopScreen, UserScreen } from '../../screens';
+import { styles } from './styles';
+import { CartScreen, SettingsScreen, ShopScreen, UserScreen } from '../../screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ const TabNavigation = () => {
         component={ShopScreen}
         options={{
           tabBarLabel: language === 'es' ? 'Tienda' : 'Shop',
+          tabBarLabelStyle: styles.tabBarLabelStyle,
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
@@ -27,6 +29,7 @@ const TabNavigation = () => {
         component={CartScreen}
         options={{
           tabBarLabel: language === 'es' ? 'Carrito' : 'Cart',
+          tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'md-cart' : 'md-cart-outline'} size={size} color={color} />
           ),
@@ -36,10 +39,11 @@ const TabNavigation = () => {
       />
       <Tab.Screen
         name="User"
-        component={UserScreen}
+        component={SettingsScreen}
         options={{
           headerShown: false,
           tabBarLabel: language === 'es' ? 'Preferencias' : 'Settings',
+          tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />
           ),

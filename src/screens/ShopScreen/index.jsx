@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { styles } from './styles';
 
 const ShopScreen = () => {
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       <Text>ShopScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
