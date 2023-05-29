@@ -5,7 +5,11 @@ import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
+  const goToSignUpScreen = () => {
+    navigation.navigate('SignUp');
+  };
+
   return (
     <View style={styles.container}>
       <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
@@ -28,6 +32,13 @@ const SignInScreen = () => {
             <Text style={styles.textButton}>Sign In</Text>
           </TouchableOpacity>
         </View>
+      </View>
+
+      <View style={styles.accountContainer}>
+        <Text style={styles.accountTitle}>Don´t have an account?</Text>
+        <TouchableOpacity onPress={goToSignUpScreen}>
+          <Text style={styles.accountSubTitle}>Create one</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

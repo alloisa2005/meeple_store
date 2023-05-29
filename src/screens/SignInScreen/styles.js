@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 230,
+    height: 230,
     resizeMode: 'contain',
     marginBottom: 20,
   },
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     width: '90%',
-    padding: 20,
+    padding: 15,
   },
   inputsContainer: {
     flexDirection: 'row',
@@ -60,5 +60,20 @@ export const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: 18,
     color: COLORS.white,
+  },
+  accountContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginTop: 15,
+  },
+  accountTitle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 15,
+  },
+  accountSubTitle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 15,
+    color: COLORS.cardinal,
   },
 });
