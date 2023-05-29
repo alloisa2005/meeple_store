@@ -40,7 +40,9 @@ const SignInScreen = ({ navigation }) => {
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('TabNavigation', { screen: 'Shop' })}>
             <Text style={styles.textButton}>{language === 'es' ? 'Inicia Sesión' : 'Sign In'}</Text>
           </TouchableOpacity>
         </View>
