@@ -37,7 +37,7 @@ const SignInScreen = ({ navigation }) => {
       <View style={styles.accountContainer}>
         <Text style={styles.accountTitle}>Don´t have an account?</Text>
         <TouchableOpacity onPress={goToSignUpScreen}>
-          <Text style={styles.accountSubTitle}>Create one</Text>
+          <Text style={styles.accountSubTitle}>Create One</Text>
         </TouchableOpacity>
       </View>
     </View>

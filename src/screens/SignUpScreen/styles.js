@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 import { COLORS } from '../../constants/colors';
 
-export const styles = StyleSheet.create({
+export const styles = ScaledSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -13,15 +13,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    marginTop: 15,
+    marginTop: '15@vs',
   },
   accountTitle: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 15,
+    fontSize: '13@s',
   },
   accountSubTitle: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 15,
+    fontSize: '15@s',
     color: COLORS.cardinal,
   },
 });

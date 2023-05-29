@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 import { COLORS } from '../../constants/colors';
 
-export const styles = StyleSheet.create({
+export const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
@@ -10,70 +10,70 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 230,
-    height: 230,
+    width: '200@s',
+    height: '200@s',
     resizeMode: 'contain',
-    marginBottom: 20,
+    marginBottom: '20@vs',
   },
   textTitle: {
     color: COLORS.textBlack,
     fontFamily: 'Montserrat-Bold',
-    fontSize: 20,
+    fontSize: '18@s',
   },
   textSubTitle: {
     color: COLORS.cardinal,
     fontFamily: 'GochiHand-Regular',
-    fontSize: 50,
-    marginBottom: 25,
+    fontSize: '47@s',
+    marginBottom: '25@vs',
   },
   containerGlass: {
     backgroundColor: 'white',
     borderRadius: 10,
     width: '90%',
-    padding: 15,
+    padding: '15@s',
   },
   inputsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: '15@vs',
     gap: 10,
     backgroundColor: COLORS.background,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
+    paddingHorizontal: '10@s',
+    paddingVertical: '6@vs',
     borderRadius: 5,
   },
   textInput: {
     backgroundColor: COLORS.background,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
+    paddingHorizontal: '10@s',
+    paddingVertical: '6@vs',
     flex: 1,
     fontFamily: 'Montserrat-Regular',
   },
   button: {
     backgroundColor: COLORS.cardinal,
     color: COLORS.textBlack,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: '10@vs',
+    paddingHorizontal: '15@s',
     borderRadius: 10,
   },
   textButton: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 18,
+    fontSize: '15@s',
     color: COLORS.white,
   },
   accountContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    marginTop: 15,
+    marginTop: '15@vs',
   },
   accountTitle: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 15,
+    fontSize: '13@s',
   },
   accountSubTitle: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 15,
+    fontSize: '15@s',
     color: COLORS.cardinal,
   },
 });
