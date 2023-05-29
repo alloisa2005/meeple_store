@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { COLORS } from '../../constants/colors';
 import { SignInScreen, SignUpScreen } from '../../screens';
 
 const Stack = createNativeStackNavigator();
