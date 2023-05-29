@@ -11,16 +11,8 @@ export const styles = ScaledSheet.create({
   },
   flagContainer: {
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginBottom: '30@vs',
-    paddingHorizontal: '20@s',
-  },
-  flagImage: {
-    width: '30@s',
-    height: '30@s',
-    resizeMode: 'contain',
+    paddingHorizontal: '10@s',
+    marginBottom: '10@vs',
   },
   image: {
     width: '200@s',

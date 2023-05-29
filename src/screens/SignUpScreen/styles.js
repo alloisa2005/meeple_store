@@ -8,12 +8,14 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.background,
   },
   titleContainer: {
-    marginTop: '10@vs',
+    marginTop: '5@vs',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     gap: '10@s',
     paddingHorizontal: '10@s',
   },
+  titleLeft: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   title: {
     fontFamily: 'Montserrat-Bold',
     fontSize: '17@s',

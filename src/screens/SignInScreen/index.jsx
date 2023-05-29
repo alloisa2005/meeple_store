@@ -1,20 +1,14 @@
 import { Entypo } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
+import { FlagComponent } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { changeLanguage } from '../../redux/slices/languageSlice';
 
 const SignInScreen = ({ navigation }) => {
-  const dispatch = useDispatch();
-
   const { language } = useSelector((state) => state.language);
-
-  const changeFlag = () => {
-    dispatch(changeLanguage(language === 'en' ? 'es' : 'en'));
-  };
 
   const goToSignUpScreen = () => {
     navigation.navigate('SignUp');
@@ -22,16 +16,10 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TouchableOpacity onPress={changeFlag} style={styles.flagContainer}>
-        <Image
-          source={
-            language === 'en'
-              ? require('../../../assets/imgs/spainFlag.png')
-              : require('../../../assets/imgs/usaFlag.png')
-          }
-          style={styles.flagImage}
-        />
-      </TouchableOpacity>
+      <View style={styles.flagContainer}>
+        <FlagComponent />
+      </View>
+
       <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
       <Text style={styles.textTitle}>{language === 'es' ? 'Bienvenido a' : 'Welcome to'}</Text>
       <Text style={styles.textSubTitle}>Meeple Land</Text>
