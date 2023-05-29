@@ -28,7 +28,7 @@ export const styles = ScaledSheet.create({
   },
   containerGlass: {
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: '7@s',
     width: '90%',
     padding: '15@s',
   },
@@ -48,6 +48,7 @@ export const styles = ScaledSheet.create({
     paddingVertical: '6@vs',
     flex: 1,
     fontFamily: 'Montserrat-Regular',
+    fontSize: '14@s',
   },
   button: {
     backgroundColor: COLORS.cardinal,

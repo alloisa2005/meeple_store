@@ -1,6 +1,6 @@
 import { Entypo } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
@@ -11,7 +11,7 @@ const SignInScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
       <Text style={styles.textTitle}>Welcome to</Text>
       <Text style={styles.textSubTitle}>Meeple Land</Text>
@@ -24,7 +24,7 @@ const SignInScreen = ({ navigation }) => {
 
         <View style={styles.inputsContainer}>
           <Entypo name="lock" size={24} color={COLORS.cardinal} />
-          <TextInput placeholder="Password" style={styles.textInput} />
+          <TextInput secureTextEntry placeholder="Password" style={styles.textInput} />
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
@@ -40,7 +40,7 @@ const SignInScreen = ({ navigation }) => {
           <Text style={styles.accountSubTitle}>Create one</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
