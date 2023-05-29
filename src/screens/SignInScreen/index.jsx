@@ -1,7 +1,9 @@
+import { Entypo } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
+import { COLORS } from '../../constants/colors';
 
 const SignInScreen = () => {
   return (
@@ -10,16 +12,22 @@ const SignInScreen = () => {
       <Text style={styles.textTitle}>Welcome to</Text>
       <Text style={styles.textSubTitle}>Meeple Land</Text>
 
-      <View>
-        <TextInput placeholder="Email" style={styles.textInput} />
-        <TextInput placeholder="Password" />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Sign In</Text>
-        </TouchableOpacity>
+      <View style={styles.containerGlass}>
+        <View style={styles.inputsContainer}>
+          <Entypo name="email" size={24} color={COLORS.cardinal} />
+          <TextInput placeholder="Email" style={styles.textInput} />
+        </View>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Sign Up</Text>
-        </TouchableOpacity>
+        <View style={styles.inputsContainer}>
+          <Entypo name="lock" size={24} color={COLORS.cardinal} />
+          <TextInput placeholder="Password" style={styles.textInput} />
+        </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.textButton}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
