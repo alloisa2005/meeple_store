@@ -5,7 +5,7 @@ import { SignInScreen, SignUpScreen } from '../../screens';
 
 const Stack = createNativeStackNavigator();
 
-const HomeNavigation = () => {
+const AuthNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
@@ -14,4 +14,4 @@ const HomeNavigation = () => {
   );
 };
 
-export default HomeNavigation;
+export default AuthNavigation;

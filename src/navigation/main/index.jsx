@@ -1,23 +1,29 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useState } from 'react';
 
-import HomeNavigation from '../home';
+import AuthNavigation from '../auth';
 import TabNavigation from '../tabs';
 
 const Stack = createNativeStackNavigator();
 
 const MainNavigation = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="HomeNavigation"
-        component={HomeNavigation}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="TabNavigation"
-        component={TabNavigation}
-        options={{ headerShown: false }}
-      />
+      {isLogin ? (
+        <Stack.Screen
+          name="AuthNavigation"
+          component={AuthNavigation}
+          options={{ headerShown: false }}
+        />
+      ) : (
+        <Stack.Screen
+          name="TabNavigation"
+          component={TabNavigation}
+          options={{ headerShown: false }}
+        />
+      )}
     </Stack.Navigator>
   );
 };
