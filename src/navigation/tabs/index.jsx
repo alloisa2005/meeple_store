@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
+import { COLORS } from '../../constants/colors';
 import { CartScreen, SettingsScreen, ShopScreen, UserScreen } from '../../screens';
 
 const Tab = createBottomTabNavigator();
