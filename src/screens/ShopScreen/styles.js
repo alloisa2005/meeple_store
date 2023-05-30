@@ -9,10 +9,15 @@ export const styles = ScaledSheet.create({
     paddingHorizontal: '10@s',
   },
   titleContainer: {
-    marginBottom: '15@vs',
+    marginBottom: '10@vs',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  title: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '18@s',
+    color: COLORS.cardinal,
   },
   logoContainer: {
     width: '40@s',
@@ -26,12 +31,18 @@ export const styles = ScaledSheet.create({
     width: '90%',
     height: '90%',
   },
+  subTitle: {
+    fontSize: '20@s',
+    fontFamily: 'Montserrat-Bold',
+    color: COLORS.textBlack,
+    marginBottom: '14@vs',
+  },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: '10@s',
-    paddingVertical: '5@vs',
+    paddingVertical: '7@vs',
     borderRadius: '10@s',
     backgroundColor: COLORS.white,
   },

@@ -9,11 +9,13 @@ const ShopScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>Bienvenido usuario</Text>
+        <Text style={styles.title}>Hola Juan</Text>
         <View style={styles.logoContainer}>
           <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.logo} />
         </View>
       </View>
+
+      <Text style={styles.subTitle}>La tienda de juegos de mesa en tus manos</Text>
 
       <View style={styles.searchContainer}>
         <TextInput autoCapitalize="none" placeholder="Buscar..." style={styles.searchInput} />
