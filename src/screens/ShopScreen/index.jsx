@@ -21,6 +21,8 @@ const ShopScreen = () => {
         <TextInput autoCapitalize="none" placeholder="Buscar..." style={styles.searchInput} />
         <Feather name="search" size={24} color="black" style={styles.searchIcon} />
       </View>
+
+      <Text style={styles.titleCat}>Categories</Text>
     </SafeAreaView>
   );
 };

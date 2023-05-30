@@ -32,7 +32,7 @@ export const styles = ScaledSheet.create({
     height: '90%',
   },
   subTitle: {
-    fontSize: '20@s',
+    fontSize: '18@s',
     fontFamily: 'Montserrat-Bold',
     color: COLORS.textBlack,
     marginBottom: '14@vs',
@@ -45,6 +45,7 @@ export const styles = ScaledSheet.create({
     paddingVertical: '7@vs',
     borderRadius: '10@s',
     backgroundColor: COLORS.white,
+    marginBottom: '10@vs',
   },
   searchInput: {
     fontFamily: 'Montserrat-Regular',
@@ -53,5 +54,10 @@ export const styles = ScaledSheet.create({
   },
   searchIcon: {
     fontSize: '20@s',
+  },
+  titleCat: {
+    color: COLORS.cardinalLight,
+    fontSize: '16@s',
+    fontFamily: 'Montserrat-Bold',
   },
 });
