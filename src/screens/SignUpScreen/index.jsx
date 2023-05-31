@@ -14,33 +14,40 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { FlagComponent } from '../../components';
+import MyAlert from '../../components/MyAlert';
 import { COLORS } from '../../constants/colors';
 import { signUp } from '../../redux/actions/auth.actions';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const spanish = useSelector((state) => state.language.spanish);
-  const { loading, error } = useSelector((state) => state.auth);
+  const loading = useSelector((state) => state.auth.loading);
 
+  const [showAlert, setShowAlert] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
 
   const onHandleCreateAccount = (name, email, address, password) => {
-    const user = {
-      name,
-      email,
-      address,
-      password,
-    };
+    setShowAlert(false);
+    if (!name || !email || !address || !password) {
+      setShowAlert(true);
+    } else {
+      const user = {
+        name,
+        email,
+        address,
+        password,
+      };
 
-    dispatch(signUp(user));
+      dispatch(signUp(user));
 
-    setName('');
-    setEmail('');
-    setAddress('');
-    setPassword('');
+      setName('');
+      setEmail('');
+      setAddress('');
+      setPassword('');
+    }
   };
 
   const goToSignInScreen = () => {
@@ -49,6 +56,13 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <MyAlert
+        setShowAlert={setShowAlert}
+        spanish={spanish}
+        showAlert={showAlert}
+        message={spanish ? 'Todos los campos son requeridos' : 'All fields are required'}
+      />
+
       <View style={styles.titleContainer}>
         <View style={styles.titleLeft}>
           <TouchableOpacity onPress={goToSignInScreen}>
