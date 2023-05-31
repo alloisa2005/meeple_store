@@ -8,10 +8,10 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case authTypes.SIGNUP_START:
+    case authTypes.LOADING:
       return {
         ...state,
-        loading: true,
+        loading: !state.loading,
       };
     case authTypes.SIGNUP_SUCCESS:
       return {
@@ -24,11 +24,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
-      };
-    case authTypes.SIGNIN_START:
-      return {
-        ...state,
-        loading: true,
       };
     case authTypes.SIGNIN_SUCCESS:
       return {

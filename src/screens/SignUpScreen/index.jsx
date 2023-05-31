@@ -1,17 +1,26 @@
 import { Feather, AntDesign, Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { FlagComponent } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { signInSuccess } from '../../redux/actions/auth.actions';
+import { signUp } from '../../redux/actions/auth.actions';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const spanish = useSelector((state) => state.language.spanish);
+  const { loading, error } = useSelector((state) => state.auth);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,7 +35,7 @@ const SignUpScreen = ({ navigation }) => {
       password,
     };
 
-    dispatch(signInSuccess(user));
+    dispatch(signUp(user));
 
     setName('');
     setEmail('');
@@ -64,6 +73,8 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.inputsContainer}>
             <AntDesign name="user" size={24} color={COLORS.cardinal} />
             <TextInput
+              autoCapitalize="words"
+              autoCorrect={false}
               placeholder={spanish ? 'Nombre' : 'Name'}
               style={styles.textInput}
               value={name}
@@ -74,6 +85,8 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.inputsContainer}>
             <Entypo name="email" size={24} color={COLORS.cardinal} />
             <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
               placeholder="Email"
               style={styles.textInput}
               value={email}
@@ -84,6 +97,8 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.inputsContainer}>
             <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
             <TextInput
+              autoCapitalize="words"
+              autoCorrect={false}
               placeholder={spanish ? 'Dirección' : 'Address'}
               style={styles.textInput}
               value={address}
@@ -94,7 +109,9 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.inputsContainer}>
             <Entypo name="lock" size={24} color={COLORS.cardinal} />
             <TextInput
+              autoCapitalize="none"
               secureTextEntry
+              autoCorrect={false}
               placeholder={spanish ? 'Contraseña' : 'Password'}
               style={styles.textInput}
               value={password}
@@ -104,9 +121,14 @@ const SignUpScreen = ({ navigation }) => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <TouchableOpacity
+              disabled={loading}
               style={styles.button}
               onPress={() => onHandleCreateAccount(name, email, address, password)}>
-              <Text style={styles.textButton}>{spanish ? 'Crear cuenta' : 'Create Account'}</Text>
+              {loading ? (
+                <ActivityIndicator size={20} color={COLORS.white} />
+              ) : (
+                <Text style={styles.textButton}>{spanish ? 'Crear cuenta' : 'Create Account'}</Text>
+              )}
             </TouchableOpacity>
           </View>
         </View>

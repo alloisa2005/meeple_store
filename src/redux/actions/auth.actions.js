@@ -1,8 +1,59 @@
+import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL } from '../../constants/firebase';
 import { authTypes } from '../types/auth.types';
 
-export const signUpStart = () => {
+export const loadingAuth = () => {
   return {
-    type: authTypes.SIGNUP_START,
+    type: authTypes.LOADING,
+  };
+};
+
+export const signUp = (user) => {
+  return async (dispatch) => {
+    dispatch(loadingAuth());
+    try {
+      const response = await fetch(FIREBASE_SIGNUP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...user,
+          returnSecureToken: true,
+        }),
+      });
+      const data = await response.json();
+      if (data.error) {
+        dispatch(signUpFailure(data.error.message));
+      }
+      dispatch(loadingAuth());
+    } catch (error) {
+      dispatch(signUpFailure(error.message));
+    }
+  };
+};
+
+export const signIn = (user) => {
+  return async (dispatch) => {
+    dispatch(loadingAuth());
+    try {
+      const response = await fetch(FIREBASE_SIGNIN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...user,
+          returnSecureToken: true,
+        }),
+      });
+      const data = await response.json();
+      if (data.error) {
+        dispatch(signInFailure(data.error.message));
+      }
+      dispatch(loadingAuth());
+    } catch (error) {
+      dispatch(signInFailure(error.message));
+    }
   };
 };
 
