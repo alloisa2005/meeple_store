@@ -8,11 +8,10 @@ const Stack = createNativeStackNavigator();
 
 const MainNavigation = () => {
   const { user } = useSelector((state) => state.auth);
-  console.log('user', user);
 
   return (
     <Stack.Navigator>
-      {!user.id ? (
+      {!user ? (
         <Stack.Screen
           name="AuthNavigation"
           component={AuthNavigation}

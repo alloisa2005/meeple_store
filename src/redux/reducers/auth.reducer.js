@@ -1,7 +1,7 @@
 import { authTypes } from '../types/auth.types';
 
 const initialState = {
-  user: {},
+  user: null,
   loading: false,
   error: null,
 };
@@ -13,7 +13,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loading: !state.loading,
       };
-    case authTypes.SIGNUP_SUCCESS:
+    case authTypes.SIGNUP:
       return {
         ...state,
         loading: false,
@@ -25,7 +25,7 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-    case authTypes.SIGNIN_SUCCESS:
+    case authTypes.SIGNIN:
       return {
         ...state,
         loading: false,

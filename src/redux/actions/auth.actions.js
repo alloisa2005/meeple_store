@@ -21,11 +21,13 @@ export const signUp = (user) => {
           returnSecureToken: true,
         }),
       });
-      const data = await response.json();
+      let data = await response.json();
+      data = { ...data, name: user.name, address: user.address };
+
       if (data.error) {
         dispatch(signUpFailure(data.error.message));
       }
-      dispatch(loadingAuth());
+      dispatch(signUpSuccess(data));
     } catch (error) {
       dispatch(signUpFailure(error.message));
     }
@@ -59,7 +61,7 @@ export const signIn = (user) => {
 
 export const signUpSuccess = (user) => {
   return {
-    type: authTypes.SIGNUP_SUCCESS,
+    type: authTypes.SIGNUP,
     payload: user,
   };
 };

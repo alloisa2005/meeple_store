@@ -14,6 +14,11 @@ export const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  textHola: {
+    color: COLORS.textGray,
+    fontSize: '23@s',
+    fontFamily: 'Montserrat-Bold',
+  },
   title: {
     fontFamily: 'Montserrat-Bold',
     fontSize: '18@s',
