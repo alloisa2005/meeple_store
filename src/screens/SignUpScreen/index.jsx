@@ -12,7 +12,6 @@ import { signInSuccess } from '../../redux/actions/auth.actions';
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const spanish = useSelector((state) => state.language.spanish);
-  const { user, loading, error } = useSelector((state) => state.auth);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -120,7 +119,6 @@ const SignUpScreen = ({ navigation }) => {
             <Text style={styles.accountSubTitle}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
           </TouchableOpacity>
         </View>
-        <Text>{user.name}</Text>
       </ScrollView>
     </SafeAreaView>
   );
