@@ -3,14 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
-import { COLORS } from '../../constants/colors';
-import { CartScreen, SettingsScreen, ShopScreen, UserScreen } from '../../screens';
+import { CartScreen, SettingsScreen, ShopScreen } from '../../screens';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
-  const { language } = useSelector((state) => state.language);
-  const { totalItems } = useSelector((state) => state.cart);
+  const spanish = useSelector((state) => state.language.spanish);
 
   return (
     <Tab.Navigator initialRouteName="Shop">
@@ -18,7 +16,7 @@ const TabNavigation = () => {
         name="Shop"
         component={ShopScreen}
         options={{
-          tabBarLabel: language === 'es' ? 'Tienda' : 'Shop',
+          tabBarLabel: spanish ? 'Tienda' : 'Shop',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
@@ -30,13 +28,13 @@ const TabNavigation = () => {
         name="Cart"
         component={CartScreen}
         options={{
-          tabBarLabel: language === 'es' ? 'Carrito' : 'Cart',
+          tabBarLabel: spanish ? 'Carrito' : 'Cart',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'md-cart' : 'md-cart-outline'} size={size} color={color} />
           ),
           headerShown: false,
-          tabBarBadge: totalItems,
+          tabBarBadge: 0,
         }}
       />
       <Tab.Screen
@@ -44,7 +42,7 @@ const TabNavigation = () => {
         component={SettingsScreen}
         options={{
           headerShown: false,
-          tabBarLabel: language === 'es' ? 'Preferencias' : 'Settings',
+          tabBarLabel: spanish ? 'Preferencias' : 'Settings',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />

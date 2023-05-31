@@ -12,7 +12,7 @@ export const styles = ScaledSheet.create({
   flagContainer: {
     width: '100%',
     paddingHorizontal: '10@s',
-    marginBottom: '10@vs',
+    marginBottom: '40@vs',
   },
   image: {
     width: '200@s',

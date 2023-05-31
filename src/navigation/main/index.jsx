@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import AuthNavigation from '../auth';
 import TabNavigation from '../tabs';
@@ -11,7 +12,7 @@ const MainNavigation = () => {
 
   return (
     <Stack.Navigator>
-      {isLogin ? (
+      {!isLogin ? (
         <Stack.Screen
           name="AuthNavigation"
           component={AuthNavigation}

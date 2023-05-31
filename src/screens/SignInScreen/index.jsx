@@ -1,5 +1,5 @@
 import { Entypo } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useSelector } from 'react-redux';
 
@@ -8,10 +8,27 @@ import { FlagComponent } from '../../components';
 import { COLORS } from '../../constants/colors';
 
 const SignInScreen = ({ navigation }) => {
-  const { language } = useSelector((state) => state.language);
+  const spanish = useSelector((state) => state.language.spanish);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const goToSignUpScreen = () => {
     navigation.navigate('SignUp');
+  };
+
+  const onChangeEmail = (val) => {
+    setEmail(val);
+  };
+  const onChangePassword = (val) => {
+    setPassword(val);
+  };
+
+  const onHandleSignIn = (email, password) => {
+    if (!email || !password) {
+      alert('Please fill all the fields');
+    } else {
+    }
   };
 
   return (
@@ -21,41 +38,44 @@ const SignInScreen = ({ navigation }) => {
       </View>
 
       <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
-      <Text style={styles.textTitle}>{language === 'es' ? 'Bienvenido a' : 'Welcome to'}</Text>
+      <Text style={styles.textTitle}>{spanish ? 'Bienvenido a' : 'Welcome to'}</Text>
       <Text style={styles.textSubTitle}>Meeple Land</Text>
 
       <View style={styles.containerGlass}>
         <View style={styles.inputsContainer}>
           <Entypo name="email" size={24} color={COLORS.cardinal} />
-          <TextInput placeholder="Email" style={styles.textInput} />
+          <TextInput
+            placeholder="Email"
+            style={styles.textInput}
+            value={email}
+            onChangeText={onChangeEmail}
+          />
         </View>
 
         <View style={styles.inputsContainer}>
           <Entypo name="lock" size={24} color={COLORS.cardinal} />
           <TextInput
             secureTextEntry
-            placeholder={language === 'es' ? 'Contraseña' : 'Password'}
+            placeholder={spanish ? 'Contraseña' : 'Password'}
             style={styles.textInput}
+            value={password}
+            onChangeText={onChangePassword}
           />
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('TabNavigation', { screen: 'Shop' })}>
-            <Text style={styles.textButton}>{language === 'es' ? 'Inicia Sesión' : 'Sign In'}</Text>
+          <TouchableOpacity style={styles.button} onPress={() => onHandleSignIn(email, password)}>
+            <Text style={styles.textButton}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.accountContainer}>
         <Text style={styles.accountTitle}>
-          {language === 'es' ? '¿No tienes una cuenta?' : 'Don´t have an account?'}
+          {spanish ? '¿No tienes una cuenta?' : 'Don´t have an account?'}
         </Text>
         <TouchableOpacity onPress={goToSignUpScreen}>
-          <Text style={styles.accountSubTitle}>
-            {language === 'es' ? 'Crea una' : 'Create one'}
-          </Text>
+          <Text style={styles.accountSubTitle}>{spanish ? 'Crea una' : 'Create one'}</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

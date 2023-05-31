@@ -8,7 +8,7 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.background,
   },
   titleContainer: {
-    marginTop: '5@vs',
+    marginTop: '10@vs',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

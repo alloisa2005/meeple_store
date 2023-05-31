@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-import { languageReducer, cartReducer } from './slices';
+import languageReducer from './reducers/language.reducer';
 
-export const store = configureStore({
-  reducer: {
-    language: languageReducer,
-    cart: cartReducer,
-  },
+const rootReducer = combineReducers({
+  language: languageReducer,
 });
+
+export default createStore(rootReducer, applyMiddleware(thunk));

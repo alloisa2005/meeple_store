@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Provider } from 'react-redux';
 
 import Navigation from './navigation';
-import { store } from './redux/store';
+import store from './redux/store';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

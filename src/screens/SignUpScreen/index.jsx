@@ -9,11 +9,12 @@ import { FlagComponent } from '../../components';
 import { COLORS } from '../../constants/colors';
 
 const SignUpScreen = ({ navigation }) => {
-  const { language } = useSelector((state) => state.language);
+  const spanish = useSelector((state) => state.language.spanish);
 
   const goToSignInScreen = () => {
     navigation.navigate('SignIn');
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
@@ -21,9 +22,7 @@ const SignUpScreen = ({ navigation }) => {
           <TouchableOpacity onPress={goToSignInScreen}>
             <AntDesign name="arrowleft" size={27} color={COLORS.cardinal} />
           </TouchableOpacity>
-          <Text style={styles.title}>
-            {language === 'es' ? 'Crea una cuenta' : 'Create Account'}
-          </Text>
+          <Text style={styles.title}>{spanish ? 'Crea una cuenta' : 'Create Account'}</Text>
         </View>
         <FlagComponent />
       </View>
@@ -41,10 +40,7 @@ const SignUpScreen = ({ navigation }) => {
         <View style={styles.containerGlass}>
           <View style={styles.inputsContainer}>
             <AntDesign name="user" size={24} color={COLORS.cardinal} />
-            <TextInput
-              placeholder={language === 'es' ? 'Nombre' : 'Name'}
-              style={styles.textInput}
-            />
+            <TextInput placeholder={spanish ? 'Nombre' : 'Name'} style={styles.textInput} />
           </View>
 
           <View style={styles.inputsContainer}>
@@ -54,38 +50,31 @@ const SignUpScreen = ({ navigation }) => {
 
           <View style={styles.inputsContainer}>
             <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
-            <TextInput
-              placeholder={language === 'es' ? 'Dirección' : 'Address'}
-              style={styles.textInput}
-            />
+            <TextInput placeholder={spanish ? 'Dirección' : 'Address'} style={styles.textInput} />
           </View>
 
           <View style={styles.inputsContainer}>
             <Entypo name="lock" size={24} color={COLORS.cardinal} />
             <TextInput
               secureTextEntry
-              placeholder={language === 'es' ? 'Contraseña' : 'Password'}
+              placeholder={spanish ? 'Contraseña' : 'Password'}
               style={styles.textInput}
             />
           </View>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>
-                {language === 'es' ? 'Crear cuenta' : 'Create Account'}
-              </Text>
+              <Text style={styles.textButton}>{spanish ? 'Crear cuenta' : 'Create Account'}</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         <View style={styles.accountContainer}>
           <Text style={styles.accountTitle}>
-            {language === 'es' ? '¿Ya tienes una cuenta?' : 'Already have an account?'}
+            {spanish ? '¿Ya tienes una cuenta?' : 'Already have an account?'}
           </Text>
           <TouchableOpacity onPress={goToSignInScreen}>
-            <Text style={styles.accountSubTitle}>
-              {language === 'es' ? 'Inicia Sesión' : 'Sign In'}
-            </Text>
+            <Text style={styles.accountSubTitle}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

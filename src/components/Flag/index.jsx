@@ -3,22 +3,22 @@ import { Image, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
-import { changeLanguage } from '../../redux/slices/languageSlice';
+import { changeLanguage } from '../../redux/actions/language.actions';
 
 const FlagComponent = () => {
   const dispatch = useDispatch();
 
-  const { language } = useSelector((state) => state.language);
+  const { spanish } = useSelector((state) => state.language);
 
   const changeFlag = () => {
-    dispatch(changeLanguage(language === 'en' ? 'es' : 'en'));
+    dispatch(changeLanguage());
   };
 
   return (
     <TouchableOpacity onPress={changeFlag} style={styles.flagContainer}>
       <Image
         source={
-          language === 'en'
+          !spanish
             ? require('../../../assets/imgs/spainFlag.png')
             : require('../../../assets/imgs/usaFlag.png')
         }
