@@ -18,6 +18,7 @@ import { signIn } from '../../redux/actions/auth.actions';
 
 const SignInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
+
   const { error, loading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
 
@@ -28,18 +29,14 @@ const SignInScreen = ({ navigation }) => {
     navigation.navigate('SignUp');
   };
 
-  const onChangeEmail = (val) => {
-    setEmail(val);
-  };
-  const onChangePassword = (val) => {
-    setPassword(val);
-  };
+  const onChangeEmail = (val) => setEmail(val);
+  const onChangePassword = (val) => setPassword(val);
 
   const onHandleSignIn = (email, password) => {
     if (!email || !password) {
       dispatch({
         type: 'SIGNIN_FAILURE',
-        payload: spanish ? 'Por favor, rellene todos los campos' : 'Please, fill all the fields',
+        payload: 'Please, fill all the fields',
       });
     } else {
       const user = {
@@ -54,6 +51,7 @@ const SignInScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {error && <MyAlert spanish={spanish} message={error} />}
+
       <View style={styles.flagContainer}>
         <FlagComponent />
       </View>

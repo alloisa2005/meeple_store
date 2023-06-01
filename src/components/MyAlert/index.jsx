@@ -3,8 +3,9 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 import { useDispatch } from 'react-redux';
 
 import { COLORS } from '../../constants/colors';
+import { translateError } from '../../utils/translateError';
 
-const MyAlert = ({ message }) => {
+const MyAlert = ({ message, spanish }) => {
   const dispatch = useDispatch();
 
   const cleanError = () => {
@@ -16,7 +17,7 @@ const MyAlert = ({ message }) => {
       show
       showProgress={false}
       title="Error"
-      message={message}
+      message={spanish ? translateError(message) : message}
       closeOnTouchOutside={false}
       closeOnHardwareBackPress={false}
       showConfirmButton

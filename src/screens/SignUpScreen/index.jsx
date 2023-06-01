@@ -29,20 +29,18 @@ const SignUpScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const onHandleCreateAccount = (name, email, address, password) => {
-    //setShowAlert(false);
+    name = name.trim();
+    email = email.trim();
+    address = address.trim();
+    password = password.trim();
+
     if (!name || !email || !address || !password) {
       dispatch({
         type: 'SIGNUP_FAILURE',
-        payload: spanish ? 'Por favor, rellene todos los campos' : 'Please, fill all the fields',
+        payload: 'Please, fill all the fields',
       });
     } else {
-      const user = {
-        name,
-        email,
-        address,
-        password,
-      };
-
+      const user = { name, email, address, password };
       dispatch(signUp(user));
     }
   };
