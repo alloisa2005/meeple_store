@@ -1,4 +1,4 @@
-import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL } from '../../constants/firebase';
+import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL, FIREBASE_DB } from '../../constants/firebase';
 import { authTypes } from '../types/auth.types';
 
 export const loadingAuth = () => {
@@ -28,6 +28,33 @@ export const signUp = (user) => {
       if (data.error) {
         dispatch(signUpFailure(data.error.message));
       } else {
+        const user = {
+          name: data.name,
+          address: data.address,
+          email: data.email,
+        };
+
+        const response = await fetch(FIREBASE_DB + 'users.json', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user),
+        });
+        await response.json();
+
+        /* let res = await fetch(FIREBASE_DB + 'users.json');
+        res = await res.json();
+
+        const users = Object.keys(res).map((key) => {
+          return {
+            ...res[key],
+            id: key,
+          };
+        }); 
+        console.log(users);  
+        */
+
         dispatch(signUpSuccess(data));
       }
     } catch (error) {
@@ -78,12 +105,6 @@ export const signUpFailure = (error) => {
   };
 };
 
-export const signInStart = () => {
-  return {
-    type: authTypes.SIGNIN_START,
-  };
-};
-
 export const signInSuccess = (user) => {
   return {
     type: authTypes.SIGNIN,
@@ -100,6 +121,6 @@ export const signInFailure = (error) => {
 
 export const signOut = () => {
   return {
-    type: authTypes.SIGNOUT_SUCCESS,
+    type: authTypes.SIGNOUT,
   };
 };

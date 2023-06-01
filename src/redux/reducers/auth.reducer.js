@@ -40,7 +40,7 @@ const authReducer = (state = initialState, action) => {
     case authTypes.SIGNOUT:
       return {
         ...state,
-        user: {},
+        user: null,
       };
     case authTypes.CLEAN_ERROR:
       return {
