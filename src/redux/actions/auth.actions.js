@@ -22,12 +22,14 @@ export const signUp = (user) => {
         }),
       });
       let data = await response.json();
+
       data = { ...data, name: user.name, address: user.address };
 
       if (data.error) {
         dispatch(signUpFailure(data.error.message));
+      } else {
+        dispatch(signUpSuccess(data));
       }
-      dispatch(signUpSuccess(data));
     } catch (error) {
       dispatch(signUpFailure(error.message));
     }

@@ -1,13 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import { useDispatch } from 'react-redux';
 
 import { COLORS } from '../../constants/colors';
 
-const MyAlert = ({ showAlert, message, setShowAlert }) => {
+const MyAlert = ({ message }) => {
+  const dispatch = useDispatch();
+
+  const cleanError = () => {
+    dispatch({ type: 'CLEAN_ERROR', payload: '' });
+  };
+
   return (
     <AwesomeAlert
-      show={showAlert}
+      show
       showProgress={false}
       title="Error"
       message={message}
@@ -21,12 +27,8 @@ const MyAlert = ({ showAlert, message, setShowAlert }) => {
       confirmButtonTextStyle={{ fontSize: 17, fontFamily: 'Montserrat-Bold' }}
       messageStyle={{ fontSize: 16, fontFamily: 'Montserrat-Regular' }}
       contentContainerStyle={{ width: '90%' }}
-      onCancelPressed={() => {
-        setShowAlert(false);
-      }}
-      onConfirmPressed={() => {
-        setShowAlert(false);
-      }}
+      onCancelPressed={cleanError}
+      onConfirmPressed={cleanError}
     />
   );
 };

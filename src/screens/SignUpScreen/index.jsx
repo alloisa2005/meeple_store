@@ -20,6 +20,8 @@ import { signUp } from '../../redux/actions/auth.actions';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
+
   const spanish = useSelector((state) => state.language.spanish);
   const loading = useSelector((state) => state.auth.loading);
 
@@ -32,7 +34,10 @@ const SignUpScreen = ({ navigation }) => {
   const onHandleCreateAccount = (name, email, address, password) => {
     setShowAlert(false);
     if (!name || !email || !address || !password) {
-      setShowAlert(true);
+      dispatch({
+        type: 'SIGNUP_FAILURE',
+        payload: spanish ? 'Por favor, rellene todos los campos' : 'Please, fill all the fields',
+      });
     } else {
       const user = {
         name,
@@ -42,11 +47,6 @@ const SignUpScreen = ({ navigation }) => {
       };
 
       dispatch(signUp(user));
-
-      setName('');
-      setEmail('');
-      setAddress('');
-      setPassword('');
     }
   };
 
@@ -56,12 +56,7 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <MyAlert
-        setShowAlert={setShowAlert}
-        spanish={spanish}
-        showAlert={showAlert}
-        message={spanish ? 'Todos los campos son requeridos' : 'All fields are required'}
-      />
+      {error && <MyAlert spanish={spanish} message={error} />}
 
       <View style={styles.titleContainer}>
         <View style={styles.titleLeft}>
@@ -139,7 +134,7 @@ const SignUpScreen = ({ navigation }) => {
               style={styles.button}
               onPress={() => onHandleCreateAccount(name, email, address, password)}>
               {loading ? (
-                <ActivityIndicator size={20} color={COLORS.white} />
+                <ActivityIndicator size={22} color={COLORS.white} />
               ) : (
                 <Text style={styles.textButton}>{spanish ? 'Crear cuenta' : 'Create Account'}</Text>
               )}
