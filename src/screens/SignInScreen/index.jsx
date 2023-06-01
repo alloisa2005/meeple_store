@@ -1,4 +1,5 @@
 import { Entypo } from '@expo/vector-icons';
+import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react';
 import {
   View,
@@ -24,6 +25,7 @@ const SignInScreen = ({ navigation }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isChecked, setChecked] = useState(false);
 
   const goToSignUpScreen = () => {
     navigation.navigate('SignUp');
@@ -84,6 +86,16 @@ const SignInScreen = ({ navigation }) => {
             value={password}
             onChangeText={onChangePassword}
           />
+        </View>
+
+        <View style={styles.rememberContainer}>
+          <Checkbox
+            style={{ borderRadius: 20 }}
+            value={isChecked}
+            onValueChange={(val) => setChecked(!isChecked)}
+            color={isChecked ? COLORS.cardinal : undefined}
+          />
+          <Text style={styles.rememberTitle}>{spanish ? 'Recuerdame' : 'Remember me'}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>

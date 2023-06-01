@@ -40,7 +40,7 @@ export const styles = ScaledSheet.create({
   inputsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: '15@vs',
+    marginBottom: '10@vs',
     gap: 10,
     backgroundColor: COLORS.background,
     paddingHorizontal: '10@s',
@@ -83,5 +83,16 @@ export const styles = ScaledSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: '15@s',
     color: COLORS.cardinal,
+  },
+  rememberContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: '5@vs',
+    marginBottom: '14@vs',
+    gap: 10,
+  },
+  rememberTitle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '13@s',
   },
 });
