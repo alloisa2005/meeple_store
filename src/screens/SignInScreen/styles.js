@@ -61,6 +61,8 @@ export const styles = ScaledSheet.create({
     paddingVertical: '10@vs',
     paddingHorizontal: '15@s',
     borderRadius: 10,
+    minWidth: '180@s',
+    alignItems: 'center',
   },
   textButton: {
     fontFamily: 'Montserrat-Bold',

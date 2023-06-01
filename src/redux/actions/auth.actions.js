@@ -56,7 +56,7 @@ export const signIn = (user) => {
       if (data.error) {
         dispatch(signInFailure(data.error.message));
       } else {
-        dispatch(loadingAuth());
+        dispatch(signInSuccess(data));
       }
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -86,7 +86,7 @@ export const signInStart = () => {
 
 export const signInSuccess = (user) => {
   return {
-    type: authTypes.SIGNIN_SUCCESS,
+    type: authTypes.SIGNIN,
     payload: user,
   };
 };

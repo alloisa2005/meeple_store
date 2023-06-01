@@ -1,6 +1,14 @@
 import { Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
@@ -10,7 +18,7 @@ import { signIn } from '../../redux/actions/auth.actions';
 
 const SignInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.auth.error);
+  const { error, loading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
 
   const [email, setEmail] = useState('');
@@ -58,6 +66,9 @@ const SignInScreen = ({ navigation }) => {
         <View style={styles.inputsContainer}>
           <Entypo name="email" size={24} color={COLORS.cardinal} />
           <TextInput
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="email-address"
             placeholder="Email"
             style={styles.textInput}
             value={email}
@@ -69,6 +80,7 @@ const SignInScreen = ({ navigation }) => {
           <Entypo name="lock" size={24} color={COLORS.cardinal} />
           <TextInput
             secureTextEntry
+            autoCapitalize="none"
             placeholder={spanish ? 'Contraseña' : 'Password'}
             style={styles.textInput}
             value={password}
@@ -78,7 +90,11 @@ const SignInScreen = ({ navigation }) => {
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
           <TouchableOpacity style={styles.button} onPress={() => onHandleSignIn(email, password)}>
-            <Text style={styles.textButton}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
+            {loading ? (
+              <ActivityIndicator size={22} color={COLORS.white} />
+            ) : (
+              <Text style={styles.textButton}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
+            )}
           </TouchableOpacity>
         </View>
       </View>

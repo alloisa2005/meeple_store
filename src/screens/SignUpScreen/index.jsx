@@ -19,10 +19,8 @@ import { signUp } from '../../redux/actions/auth.actions';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.auth.error);
-
+  const { error, loading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
-  const loading = useSelector((state) => state.auth.loading);
 
   /* const [showAlert, setShowAlert] = useState(false); */
   const [name, setName] = useState('');
