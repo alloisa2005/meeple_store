@@ -50,11 +50,14 @@ export const signIn = (user) => {
           returnSecureToken: true,
         }),
       });
+
       const data = await response.json();
+
       if (data.error) {
         dispatch(signInFailure(data.error.message));
+      } else {
+        dispatch(loadingAuth());
       }
-      dispatch(loadingAuth());
     } catch (error) {
       dispatch(signInFailure(error.message));
     }

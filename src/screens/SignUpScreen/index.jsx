@@ -13,8 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import { FlagComponent } from '../../components';
-import MyAlert from '../../components/MyAlert';
+import { FlagComponent, MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { signUp } from '../../redux/actions/auth.actions';
 
@@ -25,14 +24,14 @@ const SignUpScreen = ({ navigation }) => {
   const spanish = useSelector((state) => state.language.spanish);
   const loading = useSelector((state) => state.auth.loading);
 
-  const [showAlert, setShowAlert] = useState(false);
+  /* const [showAlert, setShowAlert] = useState(false); */
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
 
   const onHandleCreateAccount = (name, email, address, password) => {
-    setShowAlert(false);
+    //setShowAlert(false);
     if (!name || !email || !address || !password) {
       dispatch({
         type: 'SIGNUP_FAILURE',

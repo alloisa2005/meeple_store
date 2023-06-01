@@ -1,13 +1,16 @@
 import { Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import { FlagComponent } from '../../components';
+import { FlagComponent, MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
+import { signIn } from '../../redux/actions/auth.actions';
 
 const SignInScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
   const spanish = useSelector((state) => state.language.spanish);
 
   const [email, setEmail] = useState('');
@@ -26,13 +29,23 @@ const SignInScreen = ({ navigation }) => {
 
   const onHandleSignIn = (email, password) => {
     if (!email || !password) {
-      alert('Please fill all the fields');
+      dispatch({
+        type: 'SIGNIN_FAILURE',
+        payload: spanish ? 'Por favor, rellene todos los campos' : 'Please, fill all the fields',
+      });
     } else {
+      const user = {
+        email,
+        password,
+      };
+
+      dispatch(signIn(user));
     }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      {error && <MyAlert spanish={spanish} message={error} />}
       <View style={styles.flagContainer}>
         <FlagComponent />
       </View>
