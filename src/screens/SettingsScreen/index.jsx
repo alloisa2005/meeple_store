@@ -1,6 +1,6 @@
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -18,6 +18,20 @@ const SettingsScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.userImageContainer}>
+        <View style={styles.imageContainer}>
+          <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
+        </View>
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.preferencesContainer}>
+        <Text style={styles.preferencesContainerTitle}>Preferences</Text>
+      </View>
+
       <View
         style={{
           flexDirection: 'row',

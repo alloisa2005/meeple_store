@@ -11,11 +11,10 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import { FlagComponent, MyAlert } from '../../components';
+import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { signUp } from '../../redux/actions/auth.actions';
 
@@ -56,16 +55,6 @@ const SignUpScreen = ({ navigation }) => {
       onPress={Keyboard.dismiss}
       accessible={false}
       style={styles.container}>
-      {/* <View style={styles.titleContainer}>
-        <View style={styles.titleLeft}>
-          <TouchableOpacity onPress={goToSignInScreen}>
-            <AntDesign name="arrowleft" size={27} color={COLORS.cardinal} />
-          </TouchableOpacity>
-          <Text style={styles.title}>{spanish ? 'Crea una cuenta' : 'Create Account'}</Text>
-        </View>
-        <FlagComponent />
-      </View> */}
-
       <ScrollView contentContainerStyle={styles.contentContainer}>
         {error && <MyAlert spanish={spanish} message={error} />}
         <View style={{ position: 'relative', marginBottom: 15 }}>
