@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
-import { CartScreen, SettingsScreen, ShopScreen } from '../../screens';
+import { CartScreen, OrdersScreen, SettingsScreen, ShopScreen } from '../../screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,14 +38,26 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="User"
+        name="Orders"
+        component={OrdersScreen}
+        options={{
+          headerShown: false,
+          tabBarLabel: spanish ? 'Compras' : 'Orders',
+          tabBarLabelStyle: styles.tabBarLabelStyle,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
         component={SettingsScreen}
         options={{
           headerShown: false,
           tabBarLabel: spanish ? 'Preferencias' : 'Settings',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />
+            <Ionicons name={focused ? 'md-list' : 'md-list-outline'} size={size} color={color} />
           ),
         }}
       />
