@@ -15,8 +15,8 @@ export const styles = ScaledSheet.create({
     marginBottom: '40@vs',
   },
   image: {
-    width: '200@s',
-    height: '200@s',
+    width: '160@s',
+    height: '160@s',
     resizeMode: 'contain',
     marginBottom: '20@vs',
   },

@@ -1,5 +1,4 @@
 import { Entypo } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Checkbox from 'expo-checkbox';
 import React, { useEffect, useState } from 'react';
 import {
@@ -10,6 +9,8 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -69,73 +70,75 @@ const SignInScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {error && <MyAlert spanish={spanish} message={error} />}
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <ScrollView contentContainerStyle={styles.container}>
+        {error && <MyAlert spanish={spanish} message={error} />}
 
-      <View style={styles.flagContainer}>
-        <FlagComponent />
-      </View>
+        {/* <View style={styles.flagContainer}>
+          <FlagComponent />
+        </View> */}
 
-      <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
-      <Text style={styles.textTitle}>{spanish ? 'Bienvenido a' : 'Welcome to'}</Text>
-      <Text style={styles.textSubTitle}>Meeple Land</Text>
+        <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
+        <Text style={styles.textTitle}>{spanish ? 'Bienvenido a' : 'Welcome to'}</Text>
+        <Text style={styles.textSubTitle}>Meeple Land</Text>
 
-      <View style={styles.containerGlass}>
-        <View style={styles.inputsContainer}>
-          <Entypo name="email" size={24} color={COLORS.cardinal} />
-          <TextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType="email-address"
-            placeholder="Email"
-            style={styles.textInput}
-            value={email}
-            onChangeText={onChangeEmail}
-          />
+        <View style={styles.containerGlass}>
+          <View style={styles.inputsContainer}>
+            <Entypo name="email" size={24} color={COLORS.cardinal} />
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              placeholder="Email"
+              style={styles.textInput}
+              value={email}
+              onChangeText={onChangeEmail}
+            />
+          </View>
+
+          <View style={styles.inputsContainer}>
+            <Entypo name="lock" size={24} color={COLORS.cardinal} />
+            <TextInput
+              secureTextEntry
+              autoCapitalize="none"
+              placeholder={spanish ? 'Contraseña' : 'Password'}
+              style={styles.textInput}
+              value={password}
+              onChangeText={onChangePassword}
+            />
+          </View>
+
+          <View style={styles.rememberContainer}>
+            <Checkbox
+              style={{ borderRadius: 20 }}
+              value={isChecked}
+              onValueChange={(val) => setChecked(!isChecked)}
+              color={isChecked ? COLORS.cardinal : undefined}
+            />
+            <Text style={styles.rememberTitle}>{spanish ? 'Recuerdame' : 'Remember me'}</Text>
+          </View>
+
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+            <TouchableOpacity style={styles.button} onPress={() => onHandleSignIn(email, password)}>
+              {loading ? (
+                <ActivityIndicator size={22} color={COLORS.white} />
+              ) : (
+                <Text style={styles.textButton}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.inputsContainer}>
-          <Entypo name="lock" size={24} color={COLORS.cardinal} />
-          <TextInput
-            secureTextEntry
-            autoCapitalize="none"
-            placeholder={spanish ? 'Contraseña' : 'Password'}
-            style={styles.textInput}
-            value={password}
-            onChangeText={onChangePassword}
-          />
-        </View>
-
-        <View style={styles.rememberContainer}>
-          <Checkbox
-            style={{ borderRadius: 20 }}
-            value={isChecked}
-            onValueChange={(val) => setChecked(!isChecked)}
-            color={isChecked ? COLORS.cardinal : undefined}
-          />
-          <Text style={styles.rememberTitle}>{spanish ? 'Recuerdame' : 'Remember me'}</Text>
-        </View>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity style={styles.button} onPress={() => onHandleSignIn(email, password)}>
-            {loading ? (
-              <ActivityIndicator size={22} color={COLORS.white} />
-            ) : (
-              <Text style={styles.textButton}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
-            )}
+        <View style={styles.accountContainer}>
+          <Text style={styles.accountTitle}>
+            {spanish ? '¿No tienes una cuenta?' : 'Don´t have an account?'}
+          </Text>
+          <TouchableOpacity onPress={goToSignUpScreen}>
+            <Text style={styles.accountSubTitle}>{spanish ? 'Crea una' : 'Create one'}</Text>
           </TouchableOpacity>
         </View>
-      </View>
-
-      <View style={styles.accountContainer}>
-        <Text style={styles.accountTitle}>
-          {spanish ? '¿No tienes una cuenta?' : 'Don´t have an account?'}
-        </Text>
-        <TouchableOpacity onPress={goToSignUpScreen}>
-          <Text style={styles.accountSubTitle}>{spanish ? 'Crea una' : 'Create one'}</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </TouchableWithoutFeedback>
   );
 };
 

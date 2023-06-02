@@ -8,6 +8,8 @@ import {
   TextInput,
   ScrollView,
   ActivityIndicator,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
@@ -50,10 +52,11 @@ const SignUpScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {error && <MyAlert spanish={spanish} message={error} />}
-
-      <View style={styles.titleContainer}>
+    <TouchableWithoutFeedback
+      onPress={Keyboard.dismiss}
+      accessible={false}
+      style={styles.container}>
+      {/* <View style={styles.titleContainer}>
         <View style={styles.titleLeft}>
           <TouchableOpacity onPress={goToSignInScreen}>
             <AntDesign name="arrowleft" size={27} color={COLORS.cardinal} />
@@ -61,9 +64,10 @@ const SignUpScreen = ({ navigation }) => {
           <Text style={styles.title}>{spanish ? 'Crea una cuenta' : 'Create Account'}</Text>
         </View>
         <FlagComponent />
-      </View>
+      </View> */}
 
       <ScrollView contentContainerStyle={styles.contentContainer}>
+        {error && <MyAlert spanish={spanish} message={error} />}
         <View style={{ position: 'relative', marginBottom: 15 }}>
           <View style={styles.imageContainer}>
             <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
@@ -146,7 +150,7 @@ const SignUpScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 };
 
