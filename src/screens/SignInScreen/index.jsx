@@ -1,6 +1,7 @@
 import { Entypo } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Checkbox from 'expo-checkbox';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -16,6 +17,7 @@ import { styles } from './styles';
 import { FlagComponent, MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { signIn } from '../../redux/actions/auth.actions';
+import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
 
 const SignInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -46,9 +48,25 @@ const SignInScreen = ({ navigation }) => {
         password,
       };
 
+      if (isChecked) {
+        storeUser(user);
+      } else {
+        removeUser();
+      }
+
       dispatch(signIn(user));
     }
   };
+
+  useEffect(() => {
+    getUser().then((user) => {
+      if (user) {
+        setEmail(user.email);
+        setPassword(user.password);
+        setChecked(true);
+      }
+    });
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
