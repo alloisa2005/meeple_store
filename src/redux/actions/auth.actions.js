@@ -1,4 +1,4 @@
-import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL, FIREBASE_DB } from '../../constants/firebase';
+import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL, FIREBASE_DB } from '../../constants/firebase.js';
 import { authTypes } from '../types/auth.types';
 
 export const loadingAuth = () => {
