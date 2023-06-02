@@ -7,8 +7,8 @@ export const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   flagImage: {
-    width: '30@s',
-    height: '30@s',
+    width: '27@s',
+    height: '27@vs',
     resizeMode: 'contain',
   },
 });

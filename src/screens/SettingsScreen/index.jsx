@@ -1,6 +1,6 @@
-import { AntDesign, Feather } from '@expo/vector-icons';
-import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, Switch } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -12,6 +12,9 @@ const SettingsScreen = () => {
   const dispatch = useDispatch();
   const spanish = useSelector((state) => state.language.spanish);
 
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
   const onHanlerSignOut = () => {
     dispatch(signOut());
   };
@@ -19,46 +22,47 @@ const SettingsScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.userImageContainer}>
+        {/* Imagen usuario */}
         <View style={styles.imageContainer}>
           <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
         </View>
 
+        {/* Boton Editar Perfil */}
         <TouchableOpacity style={styles.button}>
           <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>
         </TouchableOpacity>
       </View>
 
+      {/* Titulo Preferencias */}
       <View style={styles.preferencesContainer}>
-        <Text style={styles.preferencesContainerTitle}>Preferences</Text>
+        <Text style={styles.preferencesContainerTitle}>
+          {spanish ? 'Preferencias' : 'Preferences'}
+        </Text>
       </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 17 }}>
-          {spanish ? 'Idioma' : 'Language'}
-        </Text>
+      <View style={styles.preferencesItemContainer}>
+        <Text style={styles.preferencesItemTitle}>{spanish ? 'Idioma' : 'Language'}</Text>
         <FlagComponent />
       </View>
-      <View
-        style={{ height: 2, width: '100%', backgroundColor: COLORS.cardinal, marginVertical: 10 }}
-      />
-      <Text>SettingsScreen</Text>
-      <View
-        style={{ height: 2, width: '100%', backgroundColor: COLORS.cardinal, marginVertical: 10 }}
-      />
-      <TouchableOpacity
-        onPress={onHanlerSignOut}
-        style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Text>{spanish ? 'Cerrar Sesión' : 'LogOut'}</Text>
+      <View style={styles.separator} />
+
+      <View style={styles.preferencesItemContainer}>
+        <Text style={styles.preferencesItemTitle}>{spanish ? 'Modo Oscuro' : 'Dark Mode'}</Text>
+        <Switch
+          trackColor={{ false: '#767577', true: '#767577' }}
+          thumbColor={isEnabled ? COLORS.cardinal : '#f4f3f4'}
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+      </View>
+      <View style={styles.separator} />
+
+      <TouchableOpacity onPress={onHanlerSignOut} style={styles.preferencesItemContainer}>
+        <Text style={styles.preferencesItemTitle}>{spanish ? 'Cerrar Sesión' : 'LogOut'}</Text>
         <AntDesign name="logout" size={28} color={COLORS.cardinal} />
       </TouchableOpacity>
-      <View
-        style={{ height: 2, width: '100%', backgroundColor: COLORS.cardinal, marginVertical: 10 }}
-      />
+
+      <View style={styles.separator} />
     </View>
   );
 };

@@ -60,7 +60,7 @@ const TabNavigation = () => {
         name="Settings"
         component={SettingsScreen}
         options={{
-          title: spanish ? 'Preferencias' : 'Settings',
+          title: spanish ? 'Preferencias de Usuario' : 'User Settings',
           headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold' },
           tabBarLabel: spanish ? 'Preferencias' : 'Settings',
           tabBarLabelStyle: styles.tabBarLabelStyle,

@@ -48,10 +48,27 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.textGray,
     paddingVertical: '7@vs',
     alignItems: 'center',
+    marginBottom: '12@vs',
+    borderRadius: 10,
   },
   preferencesContainerTitle: {
     color: COLORS.white,
     fontFamily: 'Montserrat-Bold',
     fontSize: '16@s',
+  },
+  preferencesItemContainer: {
+    height: '40@vs',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: '5@vs',
+  },
+  preferencesItemTitle: { fontFamily: 'Montserrat-Bold', fontSize: '14@s' },
+  separator: {
+    height: '2@vs',
+    width: '100%',
+    backgroundColor: COLORS.cardinal,
+    marginVertical: '1@vs',
   },
 });
