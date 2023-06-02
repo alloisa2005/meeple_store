@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
+import { COLORS } from '../../constants/colors';
 import { CartScreen, OrdersScreen, SettingsScreen, ShopScreen } from '../../screens';
 
 const Tab = createBottomTabNavigator();
@@ -11,7 +12,13 @@ const TabNavigation = () => {
   const spanish = useSelector((state) => state.language.spanish);
 
   return (
-    <Tab.Navigator initialRouteName="Shop">
+    <Tab.Navigator
+      initialRouteName="Shop"
+      screenOptions={{
+        headerShadowVisible: false,
+        headerStyle: { backgroundColor: COLORS.background },
+        title: '',
+      }}>
       <Tab.Screen
         name="Shop"
         component={ShopScreen}
@@ -53,7 +60,8 @@ const TabNavigation = () => {
         name="Settings"
         component={SettingsScreen}
         options={{
-          headerShown: false,
+          title: spanish ? 'Preferencias' : 'Settings',
+          headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold' },
           tabBarLabel: spanish ? 'Preferencias' : 'Settings',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
