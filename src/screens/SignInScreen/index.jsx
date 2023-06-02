@@ -15,7 +15,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import { FlagComponent, MyAlert } from '../../components';
+import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { signIn } from '../../redux/actions/auth.actions';
 import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
@@ -133,8 +133,10 @@ const SignInScreen = ({ navigation }) => {
           <Text style={styles.accountTitle}>
             {spanish ? '¿No tienes una cuenta?' : 'Don´t have an account?'}
           </Text>
-          <TouchableOpacity onPress={goToSignUpScreen}>
-            <Text style={styles.accountSubTitle}>{spanish ? 'Crea una' : 'Create one'}</Text>
+          <TouchableOpacity onPress={goToSignUpScreen} disabled={loading}>
+            <Text style={loading ? styles.accountSubTitleGray : styles.accountSubTitle}>
+              {spanish ? 'Crea una' : 'Create one'}
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

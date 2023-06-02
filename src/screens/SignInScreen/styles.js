@@ -84,6 +84,11 @@ export const styles = ScaledSheet.create({
     fontSize: '15@s',
     color: COLORS.cardinal,
   },
+  accountSubTitleGray: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '15@s',
+    color: COLORS.textGray,
+  },
   rememberContainer: {
     flexDirection: 'row',
     alignItems: 'center',
