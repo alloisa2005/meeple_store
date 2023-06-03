@@ -1,4 +1,9 @@
-import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL, FIREBASE_DB } from '../../constants/firebase.js';
+import {
+  FIREBASE_SIGNUP_URL,
+  FIREBASE_SIGNIN_URL,
+  FIREBASE_DB,
+  getFirebaseUser,
+} from '../../constants/firebase.js';
 import { authTypes } from '../types/auth.types';
 
 export const loadingAuth = () => {
@@ -83,7 +88,8 @@ export const signIn = (user) => {
       if (data.error) {
         dispatch(signInFailure(data.error.message));
       } else {
-        dispatch(signInSuccess(data));
+        const user = await getFirebaseUser(data.email);
+        dispatch(signInSuccess(user));
       }
     } catch (error) {
       dispatch(signInFailure(error.message));

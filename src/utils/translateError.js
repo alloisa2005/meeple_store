@@ -5,4 +5,5 @@ export const translateError = (error = '') => {
   if (error.includes('EMAIL_EXISTS')) return 'Email ya registrado';
   if (error.includes('WEAK_PASSWORD')) return 'Contraseña débil';
   if (error.includes('fill all the fields')) return 'Por favor, rellene todos los campos';
+  if (error.includes('NETWORK')) return 'Error en el servidor, intente nuevamente';
 };

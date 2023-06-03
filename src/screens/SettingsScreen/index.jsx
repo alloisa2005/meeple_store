@@ -11,6 +11,7 @@ import { signOut } from '../../redux/actions/auth.actions';
 const SettingsScreen = () => {
   const dispatch = useDispatch();
   const spanish = useSelector((state) => state.language.spanish);
+  const user = useSelector((state) => state.auth.user);
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
