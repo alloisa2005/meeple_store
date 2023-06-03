@@ -1,17 +1,19 @@
 import { AntDesign } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, Switch } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { FlagComponent } from '../../components';
 import { COLORS } from '../../constants/colors';
+import { postFirebaseProduct, postToFirebase } from '../../constants/firebase';
+import { CATEGORIES } from '../../data/categories';
+import { PRODUCTS } from '../../data/products';
 import { signOut } from '../../redux/actions/auth.actions';
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();
   const spanish = useSelector((state) => state.language.spanish);
-  const user = useSelector((state) => state.auth.user);
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -19,6 +21,20 @@ const SettingsScreen = () => {
   const onHanlerSignOut = () => {
     dispatch(signOut());
   };
+
+  const prueba = () => {
+    PRODUCTS.forEach((product) => {
+      postToFirebase('products', product);
+    });
+
+    CATEGORIES.forEach((category) => {
+      postToFirebase('categories', category);
+    });
+  };
+
+  useEffect(() => {
+    //prueba();
+  }, []);
 
   return (
     <View style={styles.container}>

@@ -23,3 +23,17 @@ export const getFirebaseUser = async (email) => {
     return null;
   }
 };
+
+export const postToFirebase = async (collection, element) => {
+  try {
+    const res = await fetch(`${FIREBASE_DB}${collection}.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(element),
+    });
+  } catch (e) {
+    return null;
+  }
+};

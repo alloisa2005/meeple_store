@@ -48,18 +48,6 @@ export const signUp = (user) => {
         });
         await response.json();
 
-        /* let res = await fetch(FIREBASE_DB + 'users.json');
-        res = await res.json();
-
-        const users = Object.keys(res).map((key) => {
-          return {
-            ...res[key],
-            id: key,
-          };
-        }); 
-        console.log(users);  
-        */
-
         dispatch(signUpSuccess(data));
       }
     } catch (error) {
