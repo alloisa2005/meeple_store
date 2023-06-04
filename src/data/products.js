@@ -7,6 +7,7 @@ export const PRODUCTS = [
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685919224/games/viticulture_bg_ylzqbo.png',
     categoryId: 1,
+    ratings: 4.4,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const PRODUCTS = [
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685919170/games/ohMyGoods_bg_mxuouf.png',
     categoryId: 3,
+    ratings: 3.8,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const PRODUCTS = [
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685919062/games/horrified_bg_skspnz.png',
     categoryId: 5,
+    ratings: 3.9,
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const PRODUCTS = [
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685919000/games/stoneAge_bg_zpbztw.png',
     categoryId: 1,
+    ratings: 4.6,
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ export const PRODUCTS = [
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685918908/games/catan_bg_llsnu3.png',
     categoryId: 4,
+    ratings: 4.5,
   },
   {
     id: 6,
@@ -52,5 +57,6 @@ export const PRODUCTS = [
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685919553/games/diceTower_p4d59f.png',
     categoryId: 6,
+    ratings: 4.0,
   },
 ];
