@@ -17,7 +17,7 @@ const MyAlert = ({ message, spanish }) => {
       show
       showProgress={false}
       title="Error"
-      message={spanish ? translateError(message) : message}
+      message={translateError(spanish, message)}
       closeOnTouchOutside={false}
       closeOnHardwareBackPress={false}
       showConfirmButton
