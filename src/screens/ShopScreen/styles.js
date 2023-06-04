@@ -6,7 +6,7 @@ export const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
-    padding: '10@s',
+    padding: '8@s',
   },
   titleContainer: {
     marginBottom: '10@vs',
@@ -62,7 +62,10 @@ export const styles = ScaledSheet.create({
   },
   titleCat: {
     color: COLORS.cardinalLight,
-    fontSize: '14@s',
+    fontSize: '16@s',
     fontFamily: 'Montserrat-Bold',
+  },
+  listContainer: {
+    marginVertical: '7@vs',
   },
 });
