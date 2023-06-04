@@ -62,7 +62,7 @@ export const styles = ScaledSheet.create({
   },
   titleCat: {
     color: COLORS.cardinalLight,
-    fontSize: '16@s',
+    fontSize: '14@s',
     fontFamily: 'Montserrat-Bold',
   },
 });

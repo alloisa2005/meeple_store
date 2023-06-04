@@ -5,15 +5,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
+import { getCategoriesAsync } from '../../redux/actions/categories.actions';
 import { getProductsAsync } from '../../redux/actions/products.actions';
 
 const ShopScreen = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { products } = useSelector((state) => state.products);
+  const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
     dispatch(getProductsAsync());
+    dispatch(getCategoriesAsync());
   }, []);
 
   return (
@@ -35,7 +38,7 @@ const ShopScreen = () => {
       </View>
 
       <Text style={styles.titleCat}>Categories</Text>
-      {products.map((product) => (
+      {/* {products.map((product) => (
         <View key={product.id} style={styles.productContainer}>
           <Image source={{ uri: product.image }} style={styles.productImage} />
           <View style={styles.productInfo}>
@@ -43,7 +46,7 @@ const ShopScreen = () => {
             <Text style={styles.productPrice}>${product.price}</Text>
           </View>
         </View>
-      ))}
+      ))} */}
     </SafeAreaView>
   );
 };

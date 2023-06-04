@@ -12,7 +12,7 @@ export const getProductsAsync = () => {
 
       dispatch(getProducts(dataArray));
     } catch (error) {
-      console.log(error);
+      dispatch(getProducts([]));
     }
   };
 };
