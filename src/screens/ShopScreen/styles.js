@@ -6,13 +6,13 @@ export const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
-    padding: '8@s',
   },
   titleContainer: {
     marginBottom: '10@vs',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingHorizontal: '8@s',
   },
   textHola: {
     color: COLORS.textGray,
@@ -37,7 +37,8 @@ export const styles = ScaledSheet.create({
     height: '90%',
   },
   subTitle: {
-    fontSize: '18@s',
+    fontSize: '16@s',
+    paddingHorizontal: '8@s',
     fontFamily: 'Montserrat-Bold',
     color: COLORS.textBlack,
     marginBottom: '14@vs',
@@ -51,6 +52,7 @@ export const styles = ScaledSheet.create({
     borderRadius: '10@s',
     backgroundColor: COLORS.white,
     marginBottom: '10@vs',
+    marginHorizontal: '8@s',
   },
   searchInput: {
     fontFamily: 'Montserrat-Regular',
@@ -64,8 +66,10 @@ export const styles = ScaledSheet.create({
     color: COLORS.cardinalLight,
     fontSize: '16@s',
     fontFamily: 'Montserrat-Bold',
+    paddingHorizontal: '8@s',
   },
   listContainer: {
     marginVertical: '7@vs',
+    paddingLeft: '8@s',
   },
 });
