@@ -1,19 +1,30 @@
+import { Entypo } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
+import { COLORS } from '../../constants/colors';
+import RatingComponent from '../RatingStars';
 
 const ProductItem = ({ product }) => {
   return (
     <View style={{ flex: 1 / 2, margin: 5 }}>
-      <TouchableOpacity style={styles.container}>
-        <Image source={{ uri: product.imgUrl }} style={styles.image} />
-
-        <View style={styles.title}>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.imgContainer}>
+          <Image source={{ uri: product.imgUrl }} style={styles.image} />
           <Text style={styles.productTitle}>{product.name}</Text>
-          <Text>${product.price}</Text>
+        </TouchableOpacity>
+
+        <View style={styles.titleContainer}>
+          <RatingComponent rating={product.ratings} />
+          <Text style={styles.productPrice}>$ {product.price}</Text>
         </View>
-      </TouchableOpacity>
+
+        <TouchableOpacity style={styles.addToCartBtn}>
+          <Entypo name="plus" size={24} color={COLORS.white} />
+          <Text style={styles.btnText}>Add To Cart</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
