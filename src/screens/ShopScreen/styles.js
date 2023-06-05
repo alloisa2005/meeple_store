@@ -8,6 +8,7 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.background,
   },
   titleContainer: {
+    marginTop: '7@vs',
     marginBottom: '10@vs',
     flexDirection: 'row',
     alignItems: 'center',
@@ -64,12 +65,18 @@ export const styles = ScaledSheet.create({
   },
   titleCat: {
     color: COLORS.cardinalLight,
-    fontSize: '16@s',
+    fontSize: '15@s',
+    marginTop: '2@vs',
     fontFamily: 'Montserrat-Bold',
     paddingHorizontal: '8@s',
   },
   listContainer: {
     marginVertical: '7@vs',
     paddingLeft: '8@s',
+  },
+  listProdContainer: {
+    paddingHorizontal: '8@s',
+    marginVertical: '7@vs',
+    flex: 1,
   },
 });

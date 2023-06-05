@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import CategoryItem from '../../components/CategoryItem';
+import { ProductItem, CategoryItem } from '../../components';
 import { getCategoriesAsync } from '../../redux/actions/categories.actions';
 import { getProductsAsync } from '../../redux/actions/products.actions';
 
@@ -14,6 +14,7 @@ const ShopScreen = () => {
   const { spanish } = useSelector((state) => state.language);
   const { user } = useSelector((state) => state.auth);
   const { categories } = useSelector((state) => state.categories);
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getProductsAsync());
@@ -47,6 +48,21 @@ const ShopScreen = () => {
           data={categories}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <CategoryItem item={item} />}
+        />
+      </View>
+
+      <Text style={styles.titleCat}>{spanish ? 'Productos' : 'Products'}</Text>
+
+      {/* Lista de Productos */}
+      <View style={styles.listProdContainer}>
+        <FlatList
+          horizontal={false}
+          numColumns={2}
+          columnWrapperStyle={{}}
+          showsVerticalScrollIndicator={false}
+          data={products}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <ProductItem product={item} />}
         />
       </View>
     </SafeAreaView>
