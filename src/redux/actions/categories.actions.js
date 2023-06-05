@@ -23,3 +23,10 @@ export const getCategories = (dataArray) => {
     payload: dataArray,
   };
 };
+
+export const selectCategory = (category) => {
+  return {
+    type: categoriesTypes.SELECT_CATEGORY,
+    payload: category,
+  };
+};

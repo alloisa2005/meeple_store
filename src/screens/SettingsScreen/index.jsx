@@ -22,7 +22,7 @@ const SettingsScreen = () => {
     dispatch(signOut());
   };
 
-  const prueba = () => {
+  const initLoadData = () => {
     PRODUCTS.forEach((product) => {
       postToFirebase('products', product);
     });
@@ -33,7 +33,7 @@ const SettingsScreen = () => {
   };
 
   useEffect(() => {
-    //prueba();
+    //initLoadData();
   }, []);
 
   return (
