@@ -1,16 +1,27 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, Image } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
+import { COLORS } from '../../constants/colors';
 
 const ProductScreen = ({ navigation }) => {
+  const { selected: product } = useSelector((state) => state.products);
+
+  const onHandlerGoBack = () => {
+    navigation.goBack();
+    // navigation.navigate('ShopNavigation', { screen: 'Shop' })
+  };
+
   return (
-    <SafeAreaView>
-      <TouchableOpacity onPress={() => navigation.navigate('ShopNavigation', { screen: 'Shop' })}>
-        <Text>ProductScreen</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <View style={styles.containerScreen}>
+      {/* Header Image */}
+      <View style={styles.headerContainer}>
+        <Image source={{ uri: product.imgUrl }} style={styles.image} />
+        <Text style={styles.productTitle}>{product.name}</Text>
+      </View>
+    </View>
   );
 };
 

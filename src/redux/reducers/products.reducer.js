@@ -3,6 +3,7 @@ import { productsTypes } from '../types/products.types';
 const initialState = {
   products: [],
   loading: false,
+  selected: null,
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
         loading: false,
+      };
+    case productsTypes.SELECT_PRODUCT:
+      return {
+        ...state,
+        selected: action.payload,
       };
     default:
       return state;

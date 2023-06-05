@@ -23,3 +23,10 @@ export const getProducts = (dataArray) => {
     payload: dataArray,
   };
 };
+
+export const selectProduct = (product) => {
+  return {
+    type: productsTypes.SELECT_PRODUCT,
+    payload: product,
+  };
+};
