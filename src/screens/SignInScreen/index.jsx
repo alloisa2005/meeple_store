@@ -17,7 +17,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { FIREBASE_DB, postFirebaseProduct } from '../../constants/firebase';
+import { FIREBASE_DB, postFirebaseProduct } from '../../constants/firebase.js';
 import { PRODUCTS } from '../../data/products';
 import { signIn } from '../../redux/actions/auth.actions';
 import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';

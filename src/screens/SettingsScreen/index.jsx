@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './styles';
 import { FlagComponent } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { postFirebaseProduct, postToFirebase } from '../../constants/firebase';
+import { postFirebaseProduct, postToFirebase } from '../../constants/firebase.js';
 import { CATEGORIES } from '../../data/categories';
 import { PRODUCTS } from '../../data/products';
 import { signOut } from '../../redux/actions/auth.actions';
