@@ -10,7 +10,7 @@ import { COLORS } from '../../constants/colors';
 import { getCategoriesAsync } from '../../redux/actions/categories.actions';
 import { getProductsAsync } from '../../redux/actions/products.actions';
 
-const ShopScreen = () => {
+const ShopScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { spanish } = useSelector((state) => state.language);
   const { user } = useSelector((state) => state.auth);
@@ -36,7 +36,11 @@ const ShopScreen = () => {
       <Text style={styles.subTitle}>La tienda de juegos de mesa en tus manos</Text>
 
       <View style={styles.searchContainer}>
-        <TextInput autoCapitalize="none" placeholder="Buscar..." style={styles.searchInput} />
+        <TextInput
+          autoCapitalize="none"
+          placeholder={spanish ? 'Buscar...' : 'Search...'}
+          style={styles.searchInput}
+        />
         <Feather name="search" size={24} color="black" style={styles.searchIcon} />
       </View>
 
@@ -74,7 +78,7 @@ const ShopScreen = () => {
             showsVerticalScrollIndicator={false}
             data={products}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <ProductItem product={item} />}
+            renderItem={({ item }) => <ProductItem navigation={navigation} product={item} />}
           />
         </View>
       )}

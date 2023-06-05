@@ -6,11 +6,13 @@ import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import RatingComponent from '../RatingStars';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ navigation, product }) => {
   return (
     <View style={{ flex: 1 / 2, margin: 5 }}>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.imgContainer}>
+        <TouchableOpacity
+          style={styles.imgContainer}
+          onPress={() => navigation.navigate('ShopNavigation', { screen: 'Product' })}>
           <Image source={{ uri: product.imgUrl }} style={styles.image} />
           <Text style={styles.productTitle}>{product.name}</Text>
         </TouchableOpacity>

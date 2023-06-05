@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import { CartScreen, OrdersScreen, SettingsScreen, ShopScreen } from '../../screens';
+import ShopNavigation from '../shop';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,15 +14,15 @@ const TabNavigation = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Shop"
+      initialRouteName="ShopNavigation"
       screenOptions={{
         headerShadowVisible: false,
         headerStyle: { backgroundColor: COLORS.background },
         title: '',
       }}>
       <Tab.Screen
-        name="Shop"
-        component={ShopScreen}
+        name="ShopNavigation"
+        component={ShopNavigation}
         options={{
           tabBarLabel: spanish ? 'Tienda' : 'Shop',
           tabBarLabelStyle: styles.tabBarLabelStyle,
