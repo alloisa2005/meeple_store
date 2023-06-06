@@ -1,4 +1,4 @@
-import { Feather, AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   View,
@@ -62,7 +62,7 @@ const SignUpScreen = ({ navigation }) => {
             <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
           </View>
           <TouchableOpacity>
-            <Feather name="camera" size={24} style={styles.cameraIcon} />
+            <MaterialIcons name="add-a-photo" size={24} style={styles.cameraIcon} />
           </TouchableOpacity>
         </View>
 

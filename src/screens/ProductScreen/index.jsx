@@ -18,7 +18,7 @@ const ProductScreen = ({ navigation }) => {
     <View style={styles.containerScreen}>
       {/* Header Image */}
       <View style={styles.headerContainer}>
-        <Image source={{ uri: product.imgUrl }} style={styles.image} />
+        <Image source={{ uri: product.imgBack }} style={styles.image} />
         <Text style={styles.productTitle}>{product.name}</Text>
       </View>
     </View>
