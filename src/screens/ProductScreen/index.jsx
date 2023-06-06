@@ -23,45 +23,88 @@ const ProductScreen = ({ navigation }) => {
         <Text style={styles.productTitle}>{product.name}</Text>
       </View>
 
-      {/* Iconos con caracteristicas del juego */}
-      <View style={styles.iconsContainer}>
-        <View style={styles.propertyContainer}>
-          <FontAwesome5 name="users" size={28} color={COLORS.cardinalLight} />
-          <Text style={styles.propertyTitle}>2 - 4</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Icons */}
+        <View style={styles.iconsContainer}>
+          <View style={styles.propertyContainer}>
+            <FontAwesome5 name="users" size={28} color={COLORS.cardinalLight} />
+            <Text style={styles.propertyTitle}>2 - 4</Text>
+          </View>
+
+          <View style={styles.propertyContainer}>
+            <Ionicons name="time" size={28} color={COLORS.cardinalLight} />
+            <Text style={styles.propertyTitle}>15 - 30'</Text>
+          </View>
+
+          <View style={styles.propertyContainer}>
+            <FontAwesome5 name="baby-carriage" size={28} color={COLORS.cardinalLight} />
+            <Text style={styles.propertyTitle}>8+ años</Text>
+          </View>
         </View>
 
-        <View style={styles.propertyContainer}>
-          <Ionicons name="time" size={28} color={COLORS.cardinalLight} />
-          <Text style={styles.propertyTitle}>15 - 30'</Text>
-        </View>
-
-        <View style={styles.propertyContainer}>
-          <FontAwesome5 name="baby-carriage" size={28} color={COLORS.cardinalLight} />
-          <Text style={styles.propertyTitle}>8+ años</Text>
-        </View>
-      </View>
-
-      {/* Links de interés */}
-      <TouchableOpacity style={styles.linkContainer}>
-        <Image source={require('../../../assets/imgs/BGG.jpeg')} style={styles.bggImage} />
-        <Text style={styles.linkTitle}>Go to Board Game Geek</Text>
-      </TouchableOpacity>
-
-      {/* Añadir al carrito */}
-      <View>
-        <Text>$ {product.price}</Text>
-        <TouchableOpacity style={styles.addToCartBtn}>
-          <Entypo name="plus" size={24} color={COLORS.white} />
-          <Text style={styles.btnText}>Add To Cart</Text>
+        {/* Link to BGG */}
+        <TouchableOpacity style={styles.linkContainer}>
+          <Image source={require('../../../assets/imgs/BGG.jpeg')} style={styles.bggImage} />
+          <Text style={styles.linkTitle}>Go to Board Game Geek</Text>
         </TouchableOpacity>
-      </View>
-      {/* Texto con descripción del juego */}
-      <Text style={styles.descTitle}>{spanish ? 'Descripción' : 'Description'}</Text>
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.descContainer}>
-        <Text style={styles.descriptionContent}>{product.description}</Text>
+
+        {/* Price and Add To Cart */}
+        <View style={styles.priceContainer}>
+          <Text style={styles.priceText}>$ {product.price}</Text>
+          <TouchableOpacity style={styles.addToCartBtn}>
+            <Entypo name="plus" size={24} color={COLORS.white} />
+            <Text style={styles.btnText}>Add To Cart</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Divisor */}
+        <View style={styles.divisor} />
+        {/* Descripción del juego */}
+        <View style={styles.descContainer}>
+          <Text style={styles.descTitle}>Descripción</Text>
+          <Text style={styles.descContent}>{product.description}</Text>
+        </View>
       </ScrollView>
     </View>
   );
 };
 
 export default ProductScreen;
+
+/* 
+<View style={styles.iconsContainer}>
+<View style={styles.propertyContainer}>
+  <FontAwesome5 name="users" size={28} color={COLORS.cardinalLight} />
+  <Text style={styles.propertyTitle}>2 - 4</Text>
+</View>
+
+<View style={styles.propertyContainer}>
+  <Ionicons name="time" size={28} color={COLORS.cardinalLight} />
+  <Text style={styles.propertyTitle}>15 - 30'</Text>
+</View>
+
+<View style={styles.propertyContainer}>
+  <FontAwesome5 name="baby-carriage" size={28} color={COLORS.cardinalLight} />
+  <Text style={styles.propertyTitle}>8+ años</Text>
+</View>
+</View>
+
+
+<TouchableOpacity style={styles.linkContainer}>
+<Image source={require('../../../assets/imgs/BGG.jpeg')} style={styles.bggImage} />
+<Text style={styles.linkTitle}>Go to Board Game Geek</Text>
+</TouchableOpacity>
+
+
+<View>
+<Text>$ {product.price}</Text>
+<TouchableOpacity style={styles.addToCartBtn}>
+  <Entypo name="plus" size={24} color={COLORS.white} />
+  <Text style={styles.btnText}>Add To Cart</Text>
+</TouchableOpacity>
+</View>
+
+<Text style={styles.descTitle}>{spanish ? 'Descripción' : 'Description'}</Text>
+<ScrollView showsVerticalScrollIndicator={false} style={styles.descContainer}>
+<Text style={styles.descriptionContent}>{product.description}</Text>
+</ScrollView> */
