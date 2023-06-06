@@ -1,4 +1,4 @@
-import { FIREBASE_DB } from '../../constants/firebase';
+import { FIREBASE_DB } from '../../constants/firebase.js';
 import { cartTypes } from '../types/cart.types';
 
 export const getCartAsync = () => {

@@ -1,4 +1,5 @@
 import { AntDesign, Entypo, MaterialIcons } from '@expo/vector-icons';
+import { launchCameraAsync } from 'expo-image-picker';
 import React, { useState } from 'react';
 import {
   View,
@@ -17,6 +18,7 @@ import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { signUp } from '../../redux/actions/auth.actions';
+import { verifyPermissionsCamera } from '../../utils/verifyPermissions';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -28,6 +30,22 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
+  const [pickedUrl, setPickedUrl] = useState(null);
+
+  const onHandleTakeImage = async () => {
+    const isCameraPermission = await verifyPermissionsCamera();
+    if (!isCameraPermission) return;
+
+    const image = await launchCameraAsync({
+      allowsEditing: true,
+      aspect: [16, 9],
+      quality: 0.7,
+    });
+
+    // Obtengo la imagen de esta manera por unos warnings que aparecían
+    // de que iba a ser deprecada la propiedad uri
+    setPickedUrl(image.assets[0].uri);
+  };
 
   const onHandleCreateAccount = (name, email, address, password) => {
     name = name.trim();
@@ -59,10 +77,14 @@ const SignUpScreen = ({ navigation }) => {
         {error && <MyAlert spanish={spanish} message={error} />}
         <View style={{ position: 'relative', marginBottom: 15 }}>
           <View style={styles.imageContainer}>
-            <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
+            {!pickedUrl ? (
+              <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
+            ) : (
+              <Image source={{ uri: pickedUrl }} style={styles.image} />
+            )}
           </View>
-          <TouchableOpacity>
-            <MaterialIcons name="add-a-photo" size={24} style={styles.cameraIcon} />
+          <TouchableOpacity onPress={onHandleTakeImage}>
+            <MaterialIcons name="add-a-photo" size={27} style={styles.cameraIcon} />
           </TouchableOpacity>
         </View>
 
