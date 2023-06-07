@@ -1,18 +1,26 @@
 import { Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
+import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 
 const ProductScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
   const { spanish } = useSelector((state) => state.language);
   const { selected: product } = useSelector((state) => state.products);
 
   const onHandlerGoBack = () => {
     navigation.goBack();
     // navigation.navigate('ShopNavigation', { screen: 'Shop' })
+  };
+
+  const onHandlreAddToCart = () => {
+    dispatch(addItemToCartAsync(product, user.id));
   };
 
   return (
@@ -51,7 +59,7 @@ const ProductScreen = ({ navigation }) => {
         {/* Price and Add To Cart */}
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {product.price}</Text>
-          <TouchableOpacity style={styles.addToCartBtn}>
+          <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlreAddToCart}>
             <Entypo name="plus" size={24} color={COLORS.white} />
             <Text style={styles.btnText}>Add To Cart</Text>
           </TouchableOpacity>

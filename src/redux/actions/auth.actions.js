@@ -4,6 +4,7 @@ import {
   FIREBASE_DB,
   getFirebaseUser,
 } from '../../constants/firebase.js';
+import { uploadImageToCloudinary } from '../../utils/uploadImageCloudinary.js';
 import { authTypes } from '../types/auth.types';
 
 export const loadingAuth = () => {
@@ -28,7 +29,8 @@ export const signUp = (user) => {
       });
       let data = await response.json();
 
-      data = { ...data, name: user.name, address: user.address };
+      const imageUrl = await uploadImageToCloudinary(user.pickedUrl);
+      data = { ...data, name: user.name, address: user.address, imageUrl };
 
       if (data.error) {
         dispatch(signUpFailure(data.error.message));
@@ -37,6 +39,7 @@ export const signUp = (user) => {
           name: data.name,
           address: data.address,
           email: data.email,
+          imageUrl: data.imageUrl,
         };
 
         const response = await fetch(FIREBASE_DB + 'users.json', {

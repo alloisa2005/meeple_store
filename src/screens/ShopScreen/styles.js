@@ -32,10 +32,12 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.white,
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   },
   logo: {
-    width: '90%',
-    height: '90%',
+    width: '40@s',
+    height: '40@vs',
+    resizeMode: 'cover',
   },
   subTitle: {
     fontSize: '16@s',

@@ -47,7 +47,7 @@ const SignUpScreen = ({ navigation }) => {
     setPickedUrl(image.assets[0].uri);
   };
 
-  const onHandleCreateAccount = (name, email, address, password) => {
+  const onHandleCreateAccount = async (name, email, address, password) => {
     name = name.trim();
     email = email.trim();
     address = address.trim();
@@ -59,7 +59,7 @@ const SignUpScreen = ({ navigation }) => {
         payload: 'Please, fill all the fields',
       });
     } else {
-      const user = { name, email, address, password };
+      const user = { name, email, address, password, pickedUrl };
       dispatch(signUp(user));
     }
   };
@@ -157,7 +157,9 @@ const SignUpScreen = ({ navigation }) => {
             {spanish ? '¿Ya tienes una cuenta?' : 'Already have an account?'}
           </Text>
           <TouchableOpacity onPress={goToSignInScreen}>
-            <Text style={styles.accountSubTitle}>{spanish ? 'Inicia Sesión' : 'Sign In'}</Text>
+            <Text style={loading ? styles.accountSubTitleGray : styles.accountSubTitle}>
+              {spanish ? 'Inicia Sesión' : 'Sign In'}
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

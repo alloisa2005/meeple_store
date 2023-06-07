@@ -29,20 +29,25 @@ const ShopScreen = ({ navigation }) => {
           {spanish ? 'Hola' : 'Hello'} <Text style={styles.title}>{user.name}</Text>
         </Text>
         <View style={styles.logoContainer}>
-          <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.logo} />
+          {user.imageUrl ? (
+            <Image source={{ uri: user.imageUrl }} style={styles.logo} />
+          ) : (
+            <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.logo} />
+          )}
         </View>
       </View>
 
       <Text style={styles.subTitle}>La tienda de juegos de mesa en tus manos</Text>
 
-      <View style={styles.searchContainer}>
+      {/* Comento el search input pot ahora */}
+      {/* <View style={styles.searchContainer}>
         <TextInput
           autoCapitalize="none"
           placeholder={spanish ? 'Buscar...' : 'Search...'}
           style={styles.searchInput}
         />
         <Feather name="search" size={24} color="black" style={styles.searchIcon} />
-      </View>
+      </View> */}
 
       <Text style={styles.titleCat}>{spanish ? 'Categorías' : 'Categories'}</Text>
 
