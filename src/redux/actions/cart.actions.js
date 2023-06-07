@@ -33,7 +33,7 @@ export const addItemToCartAsync = (product, userId) => {
       const data = await response.json();
 
       if (data === null) {
-        const response = await fetch(FIREBASE_DB + `carts/${userId}.json`, {
+        await fetch(FIREBASE_DB + `carts/${userId}.json`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -44,18 +44,49 @@ export const addItemToCartAsync = (product, userId) => {
             quantity: 1,
           }),
         });
-        const data = await response.json();
-        dispatch(addItemToCart(data));
+        dispatch(addItemToCart(product));
         return;
+      } else {
+        const keys = Object.keys(data);
+
+        let existe = false;
+        let keyExiste = null;
+        keys.forEach(async (key) => {
+          const cartItem = data[key];
+
+          if (cartItem.productId === product.id) {
+            existe = true;
+            keyExiste = key;
+          }
+        });
+
+        if (existe) {
+          await fetch(FIREBASE_DB + `carts/${userId}/${keyExiste}.json`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              quantity: data[keyExiste].quantity + 1,
+            }),
+          });
+
+          dispatch(addItemToCart(product));
+        } else {
+          await fetch(FIREBASE_DB + `carts/${userId}.json`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              productId: product.id,
+              userId,
+              quantity: 1,
+            }),
+          });
+          dispatch(addItemToCart(product));
+        }
       }
-
-      const dataArray = Object.keys(data).map((key) => data[key]);
-      console.log('DA: ', dataArray);
-
-      /* const cartItem = dataArray.find(
-        (item) => item.productId === product.id && item.userId === userId
-      );
-      console.log('CI: ', cartItem); */
     } catch (error) {
       console.log(error);
     }

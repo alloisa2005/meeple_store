@@ -23,6 +23,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
+
     case cartTypes.REMOVE_ITEM:
       return {
         ...state,
