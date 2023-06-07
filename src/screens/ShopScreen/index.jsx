@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { ProductItem, CategoryItem } from '../../components';
 import { COLORS } from '../../constants/colors';
+import { getCartAsync } from '../../redux/actions/cart.actions';
 import { getCategoriesAsync } from '../../redux/actions/categories.actions';
 import { getProductsAsync } from '../../redux/actions/products.actions';
 
@@ -20,7 +21,8 @@ const ShopScreen = ({ navigation }) => {
   useEffect(() => {
     dispatch(getProductsAsync());
     dispatch(getCategoriesAsync());
-  }, []);
+    dispatch(getCartAsync());
+  }, [dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>

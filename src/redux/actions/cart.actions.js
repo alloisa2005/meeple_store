@@ -1,13 +1,18 @@
 import { FIREBASE_DB } from '../../constants/firebase.js';
 import { cartTypes } from '../types/cart.types';
 
-export const getCartAsync = () => {
+export const getCartAsync = (userId) => {
   return async (dispatch) => {
     try {
       dispatch({ type: cartTypes.LOADING });
 
-      const response = await fetch(FIREBASE_DB + 'cart.json');
+      const response = await fetch(FIREBASE_DB + `carts/${userId}.json`);
       const data = await response.json();
+      if (data === null) {
+        dispatch(getCart([]));
+        return;
+      }
+
       const dataArray = Object.keys(data).map((key) => data[key]);
 
       dispatch(getCart(dataArray));
@@ -32,6 +37,7 @@ export const addItemToCartAsync = (product, userId) => {
       const response = await fetch(FIREBASE_DB + `carts/${userId}.json`);
       const data = await response.json();
 
+      // Si el usuario no tiene un carrito creado, se crea uno nuevo
       if (data === null) {
         await fetch(FIREBASE_DB + `carts/${userId}.json`, {
           method: 'POST',
@@ -60,6 +66,7 @@ export const addItemToCartAsync = (product, userId) => {
           }
         });
 
+        // Si el producto ya existe en el carrito, se actualiza la cantidad
         if (existe) {
           await fetch(FIREBASE_DB + `carts/${userId}/${keyExiste}.json`, {
             method: 'PATCH',
@@ -73,6 +80,7 @@ export const addItemToCartAsync = (product, userId) => {
 
           dispatch(addItemToCart(product));
         } else {
+          // Si el producto no existe en el carrito, se crea uno nuevo
           await fetch(FIREBASE_DB + `carts/${userId}.json`, {
             method: 'POST',
             headers: {
@@ -93,36 +101,9 @@ export const addItemToCartAsync = (product, userId) => {
   };
 };
 
-export const addItemToCart = (item) => {
+export const addItemToCart = (product) => {
   return {
     type: cartTypes.ADD_ITEM,
-    payload: item,
-  };
-};
-
-/* export const addProduct = (product) => {
-  return {
-    type: cartTypes.ADD_PRODUCT,
     payload: product,
   };
-}; */
-
-/*
-if (cartItem) {
-        const response = await fetch(FIREBASE_DB + `carts/${userId}.json`);
-        const data = await response.json();
-        console.log('DATA: ', data);
-         const response = await fetch(FIREBASE_DB + `carts/${userId}.json`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            quantity: cartItem.quantity + 1,
-          }),
-        }); 
-        const data = await response.json();
-        dispatch(addItemToCart(data));
-      } else {
-      }
-*/
+};
