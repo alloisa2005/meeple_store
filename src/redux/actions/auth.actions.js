@@ -3,7 +3,7 @@ import {
   FIREBASE_SIGNIN_URL,
   FIREBASE_DB,
   getFirebaseUser,
-} from '../../constants/firebase.js';
+} from '../../constants/firebase.config';
 import { uploadImageToCloudinary } from '../../utils/uploadImageCloudinary.js';
 import { authTypes } from '../types/auth.types';
 
