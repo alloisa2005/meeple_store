@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const spanish = useSelector((state) => state.language.spanish);
-  const { cart } = useSelector((state) => state.cart);
+  const { cartQuantity } = useSelector((state) => state.cart);
   return (
     <Tab.Navigator
       initialRouteName="ShopNavigation"
@@ -42,7 +42,7 @@ const TabNavigation = () => {
             <Ionicons name={focused ? 'md-cart' : 'md-cart-outline'} size={size} color={color} />
           ),
           headerShown: false,
-          tabBarBadge: cart.length,
+          tabBarBadge: cartQuantity,
         }}
       />
       <Tab.Screen
