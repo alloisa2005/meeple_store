@@ -41,7 +41,8 @@ const TabNavigation = () => {
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'md-cart' : 'md-cart-outline'} size={size} color={color} />
           ),
-          headerShown: false,
+          headerTitle: spanish ? 'Mi Carrito' : 'My Cart',
+          headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold', fontSize: 24 },
           tabBarBadge: cartQuantity,
         }}
       />

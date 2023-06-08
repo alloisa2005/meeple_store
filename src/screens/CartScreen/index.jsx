@@ -6,9 +6,9 @@ import { styles } from './styles';
 
 const CartScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>CartScreen</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>asas</Text>
+    </View>
   );
 };
 
