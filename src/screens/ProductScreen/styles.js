@@ -24,6 +24,15 @@ export const styles = ScaledSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
+  arrow: {
+    position: 'absolute',
+    top: '40@vs',
+    left: '10@s',
+    color: COLORS.white,
+    backgroundColor: COLORS.textGray,
+    borderRadius: '50@s',
+    padding: '3@s',
+  },
   productTitle: {
     position: 'absolute',
     bottom: '10@vs',

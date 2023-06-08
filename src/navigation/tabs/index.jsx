@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const spanish = useSelector((state) => state.language.spanish);
-  const { cartQuantity } = useSelector((state) => state.cart);
+  const { cartQuantity, loading } = useSelector((state) => state.cart);
   return (
     <Tab.Navigator
       initialRouteName="ShopNavigation"

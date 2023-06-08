@@ -1,4 +1,4 @@
-import { Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { Entypo, FontAwesome5, Ionicons, AntDesign } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,8 +15,8 @@ const ProductScreen = ({ navigation }) => {
   const { selected: product } = useSelector((state) => state.products);
 
   const onHandlerGoBack = () => {
-    navigation.goBack();
-    // navigation.navigate('ShopNavigation', { screen: 'Shop' })
+    //navigation.goBack();
+    navigation.navigate('ShopNavigation', { screen: 'Shop' });
   };
 
   const onHandlerAddToCart = () => {
@@ -29,6 +29,9 @@ const ProductScreen = ({ navigation }) => {
       <View style={styles.headerContainer}>
         <Image source={{ uri: product.imgBack }} style={styles.image} />
         <Text style={styles.productTitle}>{product.name}</Text>
+        <TouchableOpacity style={styles.arrow} onPress={onHandlerGoBack}>
+          <AntDesign name="arrowleft" size={35} color={COLORS.white} />
+        </TouchableOpacity>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>

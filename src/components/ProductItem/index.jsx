@@ -1,19 +1,25 @@
 import { Entypo } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
+import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 import RatingComponent from '../RatingStars';
 
 const ProductItem = ({ navigation, product }) => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   const onHandleNavigate = () => {
     dispatch(selectProduct(product));
     navigation.navigate('ShopNavigation', { screen: 'Product' });
+  };
+
+  const onHandlerAddToCart = () => {
+    dispatch(addItemToCartAsync(product, user.id));
   };
 
   return (
@@ -29,7 +35,7 @@ const ProductItem = ({ navigation, product }) => {
           <Text style={styles.productPrice}>$ {product.price}</Text>
         </View>
 
-        <TouchableOpacity style={styles.addToCartBtn}>
+        <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>
           <Entypo name="plus" size={24} color={COLORS.white} />
           <Text style={styles.btnText}>Add To Cart</Text>
         </TouchableOpacity>

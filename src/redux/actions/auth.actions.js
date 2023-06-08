@@ -74,7 +74,6 @@ export const signIn = (user) => {
       });
 
       const data = await response.json();
-      console.log('datas: ', data);
 
       if (data.error) {
         dispatch(signInFailure(data.error.message));

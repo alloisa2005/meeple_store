@@ -14,7 +14,6 @@ export const getCartAsync = (userId) => {
       }
 
       const dataArray = Object.keys(data).map((key) => data[key]);
-
       dispatch(getCart(dataArray));
     } catch (error) {
       dispatch(getCart([]));
@@ -51,7 +50,7 @@ export const addItemToCartAsync = (product, userId) => {
           }),
         });
         await response.json();
-        dispatch(addItemToCart({ ...product, userId, quantity: 1 }));
+        dispatch(addItemToCart(product));
         return;
       } else {
         const keys = Object.keys(data);

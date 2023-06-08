@@ -1,12 +1,10 @@
-import { Feather } from '@expo/vector-icons';
 import React, { useEffect } from 'react';
-import { Text, TextInput, Image, View, FlatList, ActivityIndicator } from 'react-native';
+import { Text, Image, View, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { ProductItem, CategoryItem } from '../../components';
-import { COLORS } from '../../constants/colors';
 import { getCartAsync } from '../../redux/actions/cart.actions';
 import { getCategoriesAsync } from '../../redux/actions/categories.actions';
 import { getProductsAsync } from '../../redux/actions/products.actions';
@@ -15,14 +13,14 @@ const ShopScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { spanish } = useSelector((state) => state.language);
   const { user } = useSelector((state) => state.auth);
-  const { categories, loading: categoriesLoading } = useSelector((state) => state.categories);
-  const { products, loading: productsLoading } = useSelector((state) => state.products);
+  const { categories } = useSelector((state) => state.categories);
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getProductsAsync());
     dispatch(getCategoriesAsync());
-    dispatch(getCartAsync());
-  }, [dispatch]);
+    dispatch(getCartAsync(user.id));
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,42 +51,30 @@ const ShopScreen = ({ navigation }) => {
 
       <Text style={styles.titleCat}>{spanish ? 'Categorías' : 'Categories'}</Text>
 
-      {categoriesLoading ? (
-        <ActivityIndicator color={COLORS.cardinalLight} size={30} />
-      ) : (
-        <View style={styles.listContainer}>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={categories}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <CategoryItem item={item} />}
-          />
-        </View>
-      )}
+      <View style={styles.listContainer}>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={categories}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <CategoryItem item={item} />}
+        />
+      </View>
 
       <Text style={styles.titleCat}>{spanish ? 'Productos' : 'Products'}</Text>
 
       {/* Lista de Productos */}
-      {productsLoading ? (
-        <ActivityIndicator
-          color={COLORS.cardinalLight}
-          size={30}
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      <View style={styles.listProdContainer}>
+        <FlatList
+          horizontal={false}
+          numColumns={2}
+          columnWrapperStyle={{}}
+          showsVerticalScrollIndicator={false}
+          data={products}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <ProductItem navigation={navigation} product={item} />}
         />
-      ) : (
-        <View style={styles.listProdContainer}>
-          <FlatList
-            horizontal={false}
-            numColumns={2}
-            columnWrapperStyle={{}}
-            showsVerticalScrollIndicator={false}
-            data={products}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <ProductItem navigation={navigation} product={item} />}
-          />
-        </View>
-      )}
+      </View>
     </SafeAreaView>
   );
 };
