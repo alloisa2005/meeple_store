@@ -47,7 +47,7 @@ const SignUpScreen = ({ navigation }) => {
     setPickedUrl(image.assets[0].uri);
   };
 
-  const onHandleCreateAccount = async (name, email, address, password) => {
+  const onHandleCreateAccount = async (name, email, address, password, pickedUrl) => {
     name = name.trim();
     email = email.trim();
     address = address.trim();
@@ -142,7 +142,7 @@ const SignUpScreen = ({ navigation }) => {
             <TouchableOpacity
               disabled={loading}
               style={styles.button}
-              onPress={() => onHandleCreateAccount(name, email, address, password)}>
+              onPress={() => onHandleCreateAccount(name, email, address, password, pickedUrl)}>
               {loading ? (
                 <ActivityIndicator size={22} color={COLORS.white} />
               ) : (

@@ -19,7 +19,7 @@ const ProductScreen = ({ navigation }) => {
     // navigation.navigate('ShopNavigation', { screen: 'Shop' })
   };
 
-  const onHandlreAddToCart = () => {
+  const onHandlerAddToCart = () => {
     dispatch(addItemToCartAsync(product, user.id));
   };
 
@@ -59,7 +59,7 @@ const ProductScreen = ({ navigation }) => {
         {/* Price and Add To Cart */}
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {product.price}</Text>
-          <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlreAddToCart}>
+          <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>
             <Entypo name="plus" size={24} color={COLORS.white} />
             <Text style={styles.btnText}>Add To Cart</Text>
           </TouchableOpacity>

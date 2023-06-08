@@ -42,16 +42,15 @@ export const signUp = (user) => {
           imageUrl: data.imageUrl,
         };
 
-        const response = await fetch(FIREBASE_DB + 'users.json', {
+        const response = await fetch(FIREBASE_DB + `users.json`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(user),
         });
-        await response.json();
-
-        dispatch(signUpSuccess(data));
+        const idDoc = await response.json();
+        dispatch(signUpSuccess({ ...user, id: idDoc.name }));
       }
     } catch (error) {
       dispatch(signUpFailure(error.message));
@@ -75,6 +74,7 @@ export const signIn = (user) => {
       });
 
       const data = await response.json();
+      console.log('datas: ', data);
 
       if (data.error) {
         dispatch(signInFailure(data.error.message));

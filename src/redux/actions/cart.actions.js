@@ -39,18 +39,19 @@ export const addItemToCartAsync = (product, userId) => {
 
       // Si el usuario no tiene un carrito creado, se crea uno nuevo
       if (data === null) {
-        await fetch(FIREBASE_DB + `carts/${userId}.json`, {
+        const response = await fetch(FIREBASE_DB + `carts/${userId}.json`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            productId: product.id,
+            product,
             userId,
             quantity: 1,
           }),
         });
-        dispatch(addItemToCart(product));
+        await response.json();
+        dispatch(addItemToCart({ ...product, userId, quantity: 1 }));
         return;
       } else {
         const keys = Object.keys(data);
@@ -60,7 +61,7 @@ export const addItemToCartAsync = (product, userId) => {
         keys.forEach(async (key) => {
           const cartItem = data[key];
 
-          if (cartItem.productId === product.id) {
+          if (cartItem.product.id === product.id) {
             existe = true;
             keyExiste = key;
           }
@@ -87,7 +88,7 @@ export const addItemToCartAsync = (product, userId) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              productId: product.id,
+              product,
               userId,
               quantity: 1,
             }),

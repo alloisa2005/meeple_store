@@ -16,7 +16,7 @@ export const styles = ScaledSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: '30%',
+    height: '35%',
     position: 'relative',
   },
   image: {
@@ -28,8 +28,9 @@ export const styles = ScaledSheet.create({
     position: 'absolute',
     bottom: '10@vs',
     left: '10@s',
-    fontFamily: 'Montserrat-Bold',
-    fontSize: '20@s',
+    fontFamily: 'GochiHand-Regular',
+    fontSize: '24@s',
+    textTransform: 'uppercase',
     color: COLORS.white,
     backgroundColor: COLORS.textGray,
     paddingHorizontal: '13@s',
