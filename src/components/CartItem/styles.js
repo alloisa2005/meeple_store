@@ -4,24 +4,53 @@ import { COLORS } from '../../constants/colors';
 
 export const styles = ScaledSheet.create({
   container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: COLORS.white,
     borderRadius: '7@vs',
-    marginBottom: '7@vs',
+    marginBottom: '10@vs',
   },
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: '5@vs',
+  },
+  imageContainer: {
+    width: '100@s',
+    height: '100@vs',
+    paddingVertical: '5@vs',
   },
   itemImage: {
-    width: '22%',
-    height: '80@vs',
+    width: '100%',
+    height: '100%',
     resizeMode: 'contain',
   },
+  contentContainer: {},
   itemTitle: {
-    fontSize: '14@vs',
+    fontSize: '15@vs',
+    fontFamily: 'Montserrat-Bold',
+    color: COLORS.cardinal,
+    marginBottom: '2@vs',
+  },
+  itemPrice: {
     fontFamily: 'Montserrat-Regular',
-    color: COLORS.black,
-    marginLeft: '7@s',
+    fontSize: '14@vs',
+    marginBottom: '12@vs',
+  },
+  btnContainer: {
+    borderRadius: '7@vs',
+    width: '24@s',
+    height: '24@vs',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.cardinal,
+  },
+  itemQuantity: {
+    fontSize: '20@s',
+    fontFamily: 'Montserrat-Bold',
+    color: COLORS.textBlack,
+  },
+  deleteContainer: {
+    marginRight: 10,
   },
 });

@@ -14,7 +14,7 @@ const CartScreen = () => {
         style={{ marginVertical: 10 }}
         showsVerticalScrollIndicator={false}
         data={cart}
-        keyExtractor={(item) => item.product.id.toString()}
+        keyExtractor={(item) => item.product.id}
         renderItem={({ item }) => <CartItem item={item} />}
       />
     </View>
