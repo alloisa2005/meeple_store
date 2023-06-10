@@ -17,7 +17,7 @@ const ShopScreen = ({ navigation }) => {
   useEffect(() => {
     /* dispatch(getProductsAsync()); */
     /* dispatch(getCategoriesAsync()); */
-    /* dispatch(setCartAsync(user.id)); */
+    dispatch(setCartAsync(user.id));
   }, []);
 
   return (

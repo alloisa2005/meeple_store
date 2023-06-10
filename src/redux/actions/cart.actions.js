@@ -1,31 +1,21 @@
-import { addProductToCartFirebase, FIREBASE_DB } from '../../constants/firebase.js';
+import { addProductToCartFirebase, getCartFromFirebase } from '../../constants/firebase.js';
 import { cartTypes } from '../types/cart.types';
 
 export const setCartAsync = (userId) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: cartTypes.LOADING });
-
-      const response = await fetch(FIREBASE_DB + `carts/${userId}.json`);
-      const data = await response.json();
-      if (data === null) {
-        dispatch(setCart([]));
-        return;
-      }
-
-      const dataArray = Object.keys(data).map((key) => data[key]);
-
-      dispatch(setCart(dataArray));
+      const cart = await getCartFromFirebase(userId);
+      dispatch(setCart(cart));
     } catch (error) {
-      dispatch(setCart([]));
+      console.log('ERROR: ', error);
     }
   };
 };
 
-export const setCart = (dataArray) => {
+export const setCart = (cart) => {
   return {
     type: cartTypes.SET_CART,
-    payload: dataArray,
+    payload: cart,
   };
 };
 

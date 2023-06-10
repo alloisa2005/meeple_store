@@ -19,10 +19,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: action.payload,
         cartQuantity: action.payload.reduce((acc, item) => acc + item.quantity, 0),
-        cartTotal: action.payload.reduce(
-          (acc, item) => acc + item.product.price * item.quantity,
-          0
-        ),
+        cartTotal: action.payload.reduce((acc, item) => acc + item.price * item.quantity, 0),
         loading: false,
       };
     case cartTypes.ADD_ITEM:
