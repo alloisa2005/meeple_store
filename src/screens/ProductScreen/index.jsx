@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
-import { addItemToCart } from '../../redux/actions/cart.actions';
+import { addItemToCart, addItemToCartAsync } from '../../redux/actions/cart.actions';
 
 const ProductScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -20,8 +20,8 @@ const ProductScreen = ({ navigation }) => {
   };
 
   const onHandlerAddToCart = () => {
-    dispatch(addItemToCart(product));
-    /* dispatch(addItemToCartAsync(product, user.id)); */
+    /* dispatch(addItemToCart(product)); */
+    dispatch(addItemToCartAsync(product, user.id));
   };
 
   return (

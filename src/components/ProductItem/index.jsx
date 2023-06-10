@@ -19,8 +19,8 @@ const ProductItem = ({ navigation, product }) => {
   };
 
   const onHandlerAddToCart = () => {
-    dispatch(addItemToCart(product));
-    /* dispatch(addItemToCartAsync(product, user.id)); */
+    /* dispatch(addItemToCart(product)); */
+    dispatch(addItemToCartAsync(product, user.id));
   };
 
   return (
