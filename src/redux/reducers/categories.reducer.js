@@ -1,7 +1,8 @@
+import { CATEGORIES } from '../../data/categories';
 import { categoriesTypes } from '../types/categories.types';
 
 const initialState = {
-  categories: [],
+  categories: CATEGORIES,
   loading: false,
   selected: null,
 };
@@ -16,7 +17,6 @@ const categoriesReducer = (state = initialState, action) => {
     case categoriesTypes.GET_CATEGORIES:
       return {
         ...state,
-        categories: action.payload,
         loading: false,
       };
     case categoriesTypes.SELECT_CATEGORY:

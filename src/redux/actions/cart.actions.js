@@ -1,7 +1,7 @@
 import { FIREBASE_DB } from '../../constants/firebase.js';
 import { cartTypes } from '../types/cart.types';
 
-export const getCartAsync = (userId) => {
+export const setCartAsync = (userId) => {
   return async (dispatch) => {
     try {
       dispatch({ type: cartTypes.LOADING });
@@ -9,21 +9,22 @@ export const getCartAsync = (userId) => {
       const response = await fetch(FIREBASE_DB + `carts/${userId}.json`);
       const data = await response.json();
       if (data === null) {
-        dispatch(getCart([]));
+        dispatch(setCart([]));
         return;
       }
 
       const dataArray = Object.keys(data).map((key) => data[key]);
-      dispatch(getCart(dataArray));
+
+      dispatch(setCart(dataArray));
     } catch (error) {
-      dispatch(getCart([]));
+      dispatch(setCart([]));
     }
   };
 };
 
-export const getCart = (dataArray) => {
+export const setCart = (dataArray) => {
   return {
-    type: cartTypes.GET_CART,
+    type: cartTypes.SET_CART,
     payload: dataArray,
   };
 };
@@ -77,7 +78,7 @@ export const addItemToCartAsync = (product, userId) => {
               quantity: data[keyExiste].quantity + 1,
             }),
           });
-
+          console.log('voy a entrar');
           dispatch(addItemToCart(product));
         } else {
           // Si el producto no existe en el carrito, se crea uno nuevo

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
-import { addItemToCartAsync } from '../../redux/actions/cart.actions';
+import { addItemToCart, addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 import RatingComponent from '../RatingStars';
 
@@ -19,7 +19,8 @@ const ProductItem = ({ navigation, product }) => {
   };
 
   const onHandlerAddToCart = () => {
-    dispatch(addItemToCartAsync(product, user.id));
+    dispatch(addItemToCart(product));
+    /* dispatch(addItemToCartAsync(product, user.id)); */
   };
 
   return (

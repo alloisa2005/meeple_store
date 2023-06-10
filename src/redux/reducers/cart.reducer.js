@@ -17,32 +17,34 @@ const cartReducer = (state = initialState, action) => {
     case cartTypes.SET_CART:
       return {
         ...state,
-      };
-    case cartTypes.GET_CART:
-      return {
-        ...state,
         cart: action.payload,
         cartQuantity: action.payload.reduce((acc, item) => acc + item.quantity, 0),
-        cartTotal: action.payload.reduce((acc, item) => acc + item.price * item.quantity, 0),
+        cartTotal: action.payload.reduce(
+          (acc, item) => acc + item.product.price * item.quantity,
+          0
+        ),
         loading: false,
       };
     case cartTypes.ADD_ITEM:
       const product = action.payload;
-      const index = state.cart.findIndex((item) => item.id === product.id);
+      const existe = state.cart.find((item) => item.id === product.id);
 
-      if (index !== -1) {
-        state.cart[index].quantity += 1;
+      let updatedCart = [];
+      if (existe) {
+        updatedCart = state.cart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
       } else {
-        product.quantity = 1;
-        state.cart.push(product);
+        updatedCart = [...state.cart, { ...product, quantity: 1 }];
       }
+
       return {
         ...state,
-        cart: [...state.cart],
+        cart: updatedCart,
         cartQuantity: state.cartQuantity + 1,
-        cartTotal: state.cartTotal + product.price,
+        cartTotal: state.cartTotal + action.payload.price,
+        loading: false,
       };
-
     default:
       return state;
   }

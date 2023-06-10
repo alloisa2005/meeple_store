@@ -21,11 +21,11 @@ const CartItem = ({ item }) => {
     <View style={styles.container}>
       <View style={styles.itemContainer}>
         <TouchableOpacity style={styles.imageContainer} onPress={onHandlerNavigate}>
-          <Image source={{ uri: item.product.imgUrl }} style={styles.itemImage} />
+          <Image source={{ uri: item.imgUrl }} style={styles.itemImage} />
         </TouchableOpacity>
         <View style={styles.contentContainer}>
-          <Text style={styles.itemTitle}>{item.product.name}</Text>
-          <Text style={styles.itemPrice}>$ {item.product.price}</Text>
+          <Text style={styles.itemTitle}>{item.name}</Text>
+          <Text style={styles.itemPrice}>$ {item.price}</Text>
           <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
             <TouchableOpacity style={styles.btnContainer}>
               <AntDesign name="minus" size={20} color={COLORS.white} />

@@ -1,7 +1,8 @@
+import { PRODUCTS } from '../../data/products';
 import { productsTypes } from '../types/products.types';
 
 const initialState = {
-  products: [],
+  products: PRODUCTS,
   loading: false,
   selected: null,
 };
@@ -16,7 +17,6 @@ const productsReducer = (state = initialState, action) => {
     case productsTypes.GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload,
         loading: false,
       };
     case productsTypes.SELECT_PRODUCT:

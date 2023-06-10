@@ -5,9 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { ProductItem, CategoryItem } from '../../components';
-import { getCartAsync } from '../../redux/actions/cart.actions';
-import { getCategoriesAsync } from '../../redux/actions/categories.actions';
-import { getProductsAsync } from '../../redux/actions/products.actions';
+import { setCartAsync } from '../../redux/actions/cart.actions';
 
 const ShopScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -17,9 +15,9 @@ const ShopScreen = ({ navigation }) => {
   const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(getProductsAsync());
-    dispatch(getCategoriesAsync());
-    dispatch(getCartAsync(user.id));
+    /* dispatch(getProductsAsync()); */
+    /* dispatch(getCategoriesAsync()); */
+    /* dispatch(setCartAsync(user.id)); */
   }, []);
 
   return (
