@@ -18,8 +18,14 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload,
-        cartQuantity: action.payload.reduce((acc, item) => acc + item.quantity, 0),
-        cartTotal: action.payload.reduce((acc, item) => acc + item.price * item.quantity, 0),
+        cartQuantity:
+          action.payload.length === 0
+            ? 0
+            : action.payload.reduce((acc, item) => acc + item.quantity, 0),
+        cartTotal:
+          action.payload.length === 0
+            ? 0
+            : action.payload.reduce((acc, item) => acc + item.price * item.quantity, 0),
         loading: false,
       };
     case cartTypes.ADD_ITEM:
