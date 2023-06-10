@@ -13,7 +13,7 @@ const CartItem = ({ item }) => {
   const navigation = useNavigation();
 
   const onHandlerNavigate = () => {
-    dispatch(selectProduct(item.product));
+    dispatch(selectProduct(item));
     navigation.navigate('ShopNavigation', { screen: 'Product' });
   };
 
