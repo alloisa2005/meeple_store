@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
+import { addItemToCart } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 
 const CartItem = ({ item }) => {
@@ -17,6 +18,10 @@ const CartItem = ({ item }) => {
     navigation.navigate('ShopNavigation', { screen: 'Product' });
   };
 
+  const onHandlerIncrementQuantity = () => {
+    dispatch(addItemToCart(item));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.itemContainer}>
@@ -25,7 +30,7 @@ const CartItem = ({ item }) => {
         </TouchableOpacity>
         <View style={styles.contentContainer}>
           <Text style={styles.itemTitle}>{item.name}</Text>
-          <Text style={styles.itemPrice}>$ {item.price}</Text>
+          <Text style={styles.itemPrice}>$ {item.price * item.quantity}</Text>
           <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
             <TouchableOpacity style={styles.btnContainer}>
               <AntDesign name="minus" size={20} color={COLORS.white} />
@@ -33,7 +38,7 @@ const CartItem = ({ item }) => {
 
             <Text style={styles.itemQuantity}>{item.quantity}</Text>
 
-            <TouchableOpacity style={styles.btnContainer}>
+            <TouchableOpacity style={styles.btnContainer} onPress={onHandlerIncrementQuantity}>
               <AntDesign name="plus" size={20} color={COLORS.white} />
             </TouchableOpacity>
           </View>
