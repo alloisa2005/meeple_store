@@ -17,6 +17,15 @@ export const styles = ScaledSheet.create({
     borderRadius: '7@vs',
     padding: '12@vs',
   },
+  totalAmount: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '14@s',
+  },
+  products: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '14@s',
+    color: COLORS.textGray,
+  },
   btnCheckout: {
     flexDirection: 'row',
     alignItems: 'center',

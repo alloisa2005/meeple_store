@@ -23,10 +23,10 @@ const CartScreen = () => {
       {/* Resumen Carrito */}
       <View style={styles.cartResumen}>
         <View>
-          <Text>
+          <Text style={styles.totalAmount}>
             {spanish ? 'Monto Total' : 'Total Amount'}: $ {cartTotal}
           </Text>
-          <Text>
+          <Text style={styles.products}>
             {spanish ? 'Productos' : 'Products'}: {cartQuantity}
           </Text>
         </View>
