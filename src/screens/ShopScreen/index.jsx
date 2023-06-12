@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { Text, Image, View, FlatList } from 'react-native';
+import { Text, Image, View, FlatList, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -7,17 +8,22 @@ import { styles } from './styles';
 import { ProductItem, CategoryItem } from '../../components';
 import { setCartAsync } from '../../redux/actions/cart.actions';
 
-const ShopScreen = ({ navigation }) => {
+const ShopScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+
   const { spanish } = useSelector((state) => state.language);
   const { user } = useSelector((state) => state.auth);
   const { categories } = useSelector((state) => state.categories);
   const { products } = useSelector((state) => state.products);
-  const { loading: cartLoading } = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(setCartAsync(user.id));
   }, []);
+
+  const onHandlerGoToSettings = () => {
+    navigation.navigate('Settings');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -25,13 +31,13 @@ const ShopScreen = ({ navigation }) => {
         <Text style={styles.textHola}>
           {spanish ? 'Hola' : 'Hello'} <Text style={styles.title}>{user.name}</Text>
         </Text>
-        <View style={styles.logoContainer}>
+        <TouchableOpacity style={styles.logoContainer} onPress={onHandlerGoToSettings}>
           {user.imageUrl ? (
             <Image source={{ uri: user.imageUrl }} style={styles.logo} />
           ) : (
             <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.logo} />
           )}
-        </View>
+        </TouchableOpacity>
       </View>
 
       <Text style={styles.subTitle}>La tienda de juegos de mesa en tus manos</Text>

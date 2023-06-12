@@ -13,6 +13,8 @@ import { signOut } from '../../redux/actions/auth.actions';
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
 
   const [isEnabled, setIsEnabled] = useState(false);
@@ -41,7 +43,11 @@ const SettingsScreen = () => {
       <View style={styles.userImageContainer}>
         {/* Imagen usuario */}
         <View style={styles.imageContainer}>
-          <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
+          {user.imageUrl ? (
+            <Image source={{ uri: user.imageUrl }} style={styles.image} />
+          ) : (
+            <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
+          )}
         </View>
 
         {/* Boton Editar Perfil */}

@@ -22,11 +22,12 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: 130 / 2,
     marginBottom: '10@vs',
+    overflow: 'hidden',
   },
   image: {
-    height: '90@s',
-    width: '90@s',
-    resizeMode: 'contain',
+    height: '100%',
+    width: '100%',
+    resizeMode: 'cover',
   },
   button: {
     backgroundColor: COLORS.cardinal,
