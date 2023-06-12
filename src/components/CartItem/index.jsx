@@ -2,16 +2,22 @@ import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
-import { addItemToCart } from '../../redux/actions/cart.actions';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  removeItemFromCartAsync,
+} from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const { user } = useSelector((state) => state.auth);
 
   const onHandlerNavigate = () => {
     dispatch(selectProduct(item));
@@ -20,6 +26,14 @@ const CartItem = ({ item }) => {
 
   const onHandlerIncrementQuantity = () => {
     dispatch(addItemToCart(item));
+  };
+
+  const onHandlerDecrementQuantity = () => {
+    dispatch(addItemToCart(item));
+  };
+
+  const onHandlerRemoveFromCart = () => {
+    dispatch(removeItemFromCartAsync(item, user.id));
   };
 
   return (
@@ -32,7 +46,7 @@ const CartItem = ({ item }) => {
           <Text style={styles.itemTitle}>{item.name}</Text>
           <Text style={styles.itemPrice}>$ {item.price * item.quantity}</Text>
           <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-            <TouchableOpacity style={styles.btnContainer}>
+            <TouchableOpacity style={styles.btnContainer} onPress={onHandlerDecrementQuantity}>
               <AntDesign name="minus" size={20} color={COLORS.white} />
             </TouchableOpacity>
 
@@ -45,9 +59,9 @@ const CartItem = ({ item }) => {
           <View />
         </View>
       </View>
-      <View style={styles.deleteContainer}>
+      <TouchableOpacity style={styles.deleteContainer} onPress={onHandlerRemoveFromCart}>
         <MaterialCommunityIcons name="delete" size={30} color={COLORS.cardinal} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

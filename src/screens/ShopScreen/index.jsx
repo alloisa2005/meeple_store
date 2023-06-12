@@ -13,10 +13,9 @@ const ShopScreen = ({ navigation }) => {
   const { user } = useSelector((state) => state.auth);
   const { categories } = useSelector((state) => state.categories);
   const { products } = useSelector((state) => state.products);
+  const { loading: cartLoading } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    /* dispatch(getProductsAsync()); */
-    /* dispatch(getCategoriesAsync()); */
     dispatch(setCartAsync(user.id));
   }, []);
 

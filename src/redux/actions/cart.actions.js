@@ -1,4 +1,8 @@
-import { addProductToCartFirebase, getCartFromFirebase } from '../../constants/firebase.js';
+import {
+  addProductToCartFirebase,
+  getCartFromFirebase,
+  removeItemFromCartFirebase,
+} from '../../constants/firebase.js';
 import { cartTypes } from '../types/cart.types';
 
 export const setCartAsync = (userId) => {
@@ -29,6 +33,20 @@ export const addItemToCartAsync = (product, userId) => {
 export const addItemToCart = (product) => {
   return {
     type: cartTypes.ADD_ITEM,
+    payload: product,
+  };
+};
+
+export const removeItemFromCartAsync = (product, userId) => {
+  return async (dispatch) => {
+    await removeItemFromCartFirebase(userId, product);
+    dispatch(removeItemFromCart(product));
+  };
+};
+
+export const removeItemFromCart = (product) => {
+  return {
+    type: cartTypes.REMOVE_ITEM,
     payload: product,
   };
 };

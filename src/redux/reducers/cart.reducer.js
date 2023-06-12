@@ -12,7 +12,7 @@ const cartReducer = (state = initialState, action) => {
     case cartTypes.LOADING:
       return {
         ...state,
-        loading: true,
+        loading: !state.loading,
       };
     case cartTypes.SET_CART:
       return {
@@ -46,6 +46,17 @@ const cartReducer = (state = initialState, action) => {
         cart: updatedCart,
         cartQuantity: state.cartQuantity + 1,
         cartTotal: state.cartTotal + action.payload.price,
+        loading: false,
+      };
+    case cartTypes.REMOVE_ITEM:
+      const productToRemove = action.payload;
+      const updatedCartRemove = state.cart.filter((item) => item.id !== productToRemove.id);
+
+      return {
+        ...state,
+        cart: updatedCartRemove,
+        cartQuantity: state.cartQuantity - productToRemove.quantity,
+        cartTotal: state.cartTotal - productToRemove.price * productToRemove.quantity,
         loading: false,
       };
     default:
