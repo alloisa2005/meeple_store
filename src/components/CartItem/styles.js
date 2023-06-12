@@ -45,6 +45,14 @@ export const styles = ScaledSheet.create({
     justifyContent: 'center',
     backgroundColor: COLORS.cardinal,
   },
+  btnContainerDisabled: {
+    borderRadius: '7@vs',
+    width: '24@s',
+    height: '24@vs',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.textGray,
+  },
   itemQuantity: {
     fontSize: '20@s',
     fontFamily: 'Montserrat-Bold',

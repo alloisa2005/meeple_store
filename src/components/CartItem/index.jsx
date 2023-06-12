@@ -50,7 +50,10 @@ const CartItem = ({ item }) => {
           <Text style={styles.itemTitle}>{item.name}</Text>
           <Text style={styles.itemPrice}>$ {item.price * item.quantity}</Text>
           <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-            <TouchableOpacity style={styles.btnContainer} onPress={onHandlerDecrementQuantity}>
+            <TouchableOpacity
+              disabled={item.quantity === 0}
+              style={item.quantity !== 0 ? styles.btnContainer : styles.btnContainerDisabled}
+              onPress={onHandlerDecrementQuantity}>
               <AntDesign name="minus" size={20} color={COLORS.white} />
             </TouchableOpacity>
 
