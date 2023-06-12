@@ -21,8 +21,8 @@ export const setCart = (cart) => {
 
 export const addItemToCartAsync = (product, userId) => {
   return async (dispatch) => {
-    await addProductToCartFirebase(userId, product);
-    dispatch(addItemToCart(product));
+    const key = await addProductToCartFirebase(userId, product);
+    dispatch(addItemToCart({ ...product, key }));
   };
 };
 
