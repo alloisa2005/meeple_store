@@ -8,6 +8,9 @@ import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import {
   addItemToCart,
+  addItemToCartAsync,
+  decrementItemFromCart,
+  decrementItemFromCartAsync,
   removeItemFromCart,
   removeItemFromCartAsync,
 } from '../../redux/actions/cart.actions';
@@ -25,11 +28,12 @@ const CartItem = ({ item }) => {
   };
 
   const onHandlerIncrementQuantity = () => {
-    dispatch(addItemToCart(item));
+    dispatch(addItemToCartAsync(item, user.id));
+    /* dispatch(addItemToCart(item)); */
   };
 
   const onHandlerDecrementQuantity = () => {
-    dispatch(addItemToCart(item));
+    dispatch(decrementItemFromCartAsync(item, user.id));
   };
 
   const onHandlerRemoveFromCart = () => {

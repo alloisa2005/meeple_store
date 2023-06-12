@@ -94,6 +94,20 @@ export const addProductToCartFirebase = async (userId, product) => {
   }
 };
 
+export const decrementProductFromCartFirebase = async (userId, product) => {
+  try {
+    const res = await fetch(`${FIREBASE_DB}carts/${userId}/${product.key}.json`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...product, quantity: product.quantity - 1 }),
+    });
+  } catch (e) {
+    return null;
+  }
+};
+
 export const postToFirebase = async (collection, element) => {
   try {
     const res = await fetch(`${FIREBASE_DB}${collection}.json`, {

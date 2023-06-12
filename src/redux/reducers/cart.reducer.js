@@ -59,6 +59,19 @@ const cartReducer = (state = initialState, action) => {
         cartTotal: state.cartTotal - productToRemove.price * productToRemove.quantity,
         loading: false,
       };
+    case cartTypes.DECREMENT_ITEM:
+      const productToDecrement = action.payload;
+      const updatedCartDecrement = state.cart.map((item) =>
+        item.id === productToDecrement.id ? { ...item, quantity: item.quantity - 1 } : item
+      );
+      return {
+        ...state,
+        cart: updatedCartDecrement,
+        cartQuantity: state.cartQuantity - 1,
+        cartTotal: state.cartTotal - action.payload.price,
+        loading: false,
+      };
+
     default:
       return state;
   }

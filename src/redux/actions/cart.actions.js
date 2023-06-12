@@ -1,5 +1,6 @@
 import {
   addProductToCartFirebase,
+  decrementProductFromCartFirebase,
   getCartFromFirebase,
   removeItemFromCartFirebase,
 } from '../../constants/firebase.js';
@@ -33,6 +34,20 @@ export const addItemToCartAsync = (product, userId) => {
 export const addItemToCart = (product) => {
   return {
     type: cartTypes.ADD_ITEM,
+    payload: product,
+  };
+};
+
+export const decrementItemFromCartAsync = (product, userId) => {
+  return async (dispatch) => {
+    await decrementProductFromCartFirebase(userId, product);
+    dispatch(decrementItemFromCart(product));
+  };
+};
+
+export const decrementItemFromCart = (product) => {
+  return {
+    type: cartTypes.DECREMENT_ITEM,
     payload: product,
   };
 };
