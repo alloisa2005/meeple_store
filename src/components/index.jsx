@@ -5,3 +5,4 @@ export { default as ProductItem } from './ProductItem';
 export { default as RatingComponent } from './RatingStars';
 export { default as Slider } from './Slider';
 export { default as CartItem } from './CartItem';
+export { default as ProductCategoryItem } from './ProductCategoryItem';

@@ -83,7 +83,7 @@ export const PRODUCTS = [
     id: 6,
     name: 'Dice Tower',
     price: 100,
-    description: 'This is product 5',
+    description: 'Torre de dados de madera',
     imgUrl:
       'https://res.cloudinary.com/dayyupv1u/image/upload/v1685919553/games/diceTower_p4d59f.png',
     imgBack:
@@ -109,5 +109,32 @@ export const PRODUCTS = [
     players: '2 - 5',
     time: '90 - 120',
     age: '13+',
+  },
+  {
+    id: 8,
+    name: 'Viernes',
+    price: 280,
+    description:
+      'Robinson ha naufragado en tu isla y tendrás que ayudarle a luchar contra multitud de peligros. Al principio, Robinson no es muy hábil, pero con cada enfrentamiento que supera mejora sus habilidades. Las derrotas también le ayudan a deshacerse de sus malos hábitos. No obstante, la vida en la isla es agotadora, por lo que Robinson no sólo gana experiencia durante su aventura, sino que también se hace mayor y se vuelve torpe. En este juego, Robinson está representado por un mazo de cartas con diferentes comportamientos. ¡Tendrás que conseguir las mejores cartas para que Robinson pueda vencer cuando finalmente se enfrente a los temibles piratas!',
+    imgUrl: '',
+    imgBack: '',
+    categoryId: 4,
+    ratings: 3.2,
+    players: '1 - 1',
+    time: '25 - 35',
+    age: '10+',
+  },
+  {
+    id: 9,
+    name: 'Card Sleeves',
+    price: 120,
+    description: 'Premium card sleeves',
+    imgUrl: '',
+    imgBack: '',
+    categoryId: 6,
+    ratings: 3.2,
+    players: '',
+    time: '',
+    age: '',
   },
 ];

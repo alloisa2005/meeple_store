@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
-import { addItemToCart, addItemToCartAsync } from '../../redux/actions/cart.actions';
+import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 import RatingComponent from '../RatingStars';
 
