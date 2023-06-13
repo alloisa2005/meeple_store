@@ -116,8 +116,10 @@ export const PRODUCTS = [
     price: 280,
     description:
       'Robinson ha naufragado en tu isla y tendrás que ayudarle a luchar contra multitud de peligros. Al principio, Robinson no es muy hábil, pero con cada enfrentamiento que supera mejora sus habilidades. Las derrotas también le ayudan a deshacerse de sus malos hábitos. No obstante, la vida en la isla es agotadora, por lo que Robinson no sólo gana experiencia durante su aventura, sino que también se hace mayor y se vuelve torpe. En este juego, Robinson está representado por un mazo de cartas con diferentes comportamientos. ¡Tendrás que conseguir las mejores cartas para que Robinson pueda vencer cuando finalmente se enfrente a los temibles piratas!',
-    imgUrl: '',
-    imgBack: '',
+    imgUrl:
+      'https://res.cloudinary.com/dayyupv1u/image/upload/v1686699166/games/viernes-removebg-preview_qtfkyz.png',
+    imgBack:
+      'https://res.cloudinary.com/dayyupv1u/image/upload/v1686699166/games/viernes-removebg-preview_qtfkyz.png',
     categoryId: 4,
     ratings: 3.2,
     players: '1 - 1',
@@ -129,12 +131,30 @@ export const PRODUCTS = [
     name: 'Card Sleeves',
     price: 120,
     description: 'Premium card sleeves',
-    imgUrl: '',
-    imgBack: '',
+    imgUrl:
+      'https://res.cloudinary.com/dayyupv1u/image/upload/v1686699090/games/3max-removebg-preview_h3ynz6.png',
+    imgBack:
+      'https://res.cloudinary.com/dayyupv1u/image/upload/v1686699090/games/3max-removebg-preview_h3ynz6.png',
     categoryId: 6,
     ratings: 3.2,
     players: '',
     time: '',
     age: '',
+  },
+  {
+    id: 10,
+    name: 'Star Wars Rebellion',
+    price: 120,
+    description:
+      'Star Wars: Rebellion es un juego temático ambientado en el universo de Star Wars, concretamente en el intervalo temporal que recogen las películas de la trilogía original. El objetivo del Imperio es aniquilar la base rebelde, mientras que la Alianza tendrá que intentar alcanzar suficiente influencia como para derrocar al malvado régimen. El mecanismo principal del juego serán acciones que podrán llevar a cabo los personajes principales, ya sea desplazamiento de tropas por el tablero o realizando misiones.',
+    imgUrl:
+      'https://res.cloudinary.com/dayyupv1u/image/upload/v1686699333/games/91BTY4EHICL._AC_UF894_1000_QL80_-removebg-preview_hgncfw.png',
+    imgBack:
+      'https://res.cloudinary.com/dayyupv1u/image/upload/v1686699090/games/3max-removebg-preview_h3ynz6.png',
+    categoryId: 2,
+    ratings: 4.7,
+    players: '2 - 4',
+    time: '180 - 240',
+    age: '14+',
   },
 ];
