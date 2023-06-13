@@ -50,12 +50,13 @@ const TabNavigation = () => {
         name="Orders"
         component={OrdersScreen}
         options={{
-          headerShown: false,
           tabBarLabel: spanish ? 'Compras' : 'Orders',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />
           ),
+          headerTitle: spanish ? 'Mis Compras' : 'My Orders',
+          headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold', fontSize: 24 },
         }}
       />
       <Tab.Screen

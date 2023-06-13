@@ -3,6 +3,7 @@ import { orderTypes } from '../types/orders.types';
 const initialState = {
   orders: [],
   loading: false,
+  selected: null,
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -22,16 +23,13 @@ const orderReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: [...state.orders, action.payload],
+        loading: false,
       };
-    case orderTypes.REMOVE_ORDER:
+    case orderTypes.SELECT_ORDER:
       return {
         ...state,
-        orders: state.orders.filter((item) => item.id !== action.payload),
-      };
-    case orderTypes.CLEAR_ORDERS:
-      return {
-        ...state,
-        orders: [],
+        selected: action.payload,
+        loading: false,
       };
     default:
       return state;

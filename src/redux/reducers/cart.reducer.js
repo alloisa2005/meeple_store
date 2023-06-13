@@ -71,6 +71,14 @@ const cartReducer = (state = initialState, action) => {
         cartTotal: state.cartTotal - action.payload.price,
         loading: false,
       };
+    case cartTypes.DELETE_CART:
+      return {
+        ...state,
+        cart: [],
+        cartQuantity: 0,
+        cartTotal: 0,
+        loading: false,
+      };
 
     default:
       return state;

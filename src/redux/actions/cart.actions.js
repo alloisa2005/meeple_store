@@ -65,3 +65,9 @@ export const removeItemFromCart = (product) => {
     payload: product,
   };
 };
+
+export const deleteCart = () => {
+  return {
+    type: cartTypes.DELETE_CART,
+  };
+};

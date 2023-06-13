@@ -1,13 +1,16 @@
 import { MaterialIcons, AntDesign, Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Text, View, FlatList, TouchableOpacity, Modal, TextInput } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { CartItem } from '../../components';
 import { COLORS } from '../../constants/colors';
+import { addOrderAsync } from '../../redux/actions/orders.actions';
 
 const CartScreen = () => {
+  const dispatch = useDispatch();
+
   const { cart, cartTotal, cartQuantity } = useSelector((state) => state.cart);
   const { spanish } = useSelector((state) => state.language);
   const { user } = useSelector((state) => state.auth);
@@ -16,6 +19,17 @@ const CartScreen = () => {
 
   const onHandlerShowModal = () => {
     setShowModal(true);
+  };
+
+  const onHandlerAddOrder = () => {
+    const order = {
+      products: cart,
+      total: cartTotal,
+      quantity: cartQuantity,
+      date: new Date(),
+    };
+    dispatch(addOrderAsync(user.id, order));
+    setShowModal(false);
   };
 
   return (
@@ -84,7 +98,7 @@ const CartScreen = () => {
               </Text>
             </View>
 
-            <TouchableOpacity style={styles.addToCartBtn}>
+            <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddOrder}>
               <Text style={styles.btnText}>{spanish ? 'Confirmar' : 'Confirm'}</Text>
             </TouchableOpacity>
           </View>
