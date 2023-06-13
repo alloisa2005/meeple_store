@@ -44,7 +44,11 @@ const CartItem = ({ item }) => {
     <View style={styles.container}>
       <View style={styles.itemContainer}>
         <TouchableOpacity style={styles.imageContainer} onPress={onHandlerNavigate}>
-          <Image source={{ uri: item.imgUrl }} style={styles.itemImage} />
+          {item.imgUrl === '' ? (
+            <Image source={require('../../../assets/imgs/noImg.jpg')} style={styles.itemImage} />
+          ) : (
+            <Image source={{ uri: item.imgUrl }} style={styles.itemImage} />
+          )}
         </TouchableOpacity>
         <View style={styles.contentContainer}>
           <Text style={styles.itemTitle}>{item.name}</Text>

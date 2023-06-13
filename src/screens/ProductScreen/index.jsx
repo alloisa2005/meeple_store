@@ -28,7 +28,12 @@ const ProductScreen = ({ navigation }) => {
     <View style={styles.containerScreen}>
       {/* Header Image */}
       <View style={styles.headerContainer}>
-        <Image source={{ uri: product.imgBack }} style={styles.image} />
+        {product.imgBack === '' ? (
+          <Image source={require('../../../assets/imgs/noImg.jpg')} style={styles.image} />
+        ) : (
+          <Image source={{ uri: product.imgBack }} style={styles.image} />
+        )}
+
         <Text style={styles.productTitle}>{product.name}</Text>
         <TouchableOpacity style={styles.arrow} onPress={onHandlerGoBack}>
           <AntDesign name="arrowleft" size={35} color={COLORS.white} />

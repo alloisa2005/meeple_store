@@ -23,7 +23,11 @@ const ProductCategoryItem = ({ item }) => {
       {/* TODO: Agregar Barra de Busqueda */}
 
       <TouchableOpacity style={styles.leftContainer} onPress={onHandlerGoToProductDetail}>
-        <Image source={{ uri: item.imgUrl }} style={styles.image} />
+        {item.imgUrl === '' ? (
+          <Image source={require('../../../assets/imgs/noImg.jpg')} style={styles.image} />
+        ) : (
+          <Image source={{ uri: item.imgUrl }} style={styles.image} />
+        )}
 
         <View>
           <Text style={styles.itemTitle}>{item.name}</Text>

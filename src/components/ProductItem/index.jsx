@@ -27,7 +27,12 @@ const ProductItem = ({ navigation, product }) => {
     <View style={{ flex: 1 / 2, margin: 5 }}>
       <View style={styles.container}>
         <TouchableOpacity style={styles.imgContainer} onPress={onHandleNavigate}>
-          <Image source={{ uri: product.imgUrl }} style={styles.image} />
+          {product.imgUrl === '' ? (
+            <Image source={require('../../../assets/imgs/noImg.jpg')} style={styles.image} />
+          ) : (
+            <Image source={{ uri: product.imgUrl }} style={styles.image} />
+          )}
+
           <Text style={styles.productTitle}>{product.name}</Text>
         </TouchableOpacity>
 
