@@ -2,10 +2,11 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
+import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 import RatingComponent from '../RatingStars';
 
@@ -13,9 +14,15 @@ const ProductCategoryItem = ({ item }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
+  const { user } = useSelector((state) => state.auth);
+
   const onHandlerGoToProductDetail = () => {
     dispatch(selectProduct(item));
     navigation.navigate('ShopNavigation', { screen: 'Product' });
+  };
+
+  const onHandlerAddToCart = () => {
+    dispatch(addItemToCartAsync(item, user.id));
   };
 
   return (
@@ -35,7 +42,7 @@ const ProductCategoryItem = ({ item }) => {
           <RatingComponent rating={item.ratings} />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.addToCartBtn}>
+      <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>
         <Feather name="shopping-cart" size={28} color={COLORS.cardinal} />
       </TouchableOpacity>
     </View>
