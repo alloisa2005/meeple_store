@@ -44,3 +44,10 @@ export const getOrders = (orders) => {
     payload: orders,
   };
 };
+
+export const selectOrder = (order) => {
+  return {
+    type: orderTypes.SELECT_ORDER,
+    payload: order,
+  };
+};

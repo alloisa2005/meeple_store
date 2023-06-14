@@ -2,15 +2,19 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 import styles from './styles';
 import { COLORS } from '../../constants/colors';
+import { selectOrder } from '../../redux/actions/orders.actions';
 import { transformoFecha } from '../../utils/transformoFecha';
 
 const OrderItem = ({ order }) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const onHandlerGoToDetail = () => {
+    dispatch(selectOrder(order));
     /* navigation.navigate('OrderDetail', { order }); */
   };
 
