@@ -8,6 +8,17 @@ export const styles = ScaledSheet.create({
     paddingHorizontal: '10@s',
     backgroundColor: COLORS.background,
   },
+  noItemContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noItemText: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '20@s',
+    color: COLORS.cardinal,
+    marginBottom: '20@vs',
+  },
   cartResumen: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -37,6 +48,7 @@ export const styles = ScaledSheet.create({
   btnCheckoutText: {
     fontFamily: 'Montserrat-Bold',
     color: COLORS.white,
+    fontSize: '15@s',
   },
   modalContainer: {
     flex: 1,

@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "meeple_store",
+    "name": "Meeple Land",
     "slug": "meeple_store",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

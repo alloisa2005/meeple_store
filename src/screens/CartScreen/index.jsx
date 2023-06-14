@@ -1,4 +1,5 @@
 import { MaterialIcons, AntDesign, Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Text, View, FlatList, TouchableOpacity, Modal, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +11,7 @@ import { addOrderAsync } from '../../redux/actions/orders.actions';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const { cart, cartTotal, cartQuantity } = useSelector((state) => state.cart);
   const { spanish } = useSelector((state) => state.language);
@@ -32,15 +34,31 @@ const CartScreen = () => {
     setShowModal(false);
   };
 
+  const onHandlerGoToShop = () => {
+    navigation.navigate('Shop');
+  };
+
   return (
     <View style={styles.container}>
-      <FlatList
-        style={{ marginVertical: 10 }}
-        showsVerticalScrollIndicator={false}
-        data={cart}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <CartItem item={item} />}
-      />
+      {/* Si no hay productos en el carrito muestro un msj */}
+      {cartQuantity === 0 ? (
+        <View style={styles.noItemContainer}>
+          <Text style={styles.noItemText}>
+            {spanish ? 'Carrito Vacío' : 'Cart has no products'}
+          </Text>
+          <TouchableOpacity style={styles.btnCheckout} onPress={onHandlerGoToShop}>
+            <Text style={styles.btnCheckoutText}>{spanish ? 'Tienda' : 'Shop'}</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <FlatList
+          style={{ marginVertical: 10 }}
+          showsVerticalScrollIndicator={false}
+          data={cart}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <CartItem item={item} />}
+        />
+      )}
 
       {/* Resumen Carrito */}
       {cartQuantity === 0 ? null : (
@@ -59,6 +77,7 @@ const CartScreen = () => {
           </TouchableOpacity>
         </View>
       )}
+
       <Modal animationType="slide" visible={showModal}>
         <View style={styles.modalContainer}>
           <View style={styles.modalDataContainer}>

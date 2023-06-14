@@ -42,7 +42,9 @@ const ShopScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.subTitle}>La tienda de juegos de mesa en tus manos</Text>
+      <Text style={styles.subTitle}>
+        {spanish ? 'La tienda de juegos de mesa en tus manos' : 'Board game store in your hands'}
+      </Text>
 
       {/* Comento el search input pot ahora */}
       {/* <View style={styles.searchContainer}>
