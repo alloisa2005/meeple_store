@@ -6,3 +6,4 @@ export { default as RatingComponent } from './RatingStars';
 export { default as Slider } from './Slider';
 export { default as CartItem } from './CartItem';
 export { default as ProductCategoryItem } from './ProductCategoryItem';
+export { default as OrderItem } from './OrderItem';

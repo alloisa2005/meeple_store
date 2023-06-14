@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { ProductItem, CategoryItem } from '../../components';
 import { setCartAsync } from '../../redux/actions/cart.actions';
+import { getOrdersAsync } from '../../redux/actions/orders.actions';
 
 const ShopScreen = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const ShopScreen = () => {
 
   useEffect(() => {
     dispatch(setCartAsync(user.id));
+    dispatch(getOrdersAsync(user.id));
   }, []);
 
   const onHandlerGoToSettings = () => {

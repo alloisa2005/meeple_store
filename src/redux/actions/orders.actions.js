@@ -1,5 +1,9 @@
 import { deleteCart } from './cart.actions';
-import { addOrderToFirebase, deleteCartFromFirebase } from '../../constants/firebase';
+import {
+  addOrderToFirebase,
+  deleteCartFromFirebase,
+  getOrdersFromFirebase,
+} from '../../constants/firebase';
 import { orderTypes } from '../types/orders.types';
 
 export const addOrderAsync = (userId, order) => {
@@ -20,5 +24,23 @@ export const addOrder = (order) => {
   return {
     type: orderTypes.ADD_ORDER,
     payload: order,
+  };
+};
+
+export const getOrdersAsync = (userId) => {
+  return async (dispatch) => {
+    try {
+      const orders = await getOrdersFromFirebase(userId);
+      dispatch(getOrders(orders));
+    } catch (error) {
+      dispatch(getOrders([]));
+    }
+  };
+};
+
+export const getOrders = (orders) => {
+  return {
+    type: orderTypes.GET_ORDERS,
+    payload: orders,
   };
 };
