@@ -1,17 +1,30 @@
+import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
+import { COLORS } from '../../constants/colors';
+import { transformoFecha } from '../../utils/transformoFecha';
 
 const OrderItem = ({ order }) => {
   const navigation = useNavigation();
 
+  const onHandlerGoToDetail = () => {
+    /* navigation.navigate('OrderDetail', { order }); */
+  };
+
   return (
     <View style={styles.container}>
-      <Text>{order.date}</Text>
-      <Text>{order.quantity}</Text>
-      <Text>{order.total}</Text>
+      <View>
+        <Text>{transformoFecha(order.date)}</Text>
+        <Text>{order.quantity}</Text>
+        <Text>{order.total}</Text>
+      </View>
+
+      <TouchableOpacity onPress={onHandlerGoToDetail}>
+        <AntDesign name="infocirlceo" size={28} color={COLORS.cardinal} />
+      </TouchableOpacity>
     </View>
   );
 };
