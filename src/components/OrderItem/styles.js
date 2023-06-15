@@ -12,4 +12,18 @@ export default ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  titleDetail: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '13@s',
+    color: COLORS.textGray,
+    marginBottom: '3@vs',
+  },
+  titleContent: {
+    fontFamily: 'Montserrat-Bold',
+    color: COLORS.cardinal,
+    fontSize: '15@s',
+  },
+  iconContainer: {
+    marginRight: '3@s',
+  },
 });

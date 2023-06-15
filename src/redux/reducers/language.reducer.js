@@ -1,7 +1,7 @@
 import { languageTypes } from '../types/language.types';
 
 const initialState = {
-  spanish: false,
+  spanish: true,
 };
 
 const languageReducer = (state = initialState, action) => {
