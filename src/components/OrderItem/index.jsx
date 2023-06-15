@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Modal } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './styles';
@@ -14,31 +14,64 @@ const OrderItem = ({ order }) => {
   const navigation = useNavigation();
   const { spanish } = useSelector((state) => state.language);
 
-  const onHandlerGoToDetail = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const onHandlerShowModal = () => {
     dispatch(selectOrder(order));
-    /* navigation.navigate('OrderDetail'); */
+    setShowModal(true);
   };
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.titleDetail}>
-          {spanish ? 'Fecha: ' : 'Date: '}{' '}
-          <Text style={styles.titleContent}>{transformoFecha(order.date)}</Text>
-        </Text>
-        <Text style={styles.titleDetail}>
-          {spanish ? 'Cantidad de Productos: ' : 'Products quantity: '}{' '}
-          <Text style={styles.titleContent}>{order.quantity}</Text>
-        </Text>
-        <Text style={styles.titleDetail}>
-          {spanish ? 'Monto Total ($): ' : 'Total Amount ($): '}
-          <Text style={styles.titleContent}>{order.total}</Text>
-        </Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <View>
+          <Text style={styles.titleDetail}>
+            {spanish ? 'Fecha: ' : 'Date: '}{' '}
+            <Text style={styles.titleContent}>{transformoFecha(order.date)}</Text>
+          </Text>
+          <Text style={styles.titleDetail}>
+            {spanish ? 'Cantidad de Productos: ' : 'Products quantity: '}{' '}
+            <Text style={styles.titleContent}>{order.quantity}</Text>
+          </Text>
+          <Text style={styles.titleDetail}>
+            {spanish ? 'Monto Total ($): ' : 'Total Amount ($): '}
+            <Text style={styles.titleContent}>{order.total}</Text>
+          </Text>
+        </View>
+
+        <TouchableOpacity style={styles.iconContainer} onPress={onHandlerShowModal}>
+          <AntDesign name="infocirlceo" size={28} color={COLORS.cardinal} />
+        </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.iconContainer} onPress={onHandlerGoToDetail}>
-        <AntDesign name="infocirlceo" size={28} color={COLORS.cardinal} />
-      </TouchableOpacity>
+      <Modal animationType="slide" visible={showModal}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalDataContainer}>
+            <Text style={styles.titleDetails}>{spanish ? 'Detalle de Compra' : 'Detail'}</Text>
+
+            <View>
+              <Text style={styles.detailTitle}>
+                {spanish ? 'Fecha de Compra:' : 'Date:'}{' '}
+                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}>
+                  {transformoFecha(order.date)}
+                </Text>
+              </Text>
+              <Text style={styles.detailTitle}>
+                {spanish ? 'Total de Productos:' : 'Quantity:'}{' '}
+                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}>{order.quantity}</Text>
+              </Text>
+              <Text style={styles.detailTitle}>
+                {spanish ? 'Monto Total ($):' : 'Total Amount ($):'}
+                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}> {order.total}</Text>
+              </Text>
+            </View>
+
+            <TouchableOpacity style={styles.addToCartBtn} onPress={() => setShowModal(!showModal)}>
+              <Text style={styles.btnText}>{spanish ? 'Cerrar' : 'Close'}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

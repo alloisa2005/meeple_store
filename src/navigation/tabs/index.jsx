@@ -1,17 +1,19 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Text } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import { CartScreen, OrdersScreen, SettingsScreen, ShopScreen } from '../../screens';
+import OrderNavigation from '../order';
 import ShopNavigation from '../shop';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const spanish = useSelector((state) => state.language.spanish);
-  const { cartQuantity, loading } = useSelector((state) => state.cart);
+  const { cartQuantity } = useSelector((state) => state.cart);
   return (
     <Tab.Navigator
       initialRouteName="ShopNavigation"
@@ -47,8 +49,8 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Orders"
-        component={OrdersScreen}
+        name="OrderNavigation"
+        component={OrderNavigation}
         options={{
           tabBarLabel: spanish ? 'Compras' : 'Orders',
           tabBarLabelStyle: styles.tabBarLabelStyle,
