@@ -59,7 +59,6 @@ export default ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    marginTop: '24@vs',
     marginBottom: '4@vs',
     justifyContent: 'center',
     gap: '5@s',
@@ -83,5 +82,35 @@ export default ScaledSheet.create({
     borderRadius: '5@vs',
     fontFamily: 'Montserrat-Bold',
     fontSize: '16@s',
+    marginBottom: '10@vs',
+  },
+  productContainer: {
+    borderWidth: 1,
+    borderColor: COLORS.textGray,
+    borderRadius: '5@s',
+    marginBottom: '12@vs',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: '7@s',
+    paddingVertical: '4@vs',
+  },
+  productImageContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  productImage: {
+    width: '60@s',
+    height: '60@vs',
+    resizeMode: 'contain',
+  },
+  productTitle: {
+    fontFamily: 'Montserrat-Bold',
+    marginLeft: '3@s',
+  },
+  productSubTotal: {
+    fontFamily: 'Montserrat-Bold',
+    color: COLORS.cardinal,
+    fontSize: '13@s',
   },
 });

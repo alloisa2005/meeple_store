@@ -18,7 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { LOCATION_API_KEY } from '../../constants/firebase';
+import { LOCATION_API_KEY } from '../../constants/firebase.js';
 import { signUp } from '../../redux/actions/auth.actions';
 import { verifyPermissionsCamera, verifyPermissionsLocation } from '../../utils/verifyPermissions';
 

@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, FlatList, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './styles';
@@ -75,7 +75,13 @@ const OrderItem = ({ order }) => {
                   keyExtractor={(item) => item.id}
                   renderItem={({ item }) => (
                     <View style={styles.productContainer}>
-                      <Text style={styles.productTitle}>{item.name}</Text>
+                      <View style={styles.productImageContainer}>
+                        <Image source={{ uri: item.imgUrl }} style={styles.productImage} />
+                        <Text style={styles.productTitle}>
+                          {item.name} (x{item.quantity})
+                        </Text>
+                      </View>
+                      <Text style={styles.productSubTotal}>$ {item.quantity * item.price}</Text>
                     </View>
                   )}
                 />
