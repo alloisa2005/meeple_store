@@ -4,7 +4,7 @@ import { COLORS } from '../../constants/colors';
 
 export const styles = ScaledSheet.create({
   container: {
-    height: '150@vs',
+    height: '160@vs',
     marginVertical: '10@vs',
     backgroundColor: COLORS.background,
   },
@@ -14,5 +14,8 @@ export const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: '8@vs',
+  },
+  list: {
+    paddingLeft: '8@s',
   },
 });

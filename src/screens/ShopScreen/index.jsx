@@ -58,7 +58,7 @@ const ShopScreen = () => {
           renderItem={({ item }) => <CategoryItem item={item} />}
         />
       </View>
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }}>
         <RowProducts title="Recently Added" array={products} busqueda={3} />
         <RowProducts title="Top Ratings" array={products} busqueda={1} />
         <RowProducts title="Best Sellers" array={products} busqueda={2} />

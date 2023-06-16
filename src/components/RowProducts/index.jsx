@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Image } from 'react-native';
 
 import { styles } from './styles';
 import {
@@ -35,11 +35,27 @@ const RowProducts = ({ title, array, busqueda }) => {
       </View>
 
       <FlatList
+        style={styles.list}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={filteredArray}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
+        renderItem={({ item }) => (
+          <View
+            style={{
+              padding: 5,
+              backgroundColor: 'red',
+              marginRight: 20,
+              width: 200,
+              borderRadius: 10,
+            }}>
+            <Image
+              source={{ uri: item.imgUrl }}
+              style={{ width: 120, height: 100, resizeMode: 'contain' }}
+            />
+            <Text>JAJAJA</Text>
+          </View>
+        )}
       />
     </View>
   );
