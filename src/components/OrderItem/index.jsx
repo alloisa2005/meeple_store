@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './styles';
@@ -64,6 +64,22 @@ const OrderItem = ({ order }) => {
                 {spanish ? 'Monto Total ($):' : 'Total Amount ($):'}
                 <Text style={{ color: COLORS.cardinal, fontSize: 18 }}> {order.total}</Text>
               </Text>
+            </View>
+
+            <View style={styles.detailContainer}>
+              <Text style={styles.detailContainerTitle}>Productos</Text>
+
+              <View>
+                <FlatList
+                  data={order.products}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({ item }) => (
+                    <View style={styles.productContainer}>
+                      <Text style={styles.productTitle}>{item.name}</Text>
+                    </View>
+                  )}
+                />
+              </View>
             </View>
 
             <TouchableOpacity style={styles.addToCartBtn} onPress={() => setShowModal(!showModal)}>

@@ -72,4 +72,16 @@ export default ScaledSheet.create({
     color: COLORS.white,
     fontSize: '15@s',
   },
+  detailContainer: {
+    marginTop: '15@vs',
+  },
+  detailContainerTitle: {
+    textAlign: 'center',
+    backgroundColor: COLORS.textGray,
+    paddingVertical: '5@vs',
+    color: COLORS.white,
+    borderRadius: '5@vs',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '16@s',
+  },
 });
