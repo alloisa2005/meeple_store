@@ -46,16 +46,6 @@ const ShopScreen = () => {
         {spanish ? 'La tienda de juegos de mesa en tus manos' : 'Board game store in your hands'}
       </Text>
 
-      {/* Comento el search input pot ahora */}
-      {/* <View style={styles.searchContainer}>
-        <TextInput
-          autoCapitalize="none"
-          placeholder={spanish ? 'Buscar...' : 'Search...'}
-          style={styles.searchInput}
-        />
-        <Feather name="search" size={24} color="black" style={styles.searchIcon} />
-      </View> */}
-
       <Text style={styles.titleCat}>{spanish ? 'Categorías' : 'Categories'}</Text>
 
       <View style={styles.listContainer}>
