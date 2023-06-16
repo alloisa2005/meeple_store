@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { Text, Image, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, Image, View, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import { ProductItem, CategoryItem } from '../../components';
+import { ProductItem, CategoryItem, RowProducts } from '../../components';
 import { setCartAsync } from '../../redux/actions/cart.actions';
 import { getOrdersAsync } from '../../redux/actions/orders.actions';
 
@@ -48,6 +48,7 @@ const ShopScreen = () => {
 
       <Text style={styles.titleCat}>{spanish ? 'Categorías' : 'Categories'}</Text>
 
+      {/* Category List */}
       <View style={styles.listContainer}>
         <FlatList
           horizontal
@@ -57,11 +58,25 @@ const ShopScreen = () => {
           renderItem={({ item }) => <CategoryItem item={item} />}
         />
       </View>
+      <ScrollView>
+        <RowProducts title="Recently Added" array={products} busqueda={3} />
+        <RowProducts title="Top Ratings" array={products} busqueda={1} />
+        <RowProducts title="Best Sellers" array={products} busqueda={2} />
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-      <Text style={styles.titleCat}>{spanish ? 'Productos' : 'Products'}</Text>
+export default ShopScreen;
 
-      {/* Lista de Productos */}
-      <View style={styles.listProdContainer}>
+{
+  /* <Text style={styles.titleCat}>{spanish ? 'Productos' : 'Products'}</Text> */
+}
+{
+  /* Lista de Productos */
+}
+{
+  /* <View style={styles.listProdContainer}>
         <FlatList
           horizontal={false}
           numColumns={2}
@@ -71,9 +86,5 @@ const ShopScreen = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <ProductItem navigation={navigation} product={item} />}
         />
-      </View>
-    </SafeAreaView>
-  );
-};
-
-export default ShopScreen;
+      </View> */
+}
