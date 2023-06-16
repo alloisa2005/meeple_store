@@ -9,3 +9,7 @@ export const getFirstArrayElements = (array, cant) => {
 export const sortArrayByRating = (array) => {
   return array.slice().sort((a, b) => a.ratings - b.ratings);
 };
+
+export const sortArrayByPrice = (array) => {
+  return array.slice().sort((a, b) => a.price - b.price);
+};

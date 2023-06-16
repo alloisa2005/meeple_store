@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 
 import { styles } from './styles';
-import { getFirstArrayElements, sortArrayByRating } from '../../utils/arraysFunciones';
+import {
+  getFirstArrayElements,
+  sortArrayByPrice,
+  sortArrayByRating,
+} from '../../utils/arraysFunciones';
 
 const RowProducts = ({ title, array, busqueda }) => {
   const [filteredArray, setFilteredArray] = useState([]);
@@ -10,10 +14,13 @@ const RowProducts = ({ title, array, busqueda }) => {
   useEffect(() => {
     switch (busqueda) {
       case 1:
-        setFilteredArray(getFirstArrayElements(sortArrayByRating(array), 15));
+        setFilteredArray(getFirstArrayElements(sortArrayByRating(array), 5));
         break;
       case 2:
-        setFilteredArray(getFirstArrayElements(array, 15));
+        setFilteredArray(getFirstArrayElements(array, 5));
+        break;
+      case 3:
+        setFilteredArray(getFirstArrayElements(sortArrayByPrice(array), 5));
         break;
       default:
         break;
@@ -22,7 +29,11 @@ const RowProducts = ({ title, array, busqueda }) => {
 
   return (
     <View style={styles.container}>
-      <Text>{title}</Text>
+      <View style={styles.titleContainer}>
+        <Text>{title}</Text>
+        <Text>See All</Text>
+      </View>
+
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
