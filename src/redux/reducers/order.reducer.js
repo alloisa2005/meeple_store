@@ -16,13 +16,13 @@ const orderReducer = (state = initialState, action) => {
     case orderTypes.GET_ORDERS:
       return {
         ...state,
-        orders: action.payload,
+        orders: action.payload.sort((a, b) => b.date - a.date),
         loading: false,
       };
     case orderTypes.ADD_ORDER:
       return {
         ...state,
-        orders: [...state.orders, action.payload],
+        orders: [...state.orders, action.payload].sort((a, b) => b.date - a.date),
         loading: false,
       };
     case orderTypes.SELECT_ORDER:
