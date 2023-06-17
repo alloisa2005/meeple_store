@@ -27,7 +27,9 @@ const ShopScreen = () => {
     navigation.navigate('Settings');
   };
 
-  const onHanlderGoToStore = () => {};
+  const onHanlderGoToStore = () => {
+    navigation.navigate('Store');
+  };
 
   return (
     <SafeAreaView style={styles.container}>

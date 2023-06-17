@@ -8,3 +8,4 @@ export { default as ProductScreen } from './ProductScreen';
 export { default as CategoryScreen } from './CategoryScreen';
 export { default as OrderDetailScreen } from './OrderDetailScreen';
 export { default as AllProductsScreen } from './AllProductsScreen';
+export { default as StoreScreen } from './StoreScreen';

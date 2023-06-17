@@ -14,7 +14,9 @@ const RowProducts = ({ title, array, busqueda }) => {
   const navigation = useNavigation();
   const [filteredArray, setFilteredArray] = useState([]);
 
-  const onHandlerGoToStore = () => {};
+  const onHandlerGoToStore = () => {
+    navigation.navigate('Store');
+  };
 
   useEffect(() => {
     switch (busqueda) {
