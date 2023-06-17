@@ -7,6 +7,7 @@ import {
   sortArrayByPrice,
   sortArrayByRating,
 } from '../../utils/arraysFunciones';
+import RowProductItem from '../RowProductItem';
 
 const RowProducts = ({ title, array, busqueda }) => {
   const [filteredArray, setFilteredArray] = useState([]);
@@ -40,22 +41,7 @@ const RowProducts = ({ title, array, busqueda }) => {
         showsHorizontalScrollIndicator={false}
         data={filteredArray}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View
-            style={{
-              padding: 5,
-              backgroundColor: 'red',
-              marginRight: 20,
-              width: 200,
-              borderRadius: 10,
-            }}>
-            <Image
-              source={{ uri: item.imgUrl }}
-              style={{ width: 120, height: 100, resizeMode: 'contain' }}
-            />
-            <Text>JAJAJA</Text>
-          </View>
-        )}
+        renderItem={({ item }) => <RowProductItem item={item} />}
       />
     </View>
   );
