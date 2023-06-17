@@ -81,4 +81,21 @@ export const styles = ScaledSheet.create({
     marginVertical: '7@vs',
     flex: 1,
   },
+  btnContainer: {
+    flexDirection: 'row',
+    marginTop: 5,
+    marginBottom: 10,
+    justifyContent: 'center',
+  },
+  btn: {
+    textAlign: 'center',
+    backgroundColor: COLORS.cardinal,
+    color: COLORS.white,
+    minWidth: 120,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '13@s',
+  },
 });

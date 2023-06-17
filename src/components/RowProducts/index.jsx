@@ -1,5 +1,7 @@
+import { useScrollToTop } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import {
@@ -18,10 +20,10 @@ const RowProducts = ({ title, array, busqueda }) => {
         setFilteredArray(getFirstArrayElements(sortArrayByRating(array), 5));
         break;
       case 2:
-        setFilteredArray(getFirstArrayElements(array, 5));
+        setFilteredArray(getFirstArrayElements(sortArrayByPrice(array), 5));
         break;
       case 3:
-        setFilteredArray(getFirstArrayElements(sortArrayByPrice(array), 5));
+        setFilteredArray(getFirstArrayElements(array, 5));
         break;
       default:
         break;
@@ -31,7 +33,7 @@ const RowProducts = ({ title, array, busqueda }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
         <Text>See All</Text>
       </View>
 

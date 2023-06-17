@@ -7,9 +7,9 @@ export const getFirstArrayElements = (array, cant) => {
 };
 
 export const sortArrayByRating = (array) => {
-  return array.slice().sort((a, b) => a.ratings - b.ratings);
+  return array.slice().sort((a, b) => b.ratings - a.ratings);
 };
 
 export const sortArrayByPrice = (array) => {
-  return array.slice().sort((a, b) => a.price - b.price);
+  return array.slice().sort((a, b) => b.price - a.price);
 };

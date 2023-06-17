@@ -27,6 +27,8 @@ const ShopScreen = () => {
     navigation.navigate('Settings');
   };
 
+  const onHanlderGoToStore = () => {};
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
@@ -59,9 +61,26 @@ const ShopScreen = () => {
         />
       </View>
       <ScrollView style={{ flex: 1 }}>
-        <RowProducts title="Recently Added" array={products} busqueda={3} />
-        <RowProducts title="Top Ratings" array={products} busqueda={1} />
-        <RowProducts title="Best Sellers" array={products} busqueda={2} />
+        <RowProducts
+          title={spanish ? 'Recién Añadidos' : 'Recently Added'}
+          array={products}
+          busqueda={3}
+        />
+        <RowProducts
+          title={spanish ? 'Más Populares' : 'Top Ratings'}
+          array={products}
+          busqueda={1}
+        />
+        <RowProducts
+          title={spanish ? 'Más Vendidos' : 'Best Sellers'}
+          array={products}
+          busqueda={2}
+        />
+        <View style={styles.btnContainer}>
+          <TouchableOpacity onPress={onHanlderGoToStore}>
+            <Text style={styles.btn}>{spanish ? 'Visita nuestra tienda' : 'Visit our store'}</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

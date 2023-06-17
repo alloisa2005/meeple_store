@@ -15,6 +15,11 @@ export const styles = ScaledSheet.create({
     justifyContent: 'space-between',
     marginBottom: '8@vs',
   },
+  title: {
+    fontSize: '14@s',
+    color: COLORS.cardinal,
+    fontFamily: 'Montserrat-Bold',
+  },
   list: {
     paddingLeft: '8@s',
   },
