@@ -26,7 +26,7 @@ const TabNavigation = () => {
         name="ShopNavigation"
         component={ShopNavigation}
         options={{
-          tabBarLabel: spanish ? 'Tienda' : 'Shop',
+          tabBarLabel: spanish ? 'Inicio' : 'Home',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (

@@ -27,8 +27,6 @@ const ProductCategoryItem = ({ item }) => {
 
   return (
     <View style={styles.container}>
-      {/* TODO: Agregar Barra de Busqueda */}
-
       <TouchableOpacity style={styles.leftContainer} onPress={onHandlerGoToProductDetail}>
         {item.imgUrl === '' ? (
           <Image source={require('../../../assets/imgs/noImg.jpg')} style={styles.image} />
