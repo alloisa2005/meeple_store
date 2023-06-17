@@ -14,6 +14,7 @@ export const PRODUCTS = [
     players: '1 - 4',
     time: '45 - 90',
     age: '12+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/128621/viticulture',
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const PRODUCTS = [
     players: '1 - 4',
     time: '45 - 90',
     age: '10+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/183840/oh-my-goods',
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ export const PRODUCTS = [
     players: '1 - 4',
     time: '45 - 90',
     age: '13+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/282524/horrified',
   },
   {
     id: 4,
@@ -62,6 +65,7 @@ export const PRODUCTS = [
     players: '1 - 4',
     time: '45 - 90',
     age: '13+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/34635/stone-age',
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ export const PRODUCTS = [
     players: '3 - 4',
     time: '45 - 90',
     age: '12+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/13/catan',
   },
   {
     id: 6,
@@ -93,6 +98,7 @@ export const PRODUCTS = [
     players: '',
     time: '',
     age: '',
+    bggUrl: '',
   },
   {
     id: 7,
@@ -109,6 +115,7 @@ export const PRODUCTS = [
     players: '2 - 5',
     time: '90 - 120',
     age: '13+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/280480/crystal-palace',
   },
   {
     id: 8,
@@ -125,6 +132,7 @@ export const PRODUCTS = [
     players: '1 - 1',
     time: '25 - 35',
     age: '10+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/43570/friday',
   },
   {
     id: 9,
@@ -140,6 +148,7 @@ export const PRODUCTS = [
     players: '',
     time: '',
     age: '',
+    bggUrl: '',
   },
   {
     id: 10,
@@ -156,5 +165,6 @@ export const PRODUCTS = [
     players: '2 - 4',
     time: '180 - 240',
     age: '14+',
+    bggUrl: 'https://boardgamegeek.com/boardgame/187645/star-wars-rebellion',
   },
 ];

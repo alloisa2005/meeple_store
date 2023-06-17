@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';

@@ -1,11 +1,12 @@
 import { Entypo, FontAwesome5, Ionicons, AntDesign } from '@expo/vector-icons';
-import React from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import React, { useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
-import { addItemToCart, addItemToCartAsync } from '../../redux/actions/cart.actions';
+import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 
 const ProductScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -14,13 +15,17 @@ const ProductScreen = ({ navigation }) => {
   const { spanish } = useSelector((state) => state.language);
   const { selected: product } = useSelector((state) => state.products);
 
+  const [result, setResult] = useState(null);
+
+  const handlePressButtonAsync = async () => {
+    const result = await WebBrowser.openBrowserAsync(product.bggUrl);
+    setResult(result);
+  };
   const onHandlerGoBack = () => {
-    //navigation.goBack();
     navigation.navigate('ShopNavigation', { screen: 'Shop' });
   };
 
   const onHandlerAddToCart = () => {
-    /* dispatch(addItemToCart(product)); */
     dispatch(addItemToCartAsync(product, user.id));
   };
 
@@ -59,18 +64,24 @@ const ProductScreen = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Link to BGG */}
-        <TouchableOpacity style={styles.linkContainer}>
-          <Image source={require('../../../assets/imgs/BGG.jpeg')} style={styles.bggImage} />
-          <Text style={styles.linkTitle}>Go to Board Game Geek</Text>
-        </TouchableOpacity>
+        {/* Link to BGG  */}
+        {product.bggUrl ? (
+          <TouchableOpacity style={styles.linkContainer} onPress={handlePressButtonAsync}>
+            <Image source={require('../../../assets/imgs/BGG.jpeg')} style={styles.bggImage} />
+            <Text style={styles.linkTitle}>
+              {spanish ? 'Board Game Geek Web' : 'Go to Board Game Geek'}
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={{ marginTop: 20 }} />
+        )}
 
         {/* Price and Add To Cart */}
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>$ {product.price}</Text>
           <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>
             <Entypo name="plus" size={24} color={COLORS.white} />
-            <Text style={styles.btnText}>Add To Cart</Text>
+            <Text style={styles.btnText}>{spanish ? 'Añadir al Carrito' : 'Add To Cart'}</Text>
           </TouchableOpacity>
         </View>
 
@@ -78,7 +89,7 @@ const ProductScreen = ({ navigation }) => {
         <View style={styles.divisor} />
         {/* Descripción del juego */}
         <View style={styles.descContainer}>
-          <Text style={styles.descTitle}>Descripción</Text>
+          <Text style={styles.descTitle}>{spanish ? 'Descripción' : 'Description'}</Text>
           <Text style={styles.descContent}>{product.description}</Text>
         </View>
       </ScrollView>
