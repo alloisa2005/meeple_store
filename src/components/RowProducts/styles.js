@@ -20,6 +20,12 @@ export const styles = ScaledSheet.create({
     color: COLORS.cardinal,
     fontFamily: 'Montserrat-Bold',
   },
+  seeAll: {
+    fontSize: '13@s',
+    fontFamily: 'Montserrat-Regular',
+    textDecorationLine: 'underline',
+    color: '#0089b8',
+  },
   list: {
     paddingLeft: '8@s',
   },

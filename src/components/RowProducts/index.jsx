@@ -34,7 +34,7 @@ const RowProducts = ({ title, array, busqueda }) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
-        <Text>See All</Text>
+        <Text style={styles.seeAll}>See All</Text>
       </View>
 
       <FlatList
