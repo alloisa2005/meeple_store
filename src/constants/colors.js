@@ -5,4 +5,5 @@ export const COLORS = {
   cardinal: '#CE2740',
   cardinalLight: '#ce2740',
   white: '#FFFFFF',
+  lightBlue: '#0089b8',
 };

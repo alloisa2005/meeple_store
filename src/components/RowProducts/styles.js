@@ -21,10 +21,10 @@ export const styles = ScaledSheet.create({
     fontFamily: 'Montserrat-Bold',
   },
   seeAll: {
-    fontSize: '13@s',
+    fontSize: '14@s',
     fontFamily: 'Montserrat-Regular',
     textDecorationLine: 'underline',
-    color: '#0089b8',
+    color: COLORS.lightBlue,
   },
   list: {
     paddingLeft: '8@s',

@@ -1,7 +1,6 @@
-import { useScrollToTop } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
-import { useSelector } from 'react-redux';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
 import {
@@ -12,7 +11,10 @@ import {
 import RowProductItem from '../RowProductItem';
 
 const RowProducts = ({ title, array, busqueda }) => {
+  const navigation = useNavigation();
   const [filteredArray, setFilteredArray] = useState([]);
+
+  const onHandlerGoToStore = () => {};
 
   useEffect(() => {
     switch (busqueda) {
@@ -34,7 +36,9 @@ const RowProducts = ({ title, array, busqueda }) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.seeAll}>See All</Text>
+        <TouchableOpacity onPress={onHandlerGoToStore}>
+          <Text style={styles.seeAll}>See All</Text>
+        </TouchableOpacity>
       </View>
 
       <FlatList
