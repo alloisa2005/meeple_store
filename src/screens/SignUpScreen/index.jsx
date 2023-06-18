@@ -65,7 +65,6 @@ const SignUpScreen = ({ navigation }) => {
         `http://api.positionstack.com/v1/reverse?access_key=${LOCATION_API_KEY}&query=${coords.lat},${coords.lng}&limit=1`
       );
       const data = await res.json();
-      console.log(data);
 
       setAddress(`${data.data[0].street} ${data.data[0].number}`);
     } catch (error) {

@@ -22,7 +22,8 @@ const ProductScreen = ({ navigation }) => {
     setResult(result);
   };
   const onHandlerGoBack = () => {
-    navigation.navigate('ShopNavigation', { screen: 'Shop' });
+    /* navigation.navigate('ShopNavigation', { screen: 'Shop' }); */
+    navigation.goBack();
   };
 
   const onHandlerAddToCart = () => {

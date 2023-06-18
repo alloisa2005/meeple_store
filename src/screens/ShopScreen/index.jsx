@@ -62,6 +62,7 @@ const ShopScreen = () => {
           renderItem={({ item }) => <CategoryItem item={item} />}
         />
       </View>
+
       <ScrollView style={{ flex: 1 }}>
         <RowProducts
           title={spanish ? 'Recién Añadidos' : 'Recently Added'}
@@ -89,23 +90,3 @@ const ShopScreen = () => {
 };
 
 export default ShopScreen;
-
-{
-  /* <Text style={styles.titleCat}>{spanish ? 'Productos' : 'Products'}</Text> */
-}
-{
-  /* Lista de Productos */
-}
-{
-  /* <View style={styles.listProdContainer}>
-        <FlatList
-          horizontal={false}
-          numColumns={2}
-          columnWrapperStyle={{}}
-          showsVerticalScrollIndicator={false}
-          data={products}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <ProductItem navigation={navigation} product={item} />}
-        />
-      </View> */
-}

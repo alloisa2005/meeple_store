@@ -20,7 +20,7 @@ const RatingComponent = ({ rating, starSize = 15, starColor = '#D5AB55' }) => {
   };
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 2 }}>
       {renderStars()}
     </View>
   );
