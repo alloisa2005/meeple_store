@@ -16,15 +16,22 @@ const StoreItem = ({ item }) => {
     navigation.navigate('ShopNavigation', { screen: 'Product' });
   };
 
+  const recortarTexto = (texto) => {
+    if (texto.length > 14) {
+      return texto.substring(0, 14) + '...';
+    }
+    return texto;
+  };
+
   return (
     <TouchableOpacity style={styles.container} onPress={onHandlerClick}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+      <View style={styles.imageContainer}>
         <Image source={{ uri: item.imgUrl }} style={styles.image} />
-        <View>
-          <Text style={styles.title}>{item.name}</Text>
-          <Text style={styles.price}>$ {item.price}</Text>
-          <RatingComponent rating={item.ratings} />
-        </View>
+      </View>
+      <View style={styles.contentContainer}>
+        <Text style={styles.title}>{recortarTexto(item.name)}</Text>
+        <Text style={styles.price}>$ {item.price}</Text>
+        <RatingComponent rating={item.ratings} />
       </View>
     </TouchableOpacity>
   );

@@ -1,7 +1,7 @@
 import { EvilIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { View, TextInput, FlatList } from 'react-native';
+import { View, TextInput, FlatList, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -59,9 +59,14 @@ const StoreScreen = () => {
 
       <View style={{ flex: 1, marginTop: 10 }}>
         <FlatList
+          numColumns={2}
           data={filteredData}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <StoreItem item={item} />}
+          ItemSeparatorComponent={() => (
+            <View style={{ width: 5, backgroundColor: COLORS.background }} />
+          )}
+          contentContainerStyle={{ backgroundColor: COLORS.background }}
         />
       </View>
     </View>

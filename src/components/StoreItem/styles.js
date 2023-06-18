@@ -6,24 +6,32 @@ export const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    marginBottom: '8@vs',
-    paddingHorizontal: '8@s',
-    paddingVertical: '8@vs',
-    borderRadius: '5@s',
+    margin: 5,
+    borderRadius: '10@s',
+    paddingVertical: '7@vs',
+  },
+  imageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   image: {
-    width: '65@s',
-    height: '65@vs',
+    width: '120@s',
+    height: '100@vs',
     resizeMode: 'contain',
+  },
+  contentContainer: {
+    marginTop: '6@vs',
+    paddingHorizontal: '7@s',
   },
   title: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: '14@s',
     color: COLORS.cardinal,
+    fontSize: '14@s',
   },
   price: {
-    color: COLORS.textGray,
     fontFamily: 'Montserrat-Bold',
-    fontSize: '13@s',
+    color: COLORS.textGray,
+    fontSize: '12@s',
+    marginBottom: '5@vs',
   },
 });
