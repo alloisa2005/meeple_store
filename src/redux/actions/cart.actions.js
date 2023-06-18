@@ -3,7 +3,7 @@ import {
   decrementProductFromCartFirebase,
   getCartFromFirebase,
   removeItemFromCartFirebase,
-} from '../../constants/firebase.js';
+} from '../../constants/firebaseFunctions';
 import { cartTypes } from '../types/cart.types';
 
 export const setCartAsync = (userId) => {

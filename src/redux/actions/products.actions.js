@@ -1,4 +1,4 @@
-import { FIREBASE_DB } from '../../constants/firebase.js';
+import { FIREBASE_DB } from '../../constants/firebase';
 import { productsTypes } from '../types/products.types';
 
 export const getProductsAsync = () => {

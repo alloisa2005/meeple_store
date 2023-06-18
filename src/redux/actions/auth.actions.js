@@ -1,9 +1,5 @@
-import {
-  FIREBASE_SIGNUP_URL,
-  FIREBASE_SIGNIN_URL,
-  FIREBASE_DB,
-  getFirebaseUser,
-} from '../../constants/firebase.js';
+import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL, FIREBASE_DB } from '../../constants/firebase.js';
+import { getFirebaseUser } from '../../constants/firebaseFunctions.js';
 import { uploadImageToCloudinary } from '../../utils/uploadImageCloudinary.js';
 import { authTypes } from '../types/auth.types';
 

@@ -22,7 +22,7 @@ const StoreItem = ({ item }) => {
         <Image source={{ uri: item.imgUrl }} style={styles.image} />
         <View>
           <Text style={styles.title}>{item.name}</Text>
-          <Text style={styles.title}>$ {item.price}</Text>
+          <Text style={styles.price}>$ {item.price}</Text>
           <RatingComponent rating={item.ratings} />
         </View>
       </View>

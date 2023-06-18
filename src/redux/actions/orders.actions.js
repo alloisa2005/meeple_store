@@ -3,7 +3,7 @@ import {
   addOrderToFirebase,
   deleteCartFromFirebase,
   getOrdersFromFirebase,
-} from '../../constants/firebase.js';
+} from '../../constants/firebaseFunctions';
 import { orderTypes } from '../types/orders.types';
 
 export const addOrderAsync = (userId, order) => {
