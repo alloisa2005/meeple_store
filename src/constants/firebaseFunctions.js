@@ -1,4 +1,4 @@
-import { FIREBASE_DB } from './firebase';
+import { FIREBASE_DB } from './firebase.js';
 
 export const getFirebaseUser = async (email) => {
   try {

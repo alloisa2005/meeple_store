@@ -84,6 +84,14 @@ export const styles = ScaledSheet.create({
     fontFamily: 'Montserrat-Regular',
     fontSize: '14@s',
   },
+  locationContainer: {
+    backgroundColor: 'white',
+    borderRadius: 50,
+    width: '27@s',
+    height: '27@vs',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   button: {
     backgroundColor: COLORS.cardinal,
     color: COLORS.textBlack,

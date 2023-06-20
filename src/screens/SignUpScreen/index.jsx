@@ -52,6 +52,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const onHandlerGetAddress = async () => {
     try {
+      setAddress('Buscando dirección...');
       const isLocationPermitted = await verifyPermissionsLocation();
       if (!isLocationPermitted) return;
 
@@ -59,15 +60,23 @@ const SignUpScreen = ({ navigation }) => {
         timeout: 5000,
       });
 
+      console.log('location: ', location);
+
       setCoords({ lat: location.coords.latitude, lng: location.coords.longitude });
 
-      const res = await fetch(
-        `http://api.positionstack.com/v1/reverse?access_key=${LOCATION_API_KEY}&query=${coords.lat},${coords.lng}&limit=1`
-      );
-      const data = await res.json();
+      try {
+        const res = await fetch(
+          `http://api.positionstack.com/v1/reverse?access_key=${LOCATION_API_KEY}&query=${coords.lat},${coords.lng}&limit=1`
+        );
+        const data = await res.json();
 
-      setAddress(`${data.data[0].street} ${data.data[0].number}`);
+        console.log('data: ', data);
+        setAddress(`${data.data[0].street} ${data.data[0].number}`);
+      } catch (error) {
+        setAddress('Intente nuevamente');
+      }
     } catch (error) {
+      console.log('error: ', error);
       setAddress('');
     }
   };
@@ -139,7 +148,7 @@ const SignUpScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.inputsContainer}>
-            <TouchableOpacity onPress={onHandlerGetAddress}>
+            <TouchableOpacity style={styles.locationContainer} onPress={onHandlerGetAddress}>
               <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
             </TouchableOpacity>
             <TextInput
@@ -151,7 +160,6 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setAddress(text)}
             />
           </View>
-
           <View style={styles.inputsContainer}>
             <Entypo name="lock" size={24} color={COLORS.cardinal} />
             <TextInput

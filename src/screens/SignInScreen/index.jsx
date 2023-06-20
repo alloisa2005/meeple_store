@@ -18,7 +18,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { getUserDB, insertUserDB } from '../../db';
 import { signIn } from '../../redux/actions/auth.actions';
 import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
 
