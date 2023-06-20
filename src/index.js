@@ -2,8 +2,18 @@ import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { Provider } from 'react-redux';
 
+import { init } from './db';
 import Navigation from './navigation';
 import store from './redux/store';
+
+init()
+  .then(() => {
+    console.log('Database initialized');
+  })
+  .catch((err) => {
+    console.log('Database failed to connect');
+    console.log(err);
+  });
 
 export default function App() {
   const [fontsLoaded] = useFonts({

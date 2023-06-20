@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { selectProduct } from '../../redux/actions/products.actions';
+import { recortarTexto } from '../../utils/recortarTexto';
 import RatingComponent from '../RatingStars';
 
 const RowProductItem = ({ item }) => {
@@ -20,7 +21,7 @@ const RowProductItem = ({ item }) => {
     <TouchableOpacity style={styles.container} onPress={onHandlerGoToDetail}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.imgUrl }} style={styles.image} />
-        <Text style={styles.title}>{item.name}</Text>
+        <Text style={styles.title}>{recortarTexto(item.name, 17)}</Text>
       </View>
       <View style={styles.descContainer}>
         <RatingComponent rating={item.ratings} />

@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
+import { getUserDB, insertUserDB } from '../../db';
 import { signIn } from '../../redux/actions/auth.actions';
 import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
 
@@ -39,7 +40,7 @@ const SignInScreen = () => {
     navigation.navigate('SignUp');
   };
 
-  const onHandleSignIn = (email, password) => {
+  const onHandleSignIn = async (email, password) => {
     if (!email || !password) {
       dispatch({
         type: 'SIGNIN_FAILURE',
@@ -72,10 +73,6 @@ const SignInScreen = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <ScrollView contentContainerStyle={styles.container}>
         {error && <MyAlert spanish={spanish} message={error} />}
-
-        {/* <View style={styles.flagContainer}>
-          <FlagComponent />
-        </View> */}
 
         <Image source={require('../../../assets/imgs/meeple3.png')} style={styles.image} />
         <Text style={styles.textTitle}>{spanish ? 'Bienvenido a' : 'Welcome to'}</Text>
