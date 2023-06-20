@@ -7,6 +7,7 @@ export const styles = ScaledSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
     paddingHorizontal: '13@s',
+    marginBottom: '10@vs',
   },
   userImageContainer: {
     position: 'relative',

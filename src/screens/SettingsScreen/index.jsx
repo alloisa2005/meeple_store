@@ -1,4 +1,4 @@
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, Foundation } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   View,
@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   Keyboard,
   TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -45,7 +46,7 @@ const SettingsScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {error && <MyAlert spanish={spanish} message={error} />}
         <View style={styles.userImageContainer}>
           {/* Imagen usuario */}
@@ -117,24 +118,18 @@ const SettingsScreen = () => {
         </View>
         <View style={styles.separator} />
 
-        {/* <View style={styles.preferencesItemContainer}>
-        <Text style={styles.preferencesItemTitle}>{spanish ? 'Modo Oscuro' : 'Dark Mode'}</Text>
-        <Switch
-          trackColor={{ false: '#767577', true: '#767577' }}
-          thumbColor={isEnabled ? COLORS.cardinal : '#f4f3f4'}
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
-      </View>
-      <View style={styles.separator} /> */}
+        <TouchableOpacity onPress={() => null} style={styles.preferencesItemContainer}>
+          <Text style={styles.preferencesItemTitle}>{spanish ? 'Estadísticas' : 'Statistics'}</Text>
+          <Foundation name="results-demographics" size={30} color={COLORS.cardinal} />
+        </TouchableOpacity>
+        <View style={styles.separator} />
 
         <TouchableOpacity onPress={onHanlerSignOut} style={styles.preferencesItemContainer}>
           <Text style={styles.preferencesItemTitle}>{spanish ? 'Cerrar Sesión' : 'LogOut'}</Text>
           <AntDesign name="logout" size={28} color={COLORS.cardinal} />
         </TouchableOpacity>
-
         <View style={styles.separator} />
-      </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };

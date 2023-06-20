@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import { CartScreen, OrdersScreen, SettingsScreen, ShopScreen } from '../../screens';
 import OrderNavigation from '../order';
+import SettingsNavigation from '../settings';
 import ShopNavigation from '../shop';
 
 const Tab = createBottomTabNavigator();
@@ -62,8 +63,8 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
+        name="SettingsNavigation"
+        component={SettingsNavigation}
         options={{
           title: spanish ? 'Preferencias de Usuario' : 'User Settings',
           headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold' },
