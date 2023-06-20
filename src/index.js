@@ -30,7 +30,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <Navigation>
-        <StatusBar hidden style="light" />
+        <StatusBar hidden style="auto" />
       </Navigation>
     </Provider>
   );
