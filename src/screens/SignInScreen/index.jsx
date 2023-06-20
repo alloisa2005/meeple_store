@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
+import { deleteUserDB, getUserDB, insertUserDB } from '../../db';
 import { signIn } from '../../redux/actions/auth.actions';
 import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
 
@@ -49,9 +50,14 @@ const SignInScreen = () => {
       const user = { email, password };
 
       if (isChecked) {
-        storeUser(user);
+        const result = await getUserDB();
+        const user = result.rows._array[0];
+
+        if (!user) {
+          await insertUserDB(email, password);
+        }
       } else {
-        removeUser();
+        await deleteUserDB(email);
       }
 
       dispatch(signIn(user));
@@ -59,13 +65,16 @@ const SignInScreen = () => {
   };
 
   useEffect(() => {
-    getUser().then((user) => {
+    const initUser = async () => {
+      const res = await getUserDB();
+      const user = res.rows._array[0];
       if (user) {
         setEmail(user.email);
-        setPassword(user.password);
+        setPassword(user.pass);
         setChecked(true);
       }
-    });
+    };
+    initUser();
   }, []);
 
   return (

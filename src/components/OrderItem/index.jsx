@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles';
 import { COLORS } from '../../constants/colors';
 import { selectOrder } from '../../redux/actions/orders.actions';
+import { recortarTexto } from '../../utils/recortarTexto';
 import { transformoFecha } from '../../utils/transformoFecha';
 
 const OrderItem = ({ order }) => {
@@ -78,7 +79,7 @@ const OrderItem = ({ order }) => {
                       <View style={styles.productImageContainer}>
                         <Image source={{ uri: item.imgUrl }} style={styles.productImage} />
                         <Text style={styles.productTitle}>
-                          {item.name} (x{item.quantity})
+                          {recortarTexto(item.name, 15)} (x{item.quantity})
                         </Text>
                       </View>
                       <Text style={styles.productSubTotal}>$ {item.quantity * item.price}</Text>
