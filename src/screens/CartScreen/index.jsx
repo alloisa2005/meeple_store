@@ -41,7 +41,7 @@ const CartScreen = () => {
   return (
     <View style={styles.container}>
       {/* Si no hay productos en el carrito muestro un msj */}
-      {cartQuantity === 0 ? (
+      {cart.length === 0 ? (
         <View style={styles.noItemContainer}>
           <Text style={styles.noItemText}>
             {spanish ? 'Carrito Vacío' : 'Cart has no products'}
