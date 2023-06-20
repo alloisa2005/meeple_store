@@ -116,3 +116,35 @@ export const signOut = () => {
     type: authTypes.SIGNOUT,
   };
 };
+
+export const updateUserAsync = (user) => {
+  return async (dispatch) => {
+    dispatch(loadingAuth());
+    try {
+      const response = await fetch(FIREBASE_DB + `users/${user.id}.json`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      await response.json();
+
+      dispatch(updateUser(user));
+    } catch (error) {
+      dispatch(
+        dispatch({
+          type: 'UPDATE_FAILURE',
+          payload: error.message,
+        })
+      );
+    }
+  };
+};
+
+export const updateUser = (user) => {
+  return {
+    type: authTypes.UPDATE_USER,
+    payload: user,
+  };
+};

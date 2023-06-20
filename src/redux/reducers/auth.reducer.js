@@ -37,6 +37,23 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+    case authTypes.UPDATE_USER:
+      return {
+        ...state,
+        loading: false,
+        user: {
+          ...state.user,
+          name: action.payload.name,
+          email: action.payload.email,
+          adress: action.payload.address,
+        },
+      };
+    case authTypes.UPDATE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     case authTypes.SIGNOUT:
       return {
         ...state,

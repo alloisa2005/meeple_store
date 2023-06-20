@@ -1,45 +1,42 @@
-import { AntDesign } from '@expo/vector-icons';
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Image, Switch } from 'react-native';
+import { AntDesign, Entypo } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, TextInput, ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
-import { FlagComponent } from '../../components';
+import { FlagComponent, MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { postFirebaseProduct, postToFirebase } from '../../constants/firebase.js';
-import { CATEGORIES } from '../../data/categories';
-import { PRODUCTS } from '../../data/products';
-import { signOut } from '../../redux/actions/auth.actions';
+import { signOut, updateUserAsync } from '../../redux/actions/auth.actions';
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.auth);
+  const { user, error, loading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
 
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [address, setAddress] = useState(user.address);
 
   const onHanlerSignOut = () => {
     dispatch(signOut());
   };
 
-  const initLoadData = () => {
-    PRODUCTS.forEach((product) => {
-      postToFirebase('products', product);
-    });
-
-    CATEGORIES.forEach((category) => {
-      postToFirebase('categories', category);
-    });
+  const onHandlerUpdateUser = () => {
+    if (name.trim() === '' || email.trim() === '' || address.trim() === '') {
+      dispatch({
+        type: 'UPDATE_FAILURE',
+        payload: 'Please, fill all the fields',
+      });
+    } else {
+      const updatedUser = { id: user.id, name, email, address };
+      dispatch(updateUserAsync(updatedUser));
+    }
   };
-
-  useEffect(() => {
-    //initLoadData();
-  }, []);
 
   return (
     <View style={styles.container}>
+      {error && <MyAlert spanish={spanish} message={error} />}
       <View style={styles.userImageContainer}>
         {/* Imagen usuario */}
         <View style={styles.imageContainer}>
@@ -50,10 +47,51 @@ const SettingsScreen = () => {
           )}
         </View>
 
-        {/* Boton Editar Perfil */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>
-        </TouchableOpacity>
+        <View style={styles.containerGlass}>
+          <View style={styles.inputsContainer}>
+            <AntDesign name="user" size={24} color={COLORS.cardinal} />
+            <TextInput
+              autoCapitalize="words"
+              autoCorrect={false}
+              placeholder={spanish ? 'Nombre' : 'Name'}
+              style={styles.textInput}
+              value={name}
+              onChangeText={(text) => setName(text)}
+            />
+          </View>
+
+          <View style={styles.inputsContainer}>
+            <Entypo name="email" size={24} color={COLORS.cardinal} />
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Email"
+              style={styles.textInput}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+          </View>
+
+          <View style={styles.inputsContainer}>
+            <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
+            <TextInput
+              autoCapitalize="words"
+              autoCorrect={false}
+              placeholder={spanish ? 'Dirección' : 'Address'}
+              style={styles.textInput}
+              value={address}
+              onChangeText={(text) => setAddress(text)}
+            />
+          </View>
+
+          <TouchableOpacity style={styles.button} onPress={onHandlerUpdateUser}>
+            {loading ? (
+              <ActivityIndicator size={22} color={COLORS.white} />
+            ) : (
+              <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Titulo Preferencias */}

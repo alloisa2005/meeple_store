@@ -160,6 +160,7 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setAddress(text)}
             />
           </View>
+
           <View style={styles.inputsContainer}>
             <Entypo name="lock" size={24} color={COLORS.cardinal} />
             <TextInput

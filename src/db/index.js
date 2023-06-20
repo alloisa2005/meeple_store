@@ -44,7 +44,7 @@ export const getUserDB = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM user',
+        'SELECT * FROM user;',
         [],
         (_, result) => {
           resolve(result);
@@ -64,6 +64,25 @@ export const deleteUserDB = (email) => {
     db.transaction((tx) => {
       tx.executeSql(
         'DELETE FROM user WHERE email = ?;',
+        [email],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+
+  return promise;
+};
+
+export const getUserByEmailDB = (email) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM user WHERE email = ?;',
         [email],
         (_, result) => {
           resolve(result);
