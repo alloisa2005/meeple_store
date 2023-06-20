@@ -15,6 +15,7 @@ import {
   removeItemFromCartAsync,
 } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
+import { recortarTexto } from '../../utils/recortarTexto';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const CartItem = ({ item }) => {
           )}
         </TouchableOpacity>
         <View style={styles.contentContainer}>
-          <Text style={styles.itemTitle}>{item.name}</Text>
+          <Text style={styles.itemTitle}>{recortarTexto(item.name, 20)}</Text>
           <Text style={styles.itemPrice}>$ {item.price * item.quantity}</Text>
           <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
             <TouchableOpacity

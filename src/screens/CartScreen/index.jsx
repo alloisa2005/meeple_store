@@ -35,7 +35,7 @@ const CartScreen = () => {
   };
 
   const onHandlerGoToShop = () => {
-    navigation.navigate('Shop');
+    navigation.navigate('ShopNavigation', { screen: 'Store' });
   };
 
   return (
