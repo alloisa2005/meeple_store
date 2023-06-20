@@ -20,7 +20,6 @@ import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { deleteUserDB, getUserByEmailDB, getUserDB, insertUserDB } from '../../db';
 import { signIn } from '../../redux/actions/auth.actions';
-import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
 
 const SignInScreen = () => {
   const dispatch = useDispatch();

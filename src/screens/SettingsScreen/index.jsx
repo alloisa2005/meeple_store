@@ -1,6 +1,15 @@
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  ActivityIndicator,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -35,79 +44,80 @@ const SettingsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {error && <MyAlert spanish={spanish} message={error} />}
-      <View style={styles.userImageContainer}>
-        {/* Imagen usuario */}
-        <View style={styles.imageContainer}>
-          {user.imageUrl ? (
-            <Image source={{ uri: user.imageUrl }} style={styles.image} />
-          ) : (
-            <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
-          )}
-        </View>
-
-        <View style={styles.containerGlass}>
-          <View style={styles.inputsContainer}>
-            <AntDesign name="user" size={24} color={COLORS.cardinal} />
-            <TextInput
-              autoCapitalize="words"
-              autoCorrect={false}
-              placeholder={spanish ? 'Nombre' : 'Name'}
-              style={styles.textInput}
-              value={name}
-              onChangeText={(text) => setName(text)}
-            />
-          </View>
-
-          <View style={styles.inputsContainer}>
-            <Entypo name="email" size={24} color={COLORS.cardinal} />
-            <TextInput
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholder="Email"
-              style={styles.textInput}
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-          </View>
-
-          <View style={styles.inputsContainer}>
-            <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
-            <TextInput
-              autoCapitalize="words"
-              autoCorrect={false}
-              placeholder={spanish ? 'Dirección' : 'Address'}
-              style={styles.textInput}
-              value={address}
-              onChangeText={(text) => setAddress(text)}
-            />
-          </View>
-
-          <TouchableOpacity style={styles.button} onPress={onHandlerUpdateUser}>
-            {loading ? (
-              <ActivityIndicator size={22} color={COLORS.white} />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        {error && <MyAlert spanish={spanish} message={error} />}
+        <View style={styles.userImageContainer}>
+          {/* Imagen usuario */}
+          <View style={styles.imageContainer}>
+            {user.imageUrl ? (
+              <Image source={{ uri: user.imageUrl }} style={styles.image} />
             ) : (
-              <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>
+              <Image source={require('../../../assets/imgs/userBlank.png')} style={styles.image} />
             )}
-          </TouchableOpacity>
+          </View>
+
+          <View style={styles.containerGlass}>
+            <View style={styles.inputsContainer}>
+              <AntDesign name="user" size={24} color={COLORS.cardinal} />
+              <TextInput
+                autoCapitalize="words"
+                autoCorrect={false}
+                placeholder={spanish ? 'Nombre' : 'Name'}
+                style={styles.textInput}
+                value={name}
+                onChangeText={(text) => setName(text)}
+              />
+            </View>
+
+            <View style={styles.inputsContainer}>
+              <Entypo name="email" size={24} color={COLORS.cardinal} />
+              <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholder="Email"
+                style={styles.textInput}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+
+            <View style={styles.inputsContainer}>
+              <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
+              <TextInput
+                autoCapitalize="words"
+                autoCorrect={false}
+                placeholder={spanish ? 'Dirección' : 'Address'}
+                style={styles.textInput}
+                value={address}
+                onChangeText={(text) => setAddress(text)}
+              />
+            </View>
+
+            <TouchableOpacity style={styles.button} onPress={onHandlerUpdateUser}>
+              {loading ? (
+                <ActivityIndicator size={21} color={COLORS.white} />
+              ) : (
+                <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
 
-      {/* Titulo Preferencias */}
-      <View style={styles.preferencesContainer}>
-        <Text style={styles.preferencesContainerTitle}>
-          {spanish ? 'Preferencias' : 'Preferences'}
-        </Text>
-      </View>
+        {/* Titulo Preferencias */}
+        <View style={styles.preferencesContainer}>
+          <Text style={styles.preferencesContainerTitle}>
+            {spanish ? 'Preferencias' : 'Preferences'}
+          </Text>
+        </View>
 
-      <View style={styles.preferencesItemContainer}>
-        <Text style={styles.preferencesItemTitle}>{spanish ? 'Idioma' : 'Language'}</Text>
-        <FlagComponent />
-      </View>
-      <View style={styles.separator} />
+        <View style={styles.preferencesItemContainer}>
+          <Text style={styles.preferencesItemTitle}>{spanish ? 'Idioma' : 'Language'}</Text>
+          <FlagComponent />
+        </View>
+        <View style={styles.separator} />
 
-      {/* <View style={styles.preferencesItemContainer}>
+        {/* <View style={styles.preferencesItemContainer}>
         <Text style={styles.preferencesItemTitle}>{spanish ? 'Modo Oscuro' : 'Dark Mode'}</Text>
         <Switch
           trackColor={{ false: '#767577', true: '#767577' }}
@@ -118,13 +128,14 @@ const SettingsScreen = () => {
       </View>
       <View style={styles.separator} /> */}
 
-      <TouchableOpacity onPress={onHanlerSignOut} style={styles.preferencesItemContainer}>
-        <Text style={styles.preferencesItemTitle}>{spanish ? 'Cerrar Sesión' : 'LogOut'}</Text>
-        <AntDesign name="logout" size={28} color={COLORS.cardinal} />
-      </TouchableOpacity>
+        <TouchableOpacity onPress={onHanlerSignOut} style={styles.preferencesItemContainer}>
+          <Text style={styles.preferencesItemTitle}>{spanish ? 'Cerrar Sesión' : 'LogOut'}</Text>
+          <AntDesign name="logout" size={28} color={COLORS.cardinal} />
+        </TouchableOpacity>
 
-      <View style={styles.separator} />
-    </View>
+        <View style={styles.separator} />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
