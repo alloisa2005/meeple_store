@@ -1,4 +1,5 @@
 import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import Checkbox from 'expo-checkbox';
 import React, { useEffect, useState } from 'react';
 import {
@@ -17,13 +18,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { FIREBASE_DB, postFirebaseProduct } from '../../constants/firebase.js';
-import { PRODUCTS } from '../../data/products';
 import { signIn } from '../../redux/actions/auth.actions';
 import { storeUser, getUser, removeUser } from '../../utils/userAsyncStorage';
 
-const SignInScreen = ({ navigation }) => {
+const SignInScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const { error, loading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
@@ -32,12 +32,12 @@ const SignInScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
 
+  const onChangeEmail = (val) => setEmail(val);
+  const onChangePassword = (val) => setPassword(val);
+
   const goToSignUpScreen = () => {
     navigation.navigate('SignUp');
   };
-
-  const onChangeEmail = (val) => setEmail(val);
-  const onChangePassword = (val) => setPassword(val);
 
   const onHandleSignIn = (email, password) => {
     if (!email || !password) {
@@ -46,10 +46,7 @@ const SignInScreen = ({ navigation }) => {
         payload: 'Please, fill all the fields',
       });
     } else {
-      const user = {
-        email,
-        password,
-      };
+      const user = { email, password };
 
       if (isChecked) {
         storeUser(user);

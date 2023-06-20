@@ -14,7 +14,7 @@ export const getUser = async () => {
     const jsonValue = await AsyncStorage.getItem('user');
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
-    // error reading value
+    return null;
   }
 };
 

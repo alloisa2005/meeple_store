@@ -69,7 +69,7 @@ const SettingsScreen = () => {
       </View>
       <View style={styles.separator} />
 
-      <View style={styles.preferencesItemContainer}>
+      {/* <View style={styles.preferencesItemContainer}>
         <Text style={styles.preferencesItemTitle}>{spanish ? 'Modo Oscuro' : 'Dark Mode'}</Text>
         <Switch
           trackColor={{ false: '#767577', true: '#767577' }}
@@ -78,7 +78,7 @@ const SettingsScreen = () => {
           value={isEnabled}
         />
       </View>
-      <View style={styles.separator} />
+      <View style={styles.separator} /> */}
 
       <TouchableOpacity onPress={onHanlerSignOut} style={styles.preferencesItemContainer}>
         <Text style={styles.preferencesItemTitle}>{spanish ? 'Cerrar Sesión' : 'LogOut'}</Text>

@@ -81,7 +81,7 @@ const ShopScreen = () => {
         />
         <View style={styles.btnContainer}>
           <TouchableOpacity onPress={onHanlderGoToStore}>
-            <Text style={styles.btn}>{spanish ? 'Visita nuestra tienda' : 'Visit our store'}</Text>
+            <Text style={styles.btn}>{spanish ? 'Busca tu juego' : 'Find your game'}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
