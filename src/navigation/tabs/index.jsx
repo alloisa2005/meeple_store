@@ -66,8 +66,9 @@ const TabNavigation = () => {
         name="SettingsNavigation"
         component={SettingsNavigation}
         options={{
-          title: spanish ? 'Preferencias de Usuario' : 'User Settings',
-          headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold' },
+          headerShown: false,
+          /* title: spanish ? 'Preferencias de Usuario' : 'User Settings',
+          headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold' }, */
           tabBarLabel: spanish ? 'Preferencias' : 'Settings',
           tabBarLabelStyle: styles.tabBarLabelStyle,
           tabBarIcon: ({ focused, color, size }) => (

@@ -8,6 +8,7 @@ import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
+import { recortarTexto } from '../../utils/recortarTexto';
 import RatingComponent from '../RatingStars';
 
 const ProductCategoryItem = ({ item }) => {
@@ -35,7 +36,7 @@ const ProductCategoryItem = ({ item }) => {
         )}
 
         <View>
-          <Text style={styles.itemTitle}>{item.name}</Text>
+          <Text style={styles.itemTitle}>{recortarTexto(item.name, 18)}</Text>
           <Text style={styles.itemPrice}>$ {item.price}</Text>
           <RatingComponent rating={item.ratings} />
         </View>

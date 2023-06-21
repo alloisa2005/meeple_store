@@ -1,5 +1,6 @@
 import { AntDesign, Entypo, Foundation } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -20,6 +21,7 @@ import { signOut, updateUserAsync } from '../../redux/actions/auth.actions';
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const { user, error, loading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
@@ -27,6 +29,19 @@ const SettingsScreen = () => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [address, setAddress] = useState(user.address);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerTitle: spanish ? 'Preferencias de Usuario' : 'User Settings',
+      headerTitleStyle: {
+        color: COLORS.cardinal,
+        fontFamily: 'Montserrat-Bold',
+      },
+      headerShadowVisible: false,
+      headerStyle: { backgroundColor: COLORS.background },
+    });
+  }, [spanish]);
 
   const onHanlerSignOut = () => {
     dispatch(signOut());
@@ -42,6 +57,10 @@ const SettingsScreen = () => {
       const updatedUser = { id: user.id, name, email, address };
       dispatch(updateUserAsync(updatedUser));
     }
+  };
+
+  const onHandlerGoToStatistics = () => {
+    navigation.navigate('SettingsNavigation', { screen: 'Statics' });
   };
 
   return (
@@ -118,7 +137,7 @@ const SettingsScreen = () => {
         </View>
         <View style={styles.separator} />
 
-        <TouchableOpacity onPress={() => null} style={styles.preferencesItemContainer}>
+        <TouchableOpacity onPress={onHandlerGoToStatistics} style={styles.preferencesItemContainer}>
           <Text style={styles.preferencesItemTitle}>{spanish ? 'Estadísticas' : 'Statistics'}</Text>
           <Foundation name="results-demographics" size={30} color={COLORS.cardinal} />
         </TouchableOpacity>
