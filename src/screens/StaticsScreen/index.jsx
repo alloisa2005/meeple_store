@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
+import { separadorDeMiles } from '../../utils/separadorMiles';
 
 const StaticsScreen = () => {
   const navigation = useNavigation();
@@ -52,37 +53,19 @@ const StaticsScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: 8,
-        }}>
-        <Text>Compras Realizadas:</Text>
-        <Text>{totalOrders}</Text>
+      <View style={styles.groupContainer}>
+        <Text style={styles.title}>Compras Realizadas:</Text>
+        <Text style={styles.titleDetail}>{separadorDeMiles(totalOrders, '.')}</Text>
       </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: 8,
-        }}>
-        <Text>Monto Gastado:</Text>
-        <Text>{totalAmountOrders()}</Text>
+      <View style={styles.groupContainer}>
+        <Text style={styles.title}>Monto Gastado:</Text>
+        <Text style={styles.titleDetail}>$ {separadorDeMiles(totalAmountOrders(), '.')}</Text>
       </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: 8,
-        }}>
-        <Text>Mayor Compra:</Text>
-        <Text>{mayorCompra()}</Text>
+      <View style={styles.groupContainer}>
+        <Text style={styles.title}>Mayor Compra:</Text>
+        <Text style={styles.titleDetail}>$ {separadorDeMiles(mayorCompra(), '.')}</Text>
       </View>
     </ScrollView>
   );

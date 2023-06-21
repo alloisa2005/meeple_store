@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
 import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
+import { separadorDeMiles } from '../../utils/separadorMiles';
 import RatingComponent from '../RatingStars';
 
 const ProductItem = ({ navigation, product }) => {
@@ -38,7 +39,7 @@ const ProductItem = ({ navigation, product }) => {
 
         <View style={styles.titleContainer}>
           <RatingComponent rating={product.ratings} />
-          <Text style={styles.productPrice}>$ {product.price}</Text>
+          <Text style={styles.productPrice}>$ {separadorDeMiles(product.price, '.')}</Text>
         </View>
 
         <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>

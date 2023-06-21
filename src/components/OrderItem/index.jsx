@@ -8,6 +8,7 @@ import styles from './styles';
 import { COLORS } from '../../constants/colors';
 import { selectOrder } from '../../redux/actions/orders.actions';
 import { recortarTexto } from '../../utils/recortarTexto';
+import { separadorDeMiles } from '../../utils/separadorMiles';
 import { transformoFecha } from '../../utils/transformoFecha';
 
 const OrderItem = ({ order }) => {
@@ -36,7 +37,7 @@ const OrderItem = ({ order }) => {
           </Text>
           <Text style={styles.titleDetail}>
             {spanish ? 'Monto Total ($): ' : 'Total Amount ($): '}
-            <Text style={styles.titleContent}>{order.total}</Text>
+            <Text style={styles.titleContent}>{separadorDeMiles(order.total, '.')}</Text>
           </Text>
         </View>
 
@@ -63,7 +64,10 @@ const OrderItem = ({ order }) => {
               </Text>
               <Text style={styles.detailTitle}>
                 {spanish ? 'Monto Total ($):' : 'Total Amount ($):'}
-                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}> {order.total}</Text>
+                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}>
+                  {' '}
+                  {separadorDeMiles(order.total, '.')}
+                </Text>
               </Text>
             </View>
 
@@ -79,10 +83,12 @@ const OrderItem = ({ order }) => {
                       <View style={styles.productImageContainer}>
                         <Image source={{ uri: item.imgUrl }} style={styles.productImage} />
                         <Text style={styles.productTitle}>
-                          {recortarTexto(item.name, 15)} (x{item.quantity})
+                          {recortarTexto(item.name, 14)} (x{item.quantity})
                         </Text>
                       </View>
-                      <Text style={styles.productSubTotal}>$ {item.quantity * item.price}</Text>
+                      <Text style={styles.productSubTotal}>
+                        $ {separadorDeMiles(item.quantity * item.price, '.')}
+                      </Text>
                     </View>
                   )}
                 />

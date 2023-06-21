@@ -9,6 +9,7 @@ import { COLORS } from '../../constants/colors';
 import { addItemToCartAsync } from '../../redux/actions/cart.actions';
 import { selectProduct } from '../../redux/actions/products.actions';
 import { recortarTexto } from '../../utils/recortarTexto';
+import { separadorDeMiles } from '../../utils/separadorMiles';
 import RatingComponent from '../RatingStars';
 
 const ProductCategoryItem = ({ item }) => {
@@ -37,7 +38,7 @@ const ProductCategoryItem = ({ item }) => {
 
         <View>
           <Text style={styles.itemTitle}>{recortarTexto(item.name, 18)}</Text>
-          <Text style={styles.itemPrice}>$ {item.price}</Text>
+          <Text style={styles.itemPrice}>$ {separadorDeMiles(item.price, '.')}</Text>
           <RatingComponent rating={item.ratings} />
         </View>
       </TouchableOpacity>

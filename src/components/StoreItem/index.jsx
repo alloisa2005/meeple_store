@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { selectProduct } from '../../redux/actions/products.actions';
 import { recortarTexto } from '../../utils/recortarTexto';
+import { separadorDeMiles } from '../../utils/separadorMiles';
 import RatingComponent from '../RatingStars';
 
 const StoreItem = ({ item }) => {
@@ -31,7 +32,7 @@ const StoreItem = ({ item }) => {
       </View>
       <View style={styles.contentContainer}>
         <Text style={styles.title}>{recortarTexto(item.name, 14)}</Text>
-        <Text style={styles.price}>$ {item.price}</Text>
+        <Text style={styles.price}>$ {separadorDeMiles(item.price, '.')}</Text>
         <RatingComponent rating={item.ratings} />
       </View>
     </TouchableOpacity>

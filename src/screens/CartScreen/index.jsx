@@ -8,6 +8,8 @@ import { styles } from './styles';
 import { CartItem } from '../../components';
 import { COLORS } from '../../constants/colors';
 import { addOrderAsync } from '../../redux/actions/orders.actions';
+import { recortarTexto } from '../../utils/recortarTexto';
+import { separadorDeMiles } from '../../utils/separadorMiles';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -65,7 +67,7 @@ const CartScreen = () => {
         <View style={styles.cartResumen}>
           <View>
             <Text style={styles.totalAmount}>
-              {spanish ? 'Monto Total' : 'Total Amount'}: $ {cartTotal}
+              {spanish ? 'Monto Total' : 'Total Amount'}: $ {separadorDeMiles(cartTotal, '.')}
             </Text>
             <Text style={styles.products}>
               {spanish ? 'Productos' : 'Products'}: {cartQuantity}
@@ -113,7 +115,10 @@ const CartScreen = () => {
               </Text>
               <Text style={styles.detailTitle}>
                 {spanish ? 'Monto Total ($):' : 'Total Amount ($):'}
-                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}> {cartTotal}</Text>
+                <Text style={{ color: COLORS.cardinal, fontSize: 18 }}>
+                  {' '}
+                  {separadorDeMiles(cartTotal, '.')}
+                </Text>
               </Text>
             </View>
 
