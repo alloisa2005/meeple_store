@@ -28,8 +28,15 @@ export const styles = ScaledSheet.create({
     color: COLORS.cardinal,
   },
   graficaContainer: {
-    height: 470,
-    paddingTop: 5,
+    height: '470@vs',
+    paddingTop: '5@vs',
+    marginTop: '6@vs',
+  },
+  graficaTitle: {
+    textAlign: 'center',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '17@s',
+    color: COLORS.cardinal,
   },
   grafica: {
     flex: 1,

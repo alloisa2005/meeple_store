@@ -10,3 +10,4 @@ export { default as OrderItem } from './OrderItem';
 export { default as RowProducts } from './RowProducts';
 export { default as RowProductItem } from './RowProductItem';
 export { default as StoreItem } from './StoreItem';
+export { default as MyGraph } from './MyGraph';
