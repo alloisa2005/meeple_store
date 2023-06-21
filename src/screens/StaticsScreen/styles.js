@@ -35,7 +35,7 @@ export const styles = ScaledSheet.create({
   graficaTitle: {
     textAlign: 'center',
     fontFamily: 'Montserrat-Bold',
-    fontSize: '17@s',
+    fontSize: '16@s',
     color: COLORS.cardinal,
   },
   grafica: {
