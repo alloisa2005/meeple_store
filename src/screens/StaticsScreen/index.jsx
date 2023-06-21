@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView, Dimensions } from 'react-native';
+import { BarChart, LineChart } from 'react-native-chart-kit';
 import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -13,6 +14,7 @@ const StaticsScreen = () => {
 
   const { spanish } = useSelector((state) => state.language);
   const { orders } = useSelector((state) => state.orders);
+  const [agrupado, setAgrupado] = useState([]);
 
   const totalOrders = orders.length;
 
@@ -39,8 +41,8 @@ const StaticsScreen = () => {
   };
 
   useEffect(() => {
-    const agrupado = agruparRegistrosPorFecha(orders);
-    console.log('agrupado', agrupado);
+    const datos = agruparRegistrosPorFecha(orders);
+    setAgrupado(datos);
   }, []);
 
   useEffect(() => {
@@ -74,21 +76,38 @@ const StaticsScreen = () => {
         <Text style={styles.titleDetail}>$ {separadorDeMiles(mayorCompra(), '.')}</Text>
       </View>
 
-      <View
-        style={{
-          height: 470,
-          paddingTop: 5,
-          backgroundColor: COLORS.textGray,
-        }}>
+      <View style={styles.graficaContainer}>
         <Text style={{ textAlign: 'center' }}>Grafico de Compras</Text>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'blue',
-          }}>
-          <Text>Aca la grafica</Text>
+        <View style={styles.grafica}>
+          {agrupado.length > 0 && (
+            <LineChart
+              data={{
+                labels: agrupado.map((item) => item.fecha),
+                datasets: [{ data: agrupado.map((item) => item.total) }],
+              }}
+              width={Dimensions.get('window').width} // from react-native
+              height={400}
+              yAxisLabel="$"
+              yAxisInterval={1} // optional, defaults to 1
+              chartConfig={{
+                backgroundColor: COLORS.background,
+                backgroundGradientFrom: COLORS.background,
+                backgroundGradientTo: COLORS.background,
+                decimalPlaces: 0, // optional, defaults to 2dp
+                color: (opacity = 1) => COLORS.cardinal,
+                labelColor: (opacity = 1) => COLORS.cardinal,
+                style: {
+                  borderRadius: 16,
+                },
+                propsForDots: {
+                  r: '6',
+                  strokeWidth: '3',
+                  stroke: COLORS.cardinal,
+                },
+              }}
+              bezier
+            />
+          )}
         </View>
       </View>
     </ScrollView>

@@ -27,4 +27,13 @@ export const styles = ScaledSheet.create({
     fontFamily: 'Montserrat-Bold',
     color: COLORS.cardinal,
   },
+  graficaContainer: {
+    height: 470,
+    paddingTop: 5,
+  },
+  grafica: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
