@@ -67,6 +67,24 @@ const StaticsScreen = () => {
         <Text style={styles.title}>Mayor Compra:</Text>
         <Text style={styles.titleDetail}>$ {separadorDeMiles(mayorCompra(), '.')}</Text>
       </View>
+
+      <View
+        style={{
+          height: 470,
+          paddingTop: 5,
+          backgroundColor: COLORS.textGray,
+        }}>
+        <Text style={{ textAlign: 'center' }}>Grafico de Compras</Text>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'blue',
+          }}>
+          <Text>Aca la grafica</Text>
+        </View>
+      </View>
     </ScrollView>
   );
 };

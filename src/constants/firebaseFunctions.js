@@ -190,3 +190,17 @@ export const deleteCartFromFirebase = async (userId) => {
     return null;
   }
 };
+
+export const updateUserFirebase = async (user) => {
+  try {
+    await fetch(FIREBASE_DB + `users/${user.id}.json`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+  } catch (e) {
+    return null;
+  }
+};

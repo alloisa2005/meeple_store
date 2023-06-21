@@ -1,5 +1,5 @@
 import { FIREBASE_SIGNUP_URL, FIREBASE_SIGNIN_URL, FIREBASE_DB } from '../../constants/firebase.js';
-import { getFirebaseUser } from '../../constants/firebaseFunctions.js';
+import { getFirebaseUser, updateUserFirebase } from '../../constants/firebaseFunctions.js';
 import { uploadImageToCloudinary } from '../../utils/uploadImageCloudinary.js';
 import { authTypes } from '../types/auth.types';
 
@@ -121,15 +121,7 @@ export const updateUserAsync = (user) => {
   return async (dispatch) => {
     dispatch(loadingAuth());
     try {
-      const response = await fetch(FIREBASE_DB + `users/${user.id}.json`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-      await response.json();
-
+      await updateUserFirebase(user);
       dispatch(updateUser(user));
     } catch (error) {
       dispatch(

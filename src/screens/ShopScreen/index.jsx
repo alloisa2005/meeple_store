@@ -24,7 +24,7 @@ const ShopScreen = () => {
   }, []);
 
   const onHandlerGoToSettings = () => {
-    navigation.navigate('Settings');
+    navigation.navigate('SettingsNavigation');
   };
 
   const onHanlderGoToStore = () => {
