@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { styles } from './styles';
 import { COLORS } from '../../constants/colors';
+import { agruparRegistrosPorFecha } from '../../utils/arraysFunciones';
 import { separadorDeMiles } from '../../utils/separadorMiles';
 
 const StaticsScreen = () => {
@@ -36,6 +37,11 @@ const StaticsScreen = () => {
     });
     return montoMayor;
   };
+
+  useEffect(() => {
+    const agrupado = agruparRegistrosPorFecha(orders);
+    console.log('agrupado', agrupado);
+  }, []);
 
   useEffect(() => {
     navigation.setOptions({
