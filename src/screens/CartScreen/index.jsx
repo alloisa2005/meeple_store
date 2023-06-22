@@ -27,11 +27,12 @@ const CartScreen = () => {
 
   const onHandlerAddOrder = () => {
     const order = {
-      products: cart,
+      products: cart.filter((item) => item.quantity > 0), // Solo agrego los productos que tienen cantidad mayor a 0
       total: cartTotal,
       quantity: cartQuantity,
       date: new Date(),
     };
+
     dispatch(addOrderAsync(user.id, order));
     setShowModal(false);
   };
