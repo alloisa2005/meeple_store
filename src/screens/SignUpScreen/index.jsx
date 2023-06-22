@@ -92,6 +92,11 @@ const SignUpScreen = ({ navigation }) => {
         type: 'SIGNUP_FAILURE',
         payload: 'Please, fill all the fields',
       });
+    } else if (!pickedUrl) {
+      dispatch({
+        type: 'SIGNUP_FAILURE',
+        payload: 'USER IMAGE',
+      });
     } else {
       const user = { name, email, address, password, pickedUrl };
       dispatch(signUp(user));
