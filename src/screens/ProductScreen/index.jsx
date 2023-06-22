@@ -23,7 +23,6 @@ const ProductScreen = ({ navigation }) => {
     setResult(result);
   };
   const onHandlerGoBack = () => {
-    /* navigation.navigate('ShopNavigation', { screen: 'Shop' }); */
     navigation.goBack();
   };
 
@@ -43,7 +42,7 @@ const ProductScreen = ({ navigation }) => {
 
         <Text style={styles.productTitle}>{product.name}</Text>
         <TouchableOpacity style={styles.arrow} onPress={onHandlerGoBack}>
-          <AntDesign name="arrowleft" size={35} color={COLORS.white} />
+          <AntDesign name="arrowleft" size={26} color={COLORS.cardinal} />
         </TouchableOpacity>
       </View>
 

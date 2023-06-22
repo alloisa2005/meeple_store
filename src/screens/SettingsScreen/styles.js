@@ -94,7 +94,7 @@ export const styles = ScaledSheet.create({
     paddingHorizontal: '10@s',
     paddingVertical: '6@vs',
     flex: 1,
-    fontFamily: 'Montserrat-Regular',
+    fontFamily: 'Montserrat-Bold',
     fontSize: '14@s',
   },
 });

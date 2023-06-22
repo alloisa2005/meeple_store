@@ -94,6 +94,7 @@ const SettingsScreen = () => {
               <Entypo name="email" size={24} color={COLORS.cardinal} />
               <TextInput
                 autoCapitalize="none"
+                editable={false}
                 autoCorrect={false}
                 placeholder="Email"
                 style={styles.textInput}

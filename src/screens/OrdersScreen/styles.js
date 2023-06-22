@@ -8,4 +8,9 @@ export const styles = ScaledSheet.create({
     backgroundColor: COLORS.background,
     paddingHorizontal: '10@s',
   },
+  msg: {
+    fontSize: '20@s',
+    fontFamily: 'Montserrat-Bold',
+    color: COLORS.cardinal,
+  },
 });
