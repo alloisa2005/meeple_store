@@ -28,9 +28,9 @@ export const styles = ScaledSheet.create({
     color: COLORS.cardinal,
   },
   graficaContainer: {
-    height: '470@vs',
+    flex: 1,
     paddingTop: '5@vs',
-    marginTop: '6@vs',
+    marginVertical: '6@vs',
   },
   graficaTitle: {
     textAlign: 'center',
@@ -39,8 +39,17 @@ export const styles = ScaledSheet.create({
     color: COLORS.cardinal,
   },
   grafica: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noItemContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  noItemTitle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: '20@s',
+    color: COLORS.cardinal,
   },
 });

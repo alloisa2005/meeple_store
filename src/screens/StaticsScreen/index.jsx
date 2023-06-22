@@ -60,7 +60,7 @@ const StaticsScreen = () => {
   }, [spanish]);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.groupContainer}>
         <Text style={styles.title}>{spanish ? 'Compras Realizadas:' : 'Purchases Made'}</Text>
         <Text style={styles.titleDetail}>{separadorDeMiles(totalOrders)}</Text>
@@ -78,11 +78,20 @@ const StaticsScreen = () => {
 
       <View style={styles.graficaContainer}>
         <Text style={styles.graficaTitle}>Gráfico de Compras</Text>
-        <View style={styles.grafica}>
-          {arrayGrafica.length > 0 ? <MyGraph array={arrayGrafica} /> : null}
-        </View>
+
+        {arrayGrafica.length > 0 ? (
+          <View style={styles.grafica}>
+            <MyGraph array={arrayGrafica} />
+          </View>
+        ) : (
+          <View style={styles.noItemContainer}>
+            <Text style={styles.noItemTitle}>
+              {spanish ? 'No ha realizado compras' : 'No purchases'}
+            </Text>
+          </View>
+        )}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
