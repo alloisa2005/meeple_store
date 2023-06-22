@@ -37,7 +37,7 @@ const OrderItem = ({ order }) => {
           </Text>
           <Text style={styles.titleDetail}>
             {spanish ? 'Monto Total ($): ' : 'Total Amount ($): '}
-            <Text style={styles.titleContent}>{separadorDeMiles(order.total, '.')}</Text>
+            <Text style={styles.titleContent}>{separadorDeMiles(order.total)}</Text>
           </Text>
         </View>
 
@@ -66,7 +66,7 @@ const OrderItem = ({ order }) => {
                 {spanish ? 'Monto Total ($):' : 'Total Amount ($):'}
                 <Text style={{ color: COLORS.cardinal, fontSize: 18 }}>
                   {' '}
-                  {separadorDeMiles(order.total, '.')}
+                  {separadorDeMiles(order.total)}
                 </Text>
               </Text>
             </View>
@@ -87,7 +87,7 @@ const OrderItem = ({ order }) => {
                         </Text>
                       </View>
                       <Text style={styles.productSubTotal}>
-                        $ {separadorDeMiles(item.quantity * item.price, '.')}
+                        $ {separadorDeMiles(item.quantity * item.price)}
                       </Text>
                     </View>
                   )}

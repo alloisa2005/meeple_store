@@ -38,7 +38,7 @@ const ProductCategoryItem = ({ item }) => {
 
         <View>
           <Text style={styles.itemTitle}>{recortarTexto(item.name, 18)}</Text>
-          <Text style={styles.itemPrice}>$ {separadorDeMiles(item.price, '.')}</Text>
+          <Text style={styles.itemPrice}>$ {separadorDeMiles(item.price)}</Text>
           <RatingComponent rating={item.ratings} />
         </View>
       </TouchableOpacity>

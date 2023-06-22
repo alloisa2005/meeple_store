@@ -63,17 +63,17 @@ const StaticsScreen = () => {
     <ScrollView style={styles.container}>
       <View style={styles.groupContainer}>
         <Text style={styles.title}>{spanish ? 'Compras Realizadas:' : 'Purchases Made'}</Text>
-        <Text style={styles.titleDetail}>{separadorDeMiles(totalOrders, '.')}</Text>
+        <Text style={styles.titleDetail}>{separadorDeMiles(totalOrders)}</Text>
       </View>
 
       <View style={styles.groupContainer}>
         <Text style={styles.title}>{spanish ? 'Monto Gastado:' : 'Total Spent:'}</Text>
-        <Text style={styles.titleDetail}>$ {separadorDeMiles(totalAmountOrders(), '.')}</Text>
+        <Text style={styles.titleDetail}>$ {separadorDeMiles(totalAmountOrders())}</Text>
       </View>
 
       <View style={styles.groupContainer}>
         <Text style={styles.title}>{spanish ? 'Mayor Compra:' : 'Biggest Purchase:'}</Text>
-        <Text style={styles.titleDetail}>$ {separadorDeMiles(mayorCompra(), '.')}</Text>
+        <Text style={styles.titleDetail}>$ {separadorDeMiles(mayorCompra())}</Text>
       </View>
 
       <View style={styles.graficaContainer}>

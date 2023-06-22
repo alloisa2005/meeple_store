@@ -39,7 +39,7 @@ const ProductItem = ({ navigation, product }) => {
 
         <View style={styles.titleContainer}>
           <RatingComponent rating={product.ratings} />
-          <Text style={styles.productPrice}>$ {separadorDeMiles(product.price, '.')}</Text>
+          <Text style={styles.productPrice}>$ {separadorDeMiles(product.price)}</Text>
         </View>
 
         <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>

@@ -80,7 +80,7 @@ const ProductScreen = ({ navigation }) => {
 
         {/* Price and Add To Cart */}
         <View style={styles.priceContainer}>
-          <Text style={styles.priceText}>$ {separadorDeMiles(product.price, '.')}</Text>
+          <Text style={styles.priceText}>$ {separadorDeMiles(product.price)}</Text>
           <TouchableOpacity style={styles.addToCartBtn} onPress={onHandlerAddToCart}>
             <Entypo name="plus" size={24} color={COLORS.white} />
             <Text style={styles.btnText}>{spanish ? 'Añadir al Carrito' : 'Add To Cart'}</Text>

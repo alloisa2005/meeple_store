@@ -26,7 +26,7 @@ const RowProductItem = ({ item }) => {
       </View>
       <View style={styles.descContainer}>
         <RatingComponent rating={item.ratings} />
-        <Text style={styles.price}>$ {separadorDeMiles(item.price, '.')}</Text>
+        <Text style={styles.price}>$ {separadorDeMiles(item.price)}</Text>
       </View>
     </TouchableOpacity>
   );

@@ -1,4 +1,4 @@
-export const separadorDeMiles = (numero, separador) => {
+export const separadorDeMiles = (numero) => {
   // Convertir el número a una cadena de texto
   const numeroString = numero.toString();
 
@@ -12,7 +12,7 @@ export const separadorDeMiles = (numero, separador) => {
   for (let i = parteEntera.length - 1; i >= 0; i--) {
     separado = parteEntera.charAt(i) + separado;
     if (i > 0 && (parteEntera.length - i) % 3 === 0) {
-      separado = separador + separado;
+      separado = '.' + separado;
     }
   }
 

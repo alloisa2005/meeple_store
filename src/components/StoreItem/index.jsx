@@ -32,7 +32,7 @@ const StoreItem = ({ item }) => {
       </View>
       <View style={styles.contentContainer}>
         <Text style={styles.title}>{recortarTexto(item.name, 14)}</Text>
-        <Text style={styles.price}>$ {separadorDeMiles(item.price, '.')}</Text>
+        <Text style={styles.price}>$ {separadorDeMiles(item.price)}</Text>
         <RatingComponent rating={item.ratings} />
       </View>
     </TouchableOpacity>

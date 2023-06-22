@@ -54,9 +54,7 @@ const CartItem = ({ item }) => {
         </TouchableOpacity>
         <View style={styles.contentContainer}>
           <Text style={styles.itemTitle}>{recortarTexto(item.name, 20)}</Text>
-          <Text style={styles.itemPrice}>
-            $ {separadorDeMiles(item.price * item.quantity, '.')}
-          </Text>
+          <Text style={styles.itemPrice}>$ {separadorDeMiles(item.price * item.quantity)}</Text>
           <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
             <TouchableOpacity
               disabled={item.quantity === 0}

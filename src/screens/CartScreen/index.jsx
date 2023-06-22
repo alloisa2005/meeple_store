@@ -67,7 +67,7 @@ const CartScreen = () => {
         <View style={styles.cartResumen}>
           <View>
             <Text style={styles.totalAmount}>
-              {spanish ? 'Monto Total' : 'Total Amount'}: $ {separadorDeMiles(cartTotal, '.')}
+              {spanish ? 'Monto Total' : 'Total Amount'}: $ {separadorDeMiles(cartTotal)}
             </Text>
             <Text style={styles.products}>
               {spanish ? 'Productos' : 'Products'}: {cartQuantity}
@@ -117,7 +117,7 @@ const CartScreen = () => {
                 {spanish ? 'Monto Total ($):' : 'Total Amount ($):'}
                 <Text style={{ color: COLORS.cardinal, fontSize: 18 }}>
                   {' '}
-                  {separadorDeMiles(cartTotal, '.')}
+                  {separadorDeMiles(cartTotal)}
                 </Text>
               </Text>
             </View>
