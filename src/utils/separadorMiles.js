@@ -7,7 +7,7 @@ export const separadorDeMiles = (numero) => {
   const parteEntera = partes[0];
   const parteDecimal = partes.length > 1 ? '.' + partes[1] : '';
 
-  // Agregar el separador de miles a la parte entera
+  // Agregar el separador de miles a la parte entera (separador es un .)
   let separado = '';
   for (let i = parteEntera.length - 1; i >= 0; i--) {
     separado = parteEntera.charAt(i) + separado;
@@ -16,7 +16,7 @@ export const separadorDeMiles = (numero) => {
     }
   }
 
-  // Concatenar la parte entera separada con la parte decimal (si existe)
+  // Concatenar la parte entera separada con la parte decimal
   const resultado = separado + parteDecimal;
 
   return resultado;
