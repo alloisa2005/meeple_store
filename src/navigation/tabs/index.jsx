@@ -22,16 +22,22 @@ const TabNavigation = () => {
         headerShadowVisible: false,
         headerStyle: { backgroundColor: COLORS.background },
         title: '',
+        tabBarInactiveTintColor: COLORS.textGray,
+        tabbarActiveTintColor: COLORS.cardinal,
       }}>
       <Tab.Screen
         name="ShopNavigation"
         component={ShopNavigation}
         options={{
           tabBarLabel: spanish ? 'Inicio' : 'Home',
-          tabBarLabelStyle: styles.tabBarLabelStyle,
+          tabBarLabelStyle: styles.tabBarLabelStyleActive,
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
+            <Ionicons
+              name={focused ? 'home' : 'home-outline'}
+              size={size}
+              color={focused ? COLORS.cardinal : COLORS.textGray}
+            />
           ),
         }}
       />
@@ -40,9 +46,13 @@ const TabNavigation = () => {
         component={CartScreen}
         options={{
           tabBarLabel: spanish ? 'Carrito' : 'Cart',
-          tabBarLabelStyle: styles.tabBarLabelStyle,
+          tabBarLabelStyle: styles.tabBarLabelStyleActive,
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'md-cart' : 'md-cart-outline'} size={size} color={color} />
+            <Ionicons
+              name={focused ? 'md-cart' : 'md-cart-outline'}
+              size={size}
+              color={focused ? COLORS.cardinal : COLORS.textGray}
+            />
           ),
           headerTitle: spanish ? 'Mi Carrito' : 'My Cart',
           headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold', fontSize: 24 },
@@ -54,9 +64,13 @@ const TabNavigation = () => {
         component={OrderNavigation}
         options={{
           tabBarLabel: spanish ? 'Compras' : 'Orders',
-          tabBarLabelStyle: styles.tabBarLabelStyle,
+          tabBarLabelStyle: styles.tabBarLabelStyleActive,
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'settings' : 'settings-outline'} size={size} color={color} />
+            <Ionicons
+              name={focused ? 'settings' : 'settings-outline'}
+              size={size}
+              color={focused ? COLORS.cardinal : COLORS.textGray}
+            />
           ),
           headerTitle: spanish ? 'Mis Compras' : 'My Orders',
           headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold', fontSize: 24 },
@@ -67,12 +81,14 @@ const TabNavigation = () => {
         component={SettingsNavigation}
         options={{
           headerShown: false,
-          /* title: spanish ? 'Preferencias de Usuario' : 'User Settings',
-          headerTitleStyle: { color: COLORS.cardinal, fontFamily: 'Montserrat-Bold' }, */
           tabBarLabel: spanish ? 'Preferencias' : 'Settings',
-          tabBarLabelStyle: styles.tabBarLabelStyle,
+          tabBarLabelStyle: styles.tabBarLabelStyleActive,
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? 'md-list' : 'md-list-outline'} size={size} color={color} />
+            <Ionicons
+              name={focused ? 'md-list' : 'md-list-outline'}
+              size={size}
+              color={focused ? COLORS.cardinal : COLORS.textGray}
+            />
           ),
         }}
       />
