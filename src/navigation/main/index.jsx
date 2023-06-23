@@ -7,7 +7,7 @@ import TabNavigation from '../tabs';
 const Stack = createNativeStackNavigator();
 
 const MainNavigation = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.auth);
 
   return (
     <Stack.Navigator>

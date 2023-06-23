@@ -23,7 +23,7 @@ const SettingsScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const { user, error, loading } = useSelector((state) => state.auth);
+  const { user, error, loading: authLoading } = useSelector((state) => state.auth);
   const spanish = useSelector((state) => state.language.spanish);
 
   const [name, setName] = useState(user.name);
@@ -116,7 +116,7 @@ const SettingsScreen = () => {
             </View>
 
             <TouchableOpacity style={styles.button} onPress={onHandlerUpdateUser}>
-              {loading ? (
+              {authLoading ? (
                 <ActivityIndicator size={21} color={COLORS.white} />
               ) : (
                 <Text style={styles.textButton}>{spanish ? 'Editar Usuario' : 'Edit Profile'}</Text>

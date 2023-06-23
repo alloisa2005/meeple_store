@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
-import { ProductItem, CategoryItem, RowProducts } from '../../components';
+import { CategoryItem, RowProducts } from '../../components';
 import { setCartAsync } from '../../redux/actions/cart.actions';
 import { getOrdersAsync } from '../../redux/actions/orders.actions';
 
@@ -69,16 +69,19 @@ const ShopScreen = () => {
           array={products}
           busqueda={3}
         />
+
         <RowProducts
           title={spanish ? 'Más Populares' : 'Top Ratings'}
           array={products}
           busqueda={1}
         />
+
         <RowProducts
           title={spanish ? 'Más Vendidos' : 'Best Sellers'}
           array={products}
           busqueda={2}
         />
+
         <View style={styles.btnContainer}>
           <TouchableOpacity onPress={onHanlderGoToStore}>
             <Text style={styles.btn}>{spanish ? 'Busca tu juego' : 'Find your game'}</Text>

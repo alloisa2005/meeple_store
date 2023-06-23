@@ -11,7 +11,7 @@ const authReducer = (state = initialState, action) => {
     case authTypes.LOADING:
       return {
         ...state,
-        loading: !state.loading,
+        loading: true,
       };
     case authTypes.SIGNUP:
       return {

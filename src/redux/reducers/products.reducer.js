@@ -18,11 +18,18 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        products: action.payload,
       };
     case productsTypes.SELECT_PRODUCT:
       return {
         ...state,
         selected: action.payload,
+      };
+    case productsTypes.SET_PRODUCTS:
+      return {
+        ...state,
+        loading: false,
+        products: action.payload,
       };
     default:
       return state;

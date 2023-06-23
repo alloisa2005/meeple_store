@@ -56,8 +56,8 @@ export const signUp = (user) => {
 
 export const signIn = (user) => {
   return async (dispatch) => {
-    dispatch(loadingAuth());
     try {
+      dispatch(loadingAuth());
       const response = await fetch(FIREBASE_SIGNIN_URL, {
         method: 'POST',
         headers: {
