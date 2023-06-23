@@ -162,7 +162,7 @@ const SignUpScreen = ({ navigation }) => {
           <Text style={styles.accountTitle}>
             {spanish ? '¿Ya tienes una cuenta?' : 'Already have an account?'}
           </Text>
-          <TouchableOpacity onPress={goToSignInScreen}>
+          <TouchableOpacity onPress={goToSignInScreen} disabled={loading}>
             <Text style={loading ? styles.accountSubTitleGray : styles.accountSubTitle}>
               {spanish ? 'Inicia Sesión' : 'Sign In'}
             </Text>
