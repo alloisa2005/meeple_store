@@ -60,8 +60,6 @@ const SignUpScreen = ({ navigation }) => {
         timeout: 5000,
       });
 
-      console.log('location: ', location);
-
       setCoords({ lat: location.coords.latitude, lng: location.coords.longitude });
 
       try {
@@ -70,13 +68,11 @@ const SignUpScreen = ({ navigation }) => {
         );
         const data = await res.json();
 
-        console.log('data: ', data);
         setAddress(`${data.data[0].street} ${data.data[0].number}`);
       } catch (error) {
         setAddress('Intente nuevamente');
       }
     } catch (error) {
-      console.log('error: ', error);
       setAddress('');
     }
   };
