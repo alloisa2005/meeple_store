@@ -29,7 +29,7 @@ export const styles = ScaledSheet.create({
   },
   graficaContainer: {
     flex: 1,
-    paddingTop: '5@vs',
+    paddingTop: '35@vs',
     marginVertical: '6@vs',
   },
   graficaTitle: {
