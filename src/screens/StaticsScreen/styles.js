@@ -29,7 +29,7 @@ export const styles = ScaledSheet.create({
   },
   graficaContainer: {
     flex: 1,
-    paddingTop: '35@vs',
+    paddingTop: '25@vs',
     marginVertical: '6@vs',
   },
   graficaTitle: {
@@ -37,6 +37,7 @@ export const styles = ScaledSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: '16@s',
     color: COLORS.cardinal,
+    marginBottom: '25@vs',
   },
   grafica: {
     alignItems: 'center',

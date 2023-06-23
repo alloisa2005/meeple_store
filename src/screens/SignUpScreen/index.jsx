@@ -18,9 +18,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styles } from './styles';
 import { MyAlert } from '../../components';
 import { COLORS } from '../../constants/colors';
-import { LOCATION_API_KEY } from '../../constants/firebase.js';
 import { signUp } from '../../redux/actions/auth.actions';
-import { verifyPermissionsCamera, verifyPermissionsLocation } from '../../utils/verifyPermissions';
+import { verifyPermissionsCamera } from '../../utils/verifyPermissions';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -33,7 +32,6 @@ const SignUpScreen = ({ navigation }) => {
   const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
   const [pickedUrl, setPickedUrl] = useState(null);
-  const [coords, setCoords] = useState({});
 
   const onHandleTakeImage = async () => {
     const isCameraPermission = await verifyPermissionsCamera();
@@ -48,33 +46,6 @@ const SignUpScreen = ({ navigation }) => {
     // Obtengo la imagen de esta manera por unos warnings que aparecían
     // de que iba a ser deprecada la propiedad uri
     setPickedUrl(image.assets[0].uri);
-  };
-
-  const onHandlerGetAddress = async () => {
-    try {
-      setAddress('Buscando dirección...');
-      const isLocationPermitted = await verifyPermissionsLocation();
-      if (!isLocationPermitted) return;
-
-      const location = await getCurrentPositionAsync({
-        timeout: 5000,
-      });
-
-      setCoords({ lat: location.coords.latitude, lng: location.coords.longitude });
-
-      try {
-        const res = await fetch(
-          `http://api.positionstack.com/v1/reverse?access_key=${LOCATION_API_KEY}&query=${coords.lat},${coords.lng}&limit=1`
-        );
-        const data = await res.json();
-
-        setAddress(`${data.data[0].street} ${data.data[0].number}`);
-      } catch (error) {
-        setAddress('Intente nuevamente');
-      }
-    } catch (error) {
-      setAddress('');
-    }
   };
 
   const onHandleCreateAccount = async (name, email, address, password, pickedUrl) => {
@@ -149,9 +120,7 @@ const SignUpScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.inputsContainer}>
-            <TouchableOpacity style={styles.locationContainer} onPress={onHandlerGetAddress}>
-              <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
-            </TouchableOpacity>
+            <Entypo name="location-pin" size={24} color={COLORS.cardinal} />
             <TextInput
               autoCapitalize="words"
               autoCorrect={false}
