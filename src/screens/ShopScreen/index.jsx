@@ -1,3 +1,4 @@
+import { EvilIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { Text, Image, View, FlatList, TouchableOpacity, ScrollView } from 'react-native';
@@ -6,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './styles';
 import { CategoryItem, RowProducts } from '../../components';
+import { COLORS } from '../../constants/colors';
 import { setCartAsync } from '../../redux/actions/cart.actions';
 import { getOrdersAsync } from '../../redux/actions/orders.actions';
 
@@ -83,8 +85,9 @@ const ShopScreen = () => {
         />
 
         <View style={styles.btnContainer}>
-          <TouchableOpacity onPress={onHanlderGoToStore}>
-            <Text style={styles.btn}>{spanish ? 'Busca tu juego' : 'Find your game'}</Text>
+          <TouchableOpacity onPress={onHanlderGoToStore} style={styles.btn}>
+            <EvilIcons name="search" size={26} color={COLORS.white} />
+            <Text style={styles.btnText}>{spanish ? 'Busca tu juego' : 'Find your game'}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
